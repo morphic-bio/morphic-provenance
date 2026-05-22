@@ -1,0 +1,22 @@
+# Large/generated payloads
+*.h5ad
+*.h5
+*.h5mu
+*.bam
+*.bai
+*.fastq
+*.fastq.gz
+*.mtx
+*.mtx.gz
+*.tar
+*.tar.gz
+*.zip
+
+# Runtime scratch
+tmp/
+scratch/
+.pytest_cache/
+__pycache__/
+
+# Host-local notes
+AGENTS.local.md

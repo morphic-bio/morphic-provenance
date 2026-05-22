@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "run_id": "YYYYMMDDTHHMMSSZ_project_run",
+  "project": "PROJECT",
+  "created_utc": "YYYY-MM-DDTHH:MM:SSZ",
+  "operator": "",
+  "status": "planned",
+  "star_suite": {
+    "repo": "STAR-suite",
+    "commit": "",
+    "dirty": false,
+    "binary": "",
+    "binary_sha256": ""
+  },
+  "recipes": {
+    "repo": "morphic-recipes",
+    "commit": "",
+    "workflow_id": "",
+    "workflow_schema_version": ""
+  },
+  "environment": {
+    "container_image": "",
+    "cuda_required": false,
+    "cellbender_cuda": false
+  },
+  "inputs": [],
+  "outputs": [],
+  "corrections": []
+}

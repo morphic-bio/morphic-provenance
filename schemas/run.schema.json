@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://morphic.bio/schemas/provenance/run.schema.json",
+  "title": "Morphic Run Provenance",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_id",
+    "project",
+    "created_utc",
+    "status",
+    "star_suite",
+    "recipes",
+    "environment",
+    "inputs",
+    "outputs"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.:-]+$"
+    },
+    "project": {
+      "type": "string"
+    },
+    "created_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "operator": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["planned", "running", "complete", "failed", "corrected"]
+    },
+    "star_suite": {
+      "type": "object",
+      "required": ["repo", "commit"],
+      "properties": {
+        "repo": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string"
+        },
+        "dirty": {
+          "type": "boolean"
+        },
+        "binary": {
+          "type": "string"
+        },
+        "binary_sha256": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "recipes": {
+      "type": "object",
+      "required": ["repo", "commit"],
+      "properties": {
+        "repo": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string"
+        },
+        "workflow_id": {
+          "type": "string"
+        },
+        "workflow_schema_version": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "environment": {
+      "type": "object",
+      "properties": {
+        "container_image": {
+          "type": "string"
+        },
+        "cuda_required": {
+          "type": "boolean"
+        },
+        "cellbender_cuda": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/file_record"
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/file_record"
+      }
+    },
+    "corrections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["created_utc", "author", "reason"],
+        "properties": {
+          "created_utc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "author": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "changed_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "$defs": {
+    "file_record": {
+      "type": "object",
+      "required": ["name", "path"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "retention": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
