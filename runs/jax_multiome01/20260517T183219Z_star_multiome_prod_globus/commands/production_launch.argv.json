@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "scripts/run_jax_multiome01_production.sh",
+    "--output-root",
+    "/mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z",
+    "--threads",
+    "16",
+    "--chromap-threads",
+    "16",
+    "--chromap-low-mem",
+    "--chromap-macs3-frag-low-mem",
+    "--chromap-start-mode",
+    "concurrent",
+    "--globus-upload-large-files",
+    "--no-sync-images"
+  ],
+  "resume_note": "The same output root was resumed after completed samples with --skip-build and --start-at as needed.",
+  "environment": {
+    "STAR_SUITE_ROOT": "/mnt/pikachu/STAR-suite",
+    "MULTIOME_REMOTE_HOST": "10.159.4.53",
+    "MULTIOME_REMOTE_ROOT": "/home/lhhung/jax_multiome_remote_downstream_production"
+  }
+}

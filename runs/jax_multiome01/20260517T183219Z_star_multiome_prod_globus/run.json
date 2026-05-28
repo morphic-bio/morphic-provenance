@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.1",
+  "run_id": "20260517T183219Z_star_multiome_prod_globus",
+  "project": "jax_multiome01",
+  "created_utc": "2026-05-17T18:32:19Z",
+  "operator": "lhhung",
+  "status": "complete",
+  "star_suite": {
+    "repo": "git@github.com:morphic-bio/STAR-suite.git",
+    "runtime_branch": "feature/native-multiome-atac-barcode",
+    "commit": "a29406301d681af39373aa280ef9f110ead80294",
+    "github_tree": "https://github.com/morphic-bio/STAR-suite/tree/a29406301d681af39373aa280ef9f110ead80294",
+    "dirty": true,
+    "binary": "/mnt/pikachu/STAR-suite/core/legacy/source/STAR",
+    "binary_sha256": "",
+    "binary_checksum_note": "The exact May 17 binary checksum was not captured before later rebuilds; STAR logs record compile time, commit, branch, and dirty-file lists.",
+    "current_local_checkout_at_handoff_provenance_generation": "c535e327f626a61a601b5472b1589511ad6a8d9e"
+  },
+  "recipes": {
+    "repo": "git@github.com:morphic-bio/morphic-recipes.git",
+    "commit": "682f55493e9342aaed425dd89fb87b0148e8c258",
+    "workflow_id": "jax_multiome01_production",
+    "workflow_schema_version": "",
+    "current_canonical_head_at_record_creation": "2552631cc822697cca69134952ca8d58f8cbd5c4",
+    "notes": "Executed script hashes match morphic-recipes initial mirror commit 682f5549. STAR-suite compatibility copies at commit 2ebea741 also contain the same script content for the primary production scripts."
+  },
+  "environment": {
+    "container_image": "biodepot/scrna-matrices:latest",
+    "cuda_required": true,
+    "cellbender_cuda": true,
+    "remote_host": "10.159.4.53",
+    "remote_root": "/home/lhhung/jax_multiome_remote_downstream_production"
+  },
+  "inputs": [
+    {
+      "name": "raw_fastqs_dir",
+      "path": "/mnt/pikachu/JAX_Multiome01/raw",
+      "retention": "local raw inputs retained"
+    },
+    {
+      "name": "metadata_workbook",
+      "path": "/mnt/pikachu/DPC_metadata_template_Multiome1-complete.xlsx",
+      "sha256": "f7afe66c5f39906dc6ce6dc574049c849d6f1cf2cc7f5893dfd343bcb33f90ae",
+      "bytes": 111824
+    },
+    {
+      "name": "sample_manifest",
+      "path": "inputs/sample_manifest.tsv",
+      "sha256": "ae8128a4e7b278ae2eee4bd2267de46d0f463d54ada74042f338f6f65dea9d60",
+      "bytes": 15205
+    }
+  ],
+  "outputs": [
+    {
+      "name": "local_production_root",
+      "path": "/mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z",
+      "retention": "local result tree"
+    },
+    {
+      "name": "compact_h5mu_globus_handoff",
+      "path": "/JAX_Multiome01_processed/JAX-Multiome01-5-18-26-revised/h5mu",
+      "retention": "Globus destination"
+    },
+    {
+      "name": "large_files_globus_handoff",
+      "path": "/JAX_Multiome01_processed/large_files/star_multiome_prod_globus_20260517T183219Z",
+      "retention": "Globus destination; generated local BAM/YFASTQ artifacts deleted after successful upload"
+    }
+  ],
+  "corrections": [
+    {
+      "created_utc": "2026-05-28T00:00:00Z",
+      "author": "lhhung/codex",
+      "reason": "Promote provenance into morphic-provenance as the canonical source of truth and supersede the temporary provenance file included in the Globus packet. Add explicit morphic-recipes repository and commit linkage.",
+      "changed_fields": ["recipes", "handoff", "README.md"]
+    }
+  ]
+}

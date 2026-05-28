@@ -1,0 +1,3 @@
+name	path	sha256	bytes
+metadata_workbook	/mnt/pikachu/DPC_metadata_template_Multiome1-complete.xlsx	f7afe66c5f39906dc6ce6dc574049c849d6f1cf2cc7f5893dfd343bcb33f90ae	111824
+sample_manifest	inputs/sample_manifest.tsv	ae8128a4e7b278ae2eee4bd2267de46d0f463d54ada74042f338f6f65dea9d60	15205

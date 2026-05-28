@@ -1,0 +1,4 @@
+name	path	bytes	notes
+raw_fastqs_dir	/mnt/pikachu/JAX_Multiome01/raw	20480	directory containing raw JAX Multiome01 FASTQs; raw inputs retained locally
+metadata_workbook	/mnt/pikachu/DPC_metadata_template_Multiome1-complete.xlsx	111824	source metadata workbook used to build the production sample manifest
+sample_manifest	inputs/sample_manifest.tsv	15205	generated nine-sample ATAC/GEX production manifest copied into this run record

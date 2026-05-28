@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+"/mnt/pikachu/STAR-suite/core/legacy/source/STAR" \
+  --runThreadN "16" \
+  --genomeDir "/storage/autoindex_110_44/bulk_index" \
+  --readFilesIn "/mnt/pikachu/JAX_Multiome01/raw/25E113-L13_GT25-09244_TGTCCCAACG-TGGACATCGA_S113_L006_R2_001.fastq.gz,/mnt/pikachu/JAX_Multiome01/raw/25E113-L13_GT25-09244_TGTCCCAACG-TGGACATCGA_S113_L007_R2_001.fastq.gz,/mnt/pikachu/JAX_Multiome01/raw/25E113-L13_GT25-09244_TGTCCCAACG-TGGACATCGA_S113_L008_R2_001.fastq.gz,/mnt/pikachu/JAX_Multiome01/raw/25E113-L13_GT25-09244__S42_L008_R2_001.fastq.gz" "/mnt/pikachu/JAX_Multiome01/raw/25E113-L13_GT25-09244_TGTCCCAACG-TGGACATCGA_S113_L006_R1_001.fastq.gz,/mnt/pikachu/JAX_Multiome01/raw/25E113-L13_GT25-09244_TGTCCCAACG-TGGACATCGA_S113_L007_R1_001.fastq.gz,/mnt/pikachu/JAX_Multiome01/raw/25E113-L13_GT25-09244_TGTCCCAACG-TGGACATCGA_S113_L008_R1_001.fastq.gz,/mnt/pikachu/JAX_Multiome01/raw/25E113-L13_GT25-09244__S42_L008_R1_001.fastq.gz" \
+  --readFilesCommand zcat \
+  --outFileNamePrefix "/mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z/samples/PrS-KOLF2.2J-Nor-Day4/star_sample/run/" \
+  --outTmpDir "/mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z/samples/PrS-KOLF2.2J-Nor-Day4/star_sample/tmp" \
+  --outSAMtype BAM Unsorted \
+  --outSAMattributes NH HI AS nM NM GX GN \
+  --emitNoYBAM yes \
+  --emitYNoYFastq yes \
+  --emitYNoYFastqCompression gz \
+  --clipAdapterType CellRanger4 \
+  --clip3pPolyG yes \
+  --alignEndsType Local \
+  --chimSegmentMin 1000000 \
+  --soloType CB_UMI_Simple \
+  --soloCBstart 1 \
+  --soloCBlen 16 \
+  --soloUMIstart 17 \
+  --soloUMIlen 12 \
+  --soloBarcodeReadLength 0 \
+  --soloCBwhitelist "/mnt/pikachu/atac-seq/10xMultiome/pbmc_unsorted_3k/open_source_full_20260424_015259/refs/737K-arc-v1_gex.txt" \
+  --soloCBmatchWLtype 1MM_multi_Nbase_pseudocounts \
+  --soloUMIfiltering MultiGeneUMI_CR \
+  --soloUMIdedup 1MM_CR \
+  --soloMultiMappers Unique \
+  --soloCellFilter EmptyDrops_CR \
+  --soloCbUbRequireTogether no \
+  --soloStrand "Forward" \
+  --soloFeatures GeneFull Velocyto \
+  --soloCrGexFeature genefull \
+  --soloCrMultimapRescue yes \
+  --soloInlineHashMode "no" \
+  --chromapAtacEnable 1 \
+  --chromapAtacStartMode "concurrent" \
+  --chromapAtacReferenceFasta "/storage/autoindex_110_44/bulk_index/cellranger_ref/genome.fa" \
+  --chromapAtacIndex "/mnt/pikachu/atac-seq/benchmarks/pbmc_unsorted_3k_100k/chromap_index/genome.index" \
+  --chromapAtacRead1 "/mnt/pikachu/JAX_Multiome01/raw/25E113-L4_GT25-09225_SI-NA-B3_S1_L005_R1_001.fastq.gz,/mnt/pikachu/JAX_Multiome01/raw/25E113-L4_GT25-09225_SI-NA-B3_S1_L006_R1_001.fastq.gz,/mnt/pikachu/JAX_Multiome01/raw/25E113-L4_GT25-09225_SI-NA-B3_S1_L007_R1_001.fastq.gz,/mnt/pikachu/JAX_Multiome01/raw/25E113-L4_GT25-09225_SI-NA-B3_S1_L008_R1_001.fastq.gz" \
+  --chromapAtacRead2 "/mnt/pikachu/JAX_Multiome01/raw/25E113-L4_GT25-09225_SI-NA-B3_S1_L005_R3_001.fastq.gz,/mnt/pikachu/JAX_Multiome01/raw/25E113-L4_GT25-09225_SI-NA-B3_S1_L006_R3_001.fastq.gz,/mnt/pikachu/JAX_Multiome01/raw/25E113-L4_GT25-09225_SI-NA-B3_S1_L007_R3_001.fastq.gz,/mnt/pikachu/JAX_Multiome01/raw/25E113-L4_GT25-09225_SI-NA-B3_S1_L008_R3_001.fastq.gz" \
+  --chromapAtacBarcode "/mnt/pikachu/JAX_Multiome01/raw/25E113-L4_GT25-09225_SI-NA-B3_S1_L005_R2_001.fastq.gz,/mnt/pikachu/JAX_Multiome01/raw/25E113-L4_GT25-09225_SI-NA-B3_S1_L006_R2_001.fastq.gz,/mnt/pikachu/JAX_Multiome01/raw/25E113-L4_GT25-09225_SI-NA-B3_S1_L007_R2_001.fastq.gz,/mnt/pikachu/JAX_Multiome01/raw/25E113-L4_GT25-09225_SI-NA-B3_S1_L008_R2_001.fastq.gz" \
+  --chromapAtacReadFormat "bc:8:23:-" \
+  --chromapAtacBarcodeWhitelist "/mnt/pikachu/atac-seq/benchmarks/pbmc_unsorted_3k_100k/chromap_index/737K-arc-v1_atac.txt" \
+  --chromapAtacBarcodeTranslate "/mnt/pikachu/atac-seq/benchmarks/pbmc_unsorted_3k_100k/chromap_index/atac2gex.tsv" \
+  --chromapAtacBarcodeTranslateFromFirst 1 \
+  --chromapAtacOutputFormat BAM \
+  --chromapAtacOutputFragments "/mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z/samples/PrS-KOLF2.2J-Nor-Day4/star_sample/run/atac_possorted.bam" \
+  --chromapAtacSecondaryFragments "/mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z/samples/PrS-KOLF2.2J-Nor-Day4/star_sample/run/atac_fragments.bin" \
+  --chromapAtacSortBam 1 \
+  --chromapAtacSummary "/mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z/samples/PrS-KOLF2.2J-Nor-Day4/star_sample/run/chromap_summary.csv" \
+  --chromapAtacThreads "16" \
+  --chromapAtacLowMem "1" \
+  --chromapAtacLowMemRam "0" \
+  --chromapAtacMacs3FragLowMem "1" \
+  --chromapAtacTempDir "/mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z/samples/PrS-KOLF2.2J-Nor-Day4/star_sample/chromap_tmp" \
+  --chromapAtacTn5ShiftMode classical

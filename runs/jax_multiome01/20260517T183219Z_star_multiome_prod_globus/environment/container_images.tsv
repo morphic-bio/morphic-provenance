@@ -1,0 +1,4 @@
+purpose	image	image_id	repo_digest	notes
+RNA downstream Python/R helpers	biodepot/scrna-matrices:latest	sha256:c052c1568727f24a6e2c8ec793357ccfdf1ffdf5622542a7b2da40d8df47825b	biodepot/scrna-matrices@sha256:913e58708fad05d58cf557b60972a27d248d4252aecb07f4688ccffe61cc9ac1	reported by local Docker daemon at provenance generation time
+Feature-library integration	biodepot/gather_features:latest	sha256:973d04f6442765e745e7d5d5c41183bf4e2ef4c00c37c13a27802955ccce4d6e	none reported locally	reported by local Docker daemon at provenance generation time
+CellBender	biodepot/cellbender:0.3.2	sha256:f31f1e993f3d87659c3dd541a22f505fec7ee4366f6d5da1324061c2c09dcb2a	biodepot/cellbender@sha256:4e6e41ed6366d9d6a3e10435851d8c2acbd0083f456630fb87e6029a23f379a5	reported by local Docker daemon at provenance generation time

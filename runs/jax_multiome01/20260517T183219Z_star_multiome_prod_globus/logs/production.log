@@ -1,0 +1,46 @@
+[2026-05-17T18:32:19Z] Writing production sample manifest
+[2026-05-17T18:32:19Z] Manifest contains 9 samples with all required workflow FASTQs present
+[2026-05-17T18:32:19Z] Production settings: STAR threads=16, Chromap threads=16, Chromap low-mem=1, Chromap low-mem RAM=0, MACS3 fragment low-mem=1
+[2026-05-17T18:32:19Z] Clean rebuilding STAR with Chromap support once for production
+[2026-05-17T18:32:51Z] Running Und-KOLF2.2J (ATAC 25E113-L1; GEX 25E113-L10)
+[2026-05-17T20:42:10Z] Local MEX boundary complete for Und-KOLF2.2J; queueing remote post-MEX work
+[2026-05-17T20:42:10Z] Remote post-MEX PID for Und-KOLF2.2J: 2452078 (log /mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z/logs/Und-KOLF2.2J.post_mex_remote.log)
+[2026-05-17T20:42:10Z] Running TE-KOLF2.2J-Nor (ATAC 25E113-L2; GEX 25E113-L11)
+[2026-05-17T23:18:13Z] Local MEX boundary complete for TE-KOLF2.2J-Nor; queueing remote post-MEX work
+[2026-05-17T23:18:13Z] Remote post-MEX PID for TE-KOLF2.2J-Nor: 2773766 (log /mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z/logs/TE-KOLF2.2J-Nor.post_mex_remote.log)
+[2026-05-18T00:31:25Z] Remote post-MEX complete for Und-KOLF2.2J
+[2026-05-18T01:48:52Z] Writing production sample manifest
+[2026-05-18T01:48:52Z] Manifest contains 9 samples with all required workflow FASTQs present
+[2026-05-18T01:48:52Z] Production settings: STAR threads=16, Chromap threads=16, Chromap low-mem=1, Chromap low-mem RAM=0, MACS3 fragment low-mem=1
+[2026-05-18T01:48:52Z] Skipping Und-KOLF2.2J until --start-at TE-KOLF2.2J-Hyp
+[2026-05-18T01:48:52Z] Skipping TE-KOLF2.2J-Nor until --start-at TE-KOLF2.2J-Hyp
+[2026-05-18T01:48:52Z] Running TE-KOLF2.2J-Hyp (ATAC 25E113-L3; GEX 25E113-L12)
+[2026-05-18T03:14:18Z] Remote post-MEX complete for TE-KOLF2.2J-Nor
+[2026-05-18T04:05:44Z] Local MEX boundary complete for TE-KOLF2.2J-Hyp; queueing remote post-MEX work
+[2026-05-18T04:05:44Z] Remote post-MEX PID for TE-KOLF2.2J-Hyp: 3372192 (log /mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z/logs/TE-KOLF2.2J-Hyp.post_mex_remote.log)
+[2026-05-18T04:05:44Z] Running PrS-KOLF2.2J-Nor-Day4 (ATAC 25E113-L4; GEX 25E113-L13)
+[2026-05-18T06:19:04Z] Local MEX boundary complete for PrS-KOLF2.2J-Nor-Day4; queueing remote post-MEX work
+[2026-05-18T06:19:04Z] Remote post-MEX PID for PrS-KOLF2.2J-Nor-Day4: 3638674 (log /mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z/logs/PrS-KOLF2.2J-Nor-Day4.post_mex_remote.log)
+[2026-05-18T06:19:04Z] Running ExM-KOLF2.2J-Day4 (ATAC 25E113-L5; GEX 25E113-L14)
+[2026-05-18T09:08:09Z] Local MEX boundary complete for ExM-KOLF2.2J-Day4; queueing remote post-MEX work
+[2026-05-18T09:08:09Z] Remote post-MEX PID for ExM-KOLF2.2J-Day4: 3973723 (log /mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z/logs/ExM-KOLF2.2J-Day4.post_mex_remote.log)
+[2026-05-18T09:08:09Z] Running PrS-KOLF2.2J-Hyp-Day4 (ATAC 25E113-L6; GEX 25E113-L15)
+[2026-05-18T11:35:42Z] Local MEX boundary complete for PrS-KOLF2.2J-Hyp-Day4; queueing remote post-MEX work
+[2026-05-18T11:35:42Z] Remote post-MEX PID for PrS-KOLF2.2J-Hyp-Day4: 70328 (log /mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z/logs/PrS-KOLF2.2J-Hyp-Day4.post_mex_remote.log)
+[2026-05-18T11:35:42Z] Running PrS-KOLF2.2J-Nor-Day6 (ATAC 25E113-L7; GEX 25E113-L16)
+[2026-05-18T14:05:39Z] Local MEX boundary complete for PrS-KOLF2.2J-Nor-Day6; queueing remote post-MEX work
+[2026-05-18T14:05:39Z] Remote post-MEX PID for PrS-KOLF2.2J-Nor-Day6: 368228 (log /mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z/logs/PrS-KOLF2.2J-Nor-Day6.post_mex_remote.log)
+[2026-05-18T14:05:39Z] Running ExM-KOLF2.2J-Day6 (ATAC 25E113-L8; GEX 25E113-L17)
+[2026-05-18T16:57:22Z] Local MEX boundary complete for ExM-KOLF2.2J-Day6; queueing remote post-MEX work
+[2026-05-18T16:57:22Z] Remote post-MEX PID for ExM-KOLF2.2J-Day6: 712398 (log /mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z/logs/ExM-KOLF2.2J-Day6.post_mex_remote.log)
+[2026-05-18T16:57:22Z] Running PrS-KOLF2.2J-Hyp-Day6 (ATAC 25E113-L9; GEX 25E113-L18)
+[2026-05-18T19:17:53Z] Local MEX boundary complete for PrS-KOLF2.2J-Hyp-Day6; queueing remote post-MEX work
+[2026-05-18T19:17:53Z] Remote post-MEX PID for PrS-KOLF2.2J-Hyp-Day6: 991644 (log /mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z/logs/PrS-KOLF2.2J-Hyp-Day6.post_mex_remote.log)
+[2026-05-18T19:17:53Z] Remote post-MEX complete for TE-KOLF2.2J-Hyp
+[2026-05-18T19:17:53Z] Remote post-MEX complete for PrS-KOLF2.2J-Nor-Day4
+[2026-05-18T19:17:53Z] Remote post-MEX complete for ExM-KOLF2.2J-Day4
+[2026-05-18T19:17:53Z] Remote post-MEX complete for PrS-KOLF2.2J-Hyp-Day4
+[2026-05-18T20:28:42Z] Remote post-MEX complete for PrS-KOLF2.2J-Nor-Day6
+[2026-05-18T23:15:14Z] Remote post-MEX complete for ExM-KOLF2.2J-Day6
+[2026-05-19T00:34:02Z] Remote post-MEX complete for PrS-KOLF2.2J-Hyp-Day6
+[2026-05-19T00:34:02Z] PASS: JAX_Multiome01 production workflow complete

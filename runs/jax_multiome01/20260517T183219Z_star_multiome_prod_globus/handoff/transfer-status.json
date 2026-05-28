@@ -1,0 +1,21 @@
+{
+  "compact_h5mu_handoff": {
+    "destination_endpoint": "61fb8b9a-9b52-456e-928c-30c0fb0140bf",
+    "destination_path": "/JAX_Multiome01_processed/JAX-Multiome01-5-18-26-revised/h5mu",
+    "task_id": "3ac95aae-5321-11f1-b294-0ea3589134b3",
+    "status": "succeeded",
+    "files_transferred": 20,
+    "label": "JAX_Multiome01 2026-05-18 revised h5mu handoff"
+  },
+  "large_files_handoff": {
+    "destination_endpoint": "61fb8b9a-9b52-456e-928c-30c0fb0140bf",
+    "destination_path": "/JAX_Multiome01_processed/large_files/star_multiome_prod_globus_20260517T183219Z",
+    "state_table": "globus_large_files_upload_state.tsv",
+    "status": "all sample tasks transferred; generated local BAM/YFASTQ artifacts deleted after successful upload"
+  },
+  "temporary_packet_provenance": {
+    "path": "/mnt/pikachu/JAX_Multiome01_processed/star_multiome_prod_globus_20260517T183219Z/provenance.md",
+    "sha256": "9a57c8a9d5549df9984c8683f2280e1d32af35bc2d4fa1f853a1355a51702301",
+    "status": "superseded_by_this_run_record"
+  }
+}
