@@ -1,0 +1,109 @@
+{
+  "schema_version": "0.1",
+  "run_id": "20260524T092857Z_star_suite_flex_rerun",
+  "project": "jax_scrnaseq01",
+  "created_utc": "2026-05-24T09:28:57Z",
+  "operator": "lhhung",
+  "status": "complete",
+  "star_suite": {
+    "repo": "git@github.com:morphic-bio/STAR-suite.git",
+    "commit": "d70a03e407f45b743efa60c7d032d6d2e1a80123",
+    "github_tree": "https://github.com/morphic-bio/STAR-suite/tree/d70a03e407f45b743efa60c7d032d6d2e1a80123",
+    "binary": "/mnt/pikachu/STAR-suite/core/legacy/source/STAR",
+    "star_version": "1.0.0",
+    "dirty_status": "not captured in source provenance"
+  },
+  "recipes": {
+    "repo": "git@github.com:morphic-bio/morphic-recipes.git",
+    "commit": "c41c2fd11f9bedd0f8b2b6e81a726a9da12b5d0f",
+    "workflow_id": "jax_scrnaseq01_flex_rerun_not_yet_mirrored",
+    "reproduction_entrypoint": "",
+    "notes": "No run_all reproduction entrypoint is currently mirrored; use commands/*.RUN_COMMAND.sh and handoff/temporary_packet_provenance.md."
+  },
+  "environment": {
+    "container_image": "biodepot/scrna-matrices:latest",
+    "cuda_required": true,
+    "cellbender_cuda": true,
+    "remote_host": "10.159.4.53",
+    "remote_root": "/home/lhhung/jax_scrnaseq01_remote_cellbender"
+  },
+  "inputs": [
+    {
+      "name": "raw_fastq_root",
+      "path": "/mnt/pikachu/JAX_sequences/JAX_scRNAseq01",
+      "retention": "local raw inputs retained"
+    },
+    {
+      "name": "metadata_workbook",
+      "path": "/mnt/pikachu/JAX_sequences/JAX_scRNAseq01/DPC_metadata_template_scRNAseq1_completed.xlsx"
+    },
+    {
+      "name": "sample_probe_catalog",
+      "path": "/mnt/pikachu/JAX_sequences/JAX_scRNAseq01/probe-barcodes-fixed-rna-profiling-rna.txt"
+    },
+    {
+      "name": "fastq_manifest",
+      "path": "inputs/fastq_manifest.txt",
+      "sha256": "f83dc64a1d752185af42561a7bccab5031cc2b4dd6f5a1c908de81bc47e00867",
+      "bytes": 1962
+    },
+    {
+      "name": "tag_to_sample",
+      "path": "inputs/tag_to_sample.tsv",
+      "sha256": "006df3fbbad11f0de8e605f2d09016446896738ac534f21624d36694ea533bd7",
+      "bytes": 193
+    }
+  ],
+  "outputs": [
+    {
+      "name": "local_release_root",
+      "path": "/mnt/pikachu/JAX_scRNAseq01_2024_star_suite_20260524_080700/release",
+      "retention": "local Globus packet staging root"
+    },
+    {
+      "name": "globus_destination_root",
+      "path": "/JAX_scRNAseq01_2024_STAR_suite/JAX_scRNAseq01_2024_star_suite_20260524_080700",
+      "retention": "Globus destination"
+    },
+    {
+      "name": "release_manifest",
+      "path": "outputs/manifest.tsv",
+      "sha256": "adf37932451f18c58b21386f094554401e4b3306b882a8631ddfe0f99418f708",
+      "bytes": 17701
+    },
+    {
+      "name": "release_checksums",
+      "path": "outputs/CHECKSUMS.sha256",
+      "sha256": "a27ebde2ae02f400f8d83ddd30f95146dae485a674f153aae92aec0c030e4cac",
+      "bytes": 16992
+    }
+  ],
+  "dataset_releases": [
+    {
+      "release_key": "jax_scrnaseq01/2026-05-24",
+      "release_date": "2026-05-24",
+      "path": "dataset_releases/jax_scrnaseq01/2026-05-24",
+      "globus_path": "/JAX_scRNAseq01_2024_STAR_suite/JAX_scRNAseq01_2024_star_suite_20260524_080700"
+    }
+  ],
+  "corrections": [
+    {
+      "created_utc": "2026-05-28T00:00:00Z",
+      "author": "lhhung/codex",
+      "reason": "Promote the attached Globus packet provenance into morphic-provenance and mark the packet provenance as temporary.",
+      "changed_fields": [
+        "handoff",
+        "README.md"
+      ]
+    },
+    {
+      "created_utc": "2026-05-28T00:00:00Z",
+      "author": "lhhung/codex",
+      "reason": "Add dated release notes keyed by the 2026-05-24 Globus push date.",
+      "changed_fields": [
+        "dataset_releases",
+        "README.md"
+      ]
+    }
+  ]
+}

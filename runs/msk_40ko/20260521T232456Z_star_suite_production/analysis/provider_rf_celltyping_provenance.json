@@ -1,0 +1,109 @@
+{
+  "classifier": "RandomForestClassifier",
+  "created_utc": "2026-05-15T06:52:45.100775+00:00",
+  "feature_space": "X_scimilarity",
+  "label_columns": [
+    "celltype_20250623",
+    "subcelltype"
+  ],
+  "method": "train_once_save_model_then_apply_to_samples",
+  "model_dir": "/mnt/pikachu/msk-30ko-production-planning/results/provider_rf_celltyping_20260515_065032/models",
+  "models": [
+    {
+      "classes": [
+        "DE",
+        "ES",
+        "Early_Alpha",
+        "Early_EC",
+        "Endothelial_cell",
+        "Late_Alpha",
+        "Late_Beta",
+        "Late_Delta",
+        "Late_EC",
+        "Liver",
+        "Mesenchyme",
+        "Neurog3+",
+        "None_endo",
+        "PP1",
+        "PP2",
+        "prolif_Alpha"
+      ],
+      "label_column": "celltype_20250623",
+      "model_path": "/mnt/pikachu/msk-30ko-production-planning/results/provider_rf_celltyping_20260515_065032/models/rf_celltype.joblib",
+      "output_column": "rf_celltype"
+    },
+    {
+      "classes": [
+        "DE",
+        "ES",
+        "Early_Alpha",
+        "Early_Beta",
+        "Early_Delta",
+        "Early_EC",
+        "Endo_prog",
+        "Endothelial_cell",
+        "Late_Alpha",
+        "Late_Beta",
+        "Late_Delta",
+        "Late_EC",
+        "Liver",
+        "Mesenchyme",
+        "Neurog3+",
+        "None_endo",
+        "PP1",
+        "PP2",
+        "prolif_Alpha"
+      ],
+      "label_column": "subcelltype",
+      "model_path": "/mnt/pikachu/msk-30ko-production-planning/results/provider_rf_celltyping_20260515_065032/models/rf_subcelltype.joblib",
+      "output_column": "rf_subcelltype"
+    }
+  ],
+  "n_estimators": 500,
+  "n_training_rows_total": 170601,
+  "output_columns": [
+    "rf_celltype",
+    "rf_subcelltype"
+  ],
+  "provider_metadata_joined_to_h5ad": false,
+  "provider_rds": "/mnt/pikachu/df.meta.rds",
+  "random_state": 42,
+  "script": "/mnt/pikachu/msk-30ko-production-planning/scripts/annotate_provider_rf_celltypes_h5ad.py",
+  "sklearn_version": "1.5.2",
+  "training_object": "filtered_counts.h5ad",
+  "training_samples": [
+    "ES",
+    "DE",
+    "DE_GemX",
+    "PP1",
+    "PP2",
+    "S5_1",
+    "S5_2",
+    "S6_1",
+    "S6_2"
+  ],
+  "validation": [
+    {
+      "accuracy": 0.955249,
+      "balanced_accuracy": 0.879196,
+      "label_column": "celltype_20250623",
+      "macro_f1": 0.890271,
+      "n_classes": 16,
+      "n_training_cells": 108825,
+      "n_validation_cells": 21765,
+      "notes": "held-out stratified validation excluding singleton labels",
+      "output_column": "rf_celltype"
+    },
+    {
+      "accuracy": 0.94436,
+      "balanced_accuracy": 0.808471,
+      "label_column": "subcelltype",
+      "macro_f1": 0.810921,
+      "n_classes": 19,
+      "n_training_cells": 108825,
+      "n_validation_cells": 21765,
+      "notes": "held-out stratified validation excluding singleton labels",
+      "output_column": "rf_subcelltype"
+    }
+  ]
+}

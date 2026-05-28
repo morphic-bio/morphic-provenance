@@ -1,0 +1,3 @@
+sample	task_id	status	request_time	completion_time	files_transferred	bytes_transferred	source_path	destination_path	verify_checksum	sync_level	task_json
+40_KO_ES	3f3b77a8-5589-11f1-9dfe-02c81e62ebf9	SUCCEEDED	2026-05-22T02:52:19+00:00	2026-05-22T04:49:43+00:00	1	37232599246	/mnt/pikachu/msk40ko-bam-archive/MSK-40KO-large-files/40_KO_ES/Aligned.out.bam	/MSK-40KO-large-files/40_KO_ES/Aligned.out.bam	True	3	handoff/samples/40_KO_ES/globus_transfer_task_final.json
+40_KO_DE	7971397a-5592-11f1-bfea-02c81e62ebf9	SUCCEEDED	2026-05-22T03:58:22+00:00	2026-05-22T05:57:56+00:00	1	42415547622	/mnt/pikachu/msk40ko-bam-archive/MSK-40KO-large-files/40_KO_DE/Aligned.out.bam	/MSK-40KO-large-files/40_KO_DE/Aligned.out.bam	True	3	handoff/samples/40_KO_DE/globus_transfer_task_final.json

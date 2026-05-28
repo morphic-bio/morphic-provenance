@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -euo pipefail
+"/mnt/pikachu/STAR-suite/core/legacy/source/STAR" \
+  --runThreadN "32" \
+  --outTmpDir "/mnt/pikachu/JAX_scRNAseq01_2024_star_suite_20260524_080700/tmp/SC2300772_hash_noalign" \
+  --genomeDir "/storage/flex_filtered_reference_2024/star_index" \
+  --soloType CB_UMI_Simple \
+  --soloCBstart 1 --soloUMIstart 17 --soloCBlen 16 --soloUMIlen 12 \
+  --soloBarcodeReadLength 0 \
+  --soloCBwhitelist "/storage/scRNAseq_output/whitelists/737K-fixed-rna-profiling.txt" \
+  --flex yes \
+  --soloFlexExpectedCellsPerTag 3000 \
+  --soloSampleWhitelist "/mnt/pikachu/flex/tables/sample_whitelist_full_16.tsv" \
+  --soloProbeList "/storage/flex_filtered_reference_2024/star_index/flex_probe_artifacts/probe_list.txt" \
+  --soloSampleProbes "/mnt/pikachu/JAX_sequences/JAX_scRNAseq01/probe-barcodes-fixed-rna-profiling-rna.txt" \
+  --soloSampleProbeOffset 68 \
+  --soloFlexAllowedTags "/mnt/pikachu/JAX_scRNAseq01_2024_star_suite_20260524_080700/metadata/SC2300772_allowed_tags.tsv" \
+  --soloFlexOutputPrefix "/mnt/pikachu/JAX_scRNAseq01_2024_star_suite_20260524_080700/SC2300772_hash_noalign/per_sample_filtered" \
+  --limitIObufferSize 50000000 50000000 \
+  --outSJtype None \
+  --outSAMtype None \
+  --soloFeatures Gene \
+  --soloCellFilter None \
+  --soloMultiMappers Rescue \
+  --soloCBmatchWLtype 1MM_multi_Nbase_pseudocounts \
+  --soloUMIfiltering MultiGeneUMI_CR \
+  --soloUMIdedup 1MM_CR \
+  --soloStrand Unstranded \
+  --clipAdapterType CellRanger4 \
+  --alignEndsType Local \
+  --chimSegmentMin 1000000 \
+  --soloKeysCompat cr \
+  --outSAMattributes None \
+  --soloSampleSearchNearby no \
+  --readFilesCommand zcat \
+  --readFilesIn "/mnt/pikachu/JAX_sequences/JAX_scRNAseq01/SC2300772_GT24-00693_TTGGCGGCAC-AGTAACTTAC_S6_L002_R2_001.fastq.gz" "/mnt/pikachu/JAX_sequences/JAX_scRNAseq01/SC2300772_GT24-00693_TTGGCGGCAC-AGTAACTTAC_S6_L002_R1_001.fastq.gz" \
+  --soloHashScreenFile "/storage/downsampled_100K/SC2300771/results/flex_h01_2024_20260320_081246/h01_cache.bin" \
+  --flexPipeline yes \
+  --flexPipelineNTriage 0 \
+  --flexPipelineNSolo 0 \
+  --flexNoAlign 1 \
+  --outFileNamePrefix "/mnt/pikachu/JAX_scRNAseq01_2024_star_suite_20260524_080700/SC2300772_hash_noalign/"

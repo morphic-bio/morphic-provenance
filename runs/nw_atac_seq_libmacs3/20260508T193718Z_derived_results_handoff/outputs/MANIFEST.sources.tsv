@@ -1,0 +1,7 @@
+source	staged_path	mode	notes
+/mnt/pikachu/NW-ATAC-SEQ-results-libmacs3-05-05-26/final	final	hardlink	Derived result payload; raw FASTQs excluded by request.
+/mnt/pikachu/NW-ATAC-SEQ-results-libmacs3-05-05-26	metadata/local_run_root	copy	Local run manifests, logs, status, copyback rows; final excluded to avoid duplication.
+/storage/atac-libmacs3-05-05-26/NW_ATACseq_1	metadata/storage_temp/NW_ATACseq_1	copy	Temporary /storage provenance; FASTQs were removed after processing.
+10.159.4.53:/home/lhhung/NW-ATAC-SEQ-results-libmacs3-05-05-26	metadata/remote_server/NW-ATAC-SEQ-results-libmacs3-05-05-26	copy-over-ssh	Remote companion run metadata from biocloudgpu1; remote final was drained after copyback and excluded.
+/home/lhhung/morphic-atac-seq	scripts/local_morphic_atac_seq	copy	Selected local production scripts/docs from morphic-atac-seq, excluding large temp files.
+10.159.4.53:/home/lhhung/morphic-atac-seq	scripts/remote_morphic_atac_seq	copy-over-ssh	Selected remote production scripts/docs from morphic-atac-seq.

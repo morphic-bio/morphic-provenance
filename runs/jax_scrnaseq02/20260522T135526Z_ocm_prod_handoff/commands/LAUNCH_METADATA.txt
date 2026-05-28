@@ -1,0 +1,3 @@
+run_root=/mnt/pikachu/JAX_scRNAseq02_processed/ocm_prod_batch_flex_native_yremove_trace_20260521T034223Z
+commit=87a45d34e7c9ea08a34507adbde4cfcb360a6c11
+started_utc=2026-05-21T03:42:23Z

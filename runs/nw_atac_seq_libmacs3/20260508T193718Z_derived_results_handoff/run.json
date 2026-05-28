@@ -1,0 +1,87 @@
+{
+  "schema_version": "0.1",
+  "run_id": "20260508T193718Z_derived_results_handoff",
+  "project": "nw_atac_seq_libmacs3",
+  "created_utc": "2026-05-08T19:37:18Z",
+  "operator": "lhhung",
+  "status": "complete",
+  "star_suite": {
+    "repo": "not used; Chromap/libMACS3 ATAC workflow",
+    "commit": "not-applicable",
+    "binary": "/home/lhhung/Chromap-suite/chromap",
+    "binary_sha256": "68d8d47ff3d690966297a4723b6ff0f684f6f5a97ba2c4ac8eb87d3c76b02481",
+    "chromap_suite_commit": "0d41b6350a66f3add2dc9e6f195f64586119909e",
+    "dirty_status": "not captured in source provenance"
+  },
+  "recipes": {
+    "repo": "https://github.com/morphic-bio/atac-seq",
+    "commit": "839ae2c31189547a460de963143e4604804b8f53",
+    "workflow_id": "nw_atac_seq_libmacs3",
+    "reproduction_entrypoint": "",
+    "notes": "Scripts copied into the Globus package include local production files; use commands/SHA256SUMS for exact identities."
+  },
+  "environment": {
+    "container_image": "morphic-atac-libmacs3:2026-05-05-debian-slim",
+    "cuda_required": false,
+    "cellbender_cuda": false,
+    "image_id": "sha256:463072f98cb0e638186d6f402f8de27252f7b354d0db53f53d3e80194ee5042e"
+  },
+  "inputs": [
+    {
+      "name": "package_sources",
+      "path": "outputs/MANIFEST.sources.tsv"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "local_staging_root",
+      "path": "/mnt/pikachu/globus_uploads/NW-ATAC-SEQ-results-libmacs3-05-05-26",
+      "retention": "local Globus staging package"
+    },
+    {
+      "name": "globus_destination_root",
+      "path": "/NW-ATAC-SEQ-results-libmacs3-05-05-26/",
+      "retention": "Globus destination"
+    },
+    {
+      "name": "file_manifest",
+      "path": "outputs/MANIFEST.files.tsv",
+      "sha256": "6be76b103dab1e68e8e175768b5bbe36b412d60aae0c285a49e210a80fe4d5f8",
+      "bytes": 397897
+    },
+    {
+      "name": "summary_manifest",
+      "path": "outputs/MANIFEST.summary.tsv",
+      "sha256": "70ce0b031d551345ab5018641206194991d6edf1d15d12537b820c11c026e475",
+      "bytes": 272
+    }
+  ],
+  "dataset_releases": [
+    {
+      "release_key": "nw_atac_seq_libmacs3/2026-05-19",
+      "release_date": "2026-05-19",
+      "path": "dataset_releases/nw_atac_seq_libmacs3/2026-05-19",
+      "globus_path": "/NW-ATAC-SEQ-results-libmacs3-05-05-26/"
+    }
+  ],
+  "corrections": [
+    {
+      "created_utc": "2026-05-28T00:00:00Z",
+      "author": "lhhung/codex",
+      "reason": "Promote attached NW ATAC packet provenance into morphic-provenance and preserve packet provenance as temporary handoff context.",
+      "changed_fields": [
+        "handoff",
+        "README.md"
+      ]
+    },
+    {
+      "created_utc": "2026-05-28T00:00:00Z",
+      "author": "lhhung/codex",
+      "reason": "Add dated release notes keyed by the 2026-05-19 Globus push date.",
+      "changed_fields": [
+        "dataset_releases",
+        "README.md"
+      ]
+    }
+  ]
+}

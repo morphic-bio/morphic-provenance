@@ -1,0 +1,5 @@
+source_run	/mnt/pikachu/SLAM-Seq-PE-results/prod_full_20260511T103908Z
+stage_created_utc	20260512T184310Z
+contents	SLAM counts, QC, STAR/SLAM logs, run manifests, Globus submit logs, completion markers
+excluded	*.bam, *.bai, *.fastq.gz, *.fq.gz
+note	Staged with hardlinks where possible to avoid duplicating local disk usage.

@@ -1,0 +1,11 @@
+task_id	8dd10a29-5025-11f1-b61f-0ea3589134b3
+submitted_utc	2026-05-15T06:16:06Z
+completed_utc	2026-05-15T06:18:02Z
+status	SUCCEEDED
+source_stage	/mnt/pikachu/SLAM-Seq-PE-results/prod_full_20260511T103908Z_deseq2_globus_upload_20260515T061311Z
+source_endpoint	07446cad-33b8-11f0-8c0c-0afffb017b7d
+destination_endpoint	61fb8b9a-9b52-456e-928c-30c0fb0140bf
+destination_root	SLAM-seq-PE-results/prod_full_20260511T103908Z
+batch_file	/mnt/pikachu/SLAM-Seq-PE-results/prod_full_20260511T103908Z_deseq2_globus_batch_20260515T061311Z.tsv
+files_main_task	2202
+bytes_transferred_main_task	1762703149

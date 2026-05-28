@@ -1,0 +1,4 @@
+MSK KO revised adaptive MT handoff
+generated_utc=2026-05-19T04:24:46Z
+Contains all nine samples including DE_GemX from its separate trial directory.
+Each sample includes final_counts.h5ad, filtered_counts.h5ad, default_singlet_filtered_counts.h5ad, adaptive_qc_threshold.json, regenerated gene QC plots, and MT review plots for flagged samples.

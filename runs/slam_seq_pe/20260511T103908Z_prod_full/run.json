@@ -1,0 +1,100 @@
+{
+  "schema_version": "0.1",
+  "run_id": "20260511T103908Z_prod_full",
+  "project": "slam_seq_pe",
+  "created_utc": "2026-05-11T10:39:08Z",
+  "operator": "lhhung",
+  "status": "complete",
+  "star_suite": {
+    "repo": "git@github.com:morphic-bio/STAR-suite.git",
+    "commit": "9758a2697b8e9e753584d1d095f8f44695db0c14",
+    "github_tree": "https://github.com/morphic-bio/STAR-suite/commit/9758a2697b8e9e753584d1d095f8f44695db0c14",
+    "dirty": false,
+    "binary": "/mnt/pikachu/STAR-suite-slam-pe-prod/core/legacy/source/STAR",
+    "binary_sha256": "76e1fdd481785123d6dca961483283ca93fee41a9fde5faab5ca1b277568edf8"
+  },
+  "recipes": {
+    "repo": "git@github.com:morphic-bio/morphic-recipes.git",
+    "commit": "c41c2fd11f9bedd0f8b2b6e81a726a9da12b5d0f",
+    "workflow_id": "slam_seq_pe_prod_full_not_yet_mirrored",
+    "reproduction_entrypoint": "",
+    "notes": "No run_all wrapper is currently mirrored; exact commands and script hashes are preserved in this record."
+  },
+  "environment": {
+    "container_image": "star-suite/slam-deseq2:bioc3.23-deseq2-1.52.0-tximport-1.40.0",
+    "cuda_required": false,
+    "cellbender_cuda": false,
+    "deseq2_image_id": "sha256:f459b07c514becf527e3e151c486c161f4ecee5b628474f6d0a224bc6537664e"
+  },
+  "inputs": [
+    {
+      "name": "fastq_dir",
+      "path": "/mnt/pikachu/SLAM-Seq",
+      "retention": "local raw inputs retained"
+    },
+    {
+      "name": "run_config",
+      "path": "inputs/run_config.env",
+      "sha256": "65c027fafecf2f02687d087575bdcdb4603566b8f3706bfe740faa0a3edbf64c",
+      "bytes": 706
+    },
+    {
+      "name": "samples",
+      "path": "inputs/samples.tsv",
+      "sha256": "a8ec12ba4c752a31a85636e70de0ebe504df3db1ffae5f5d8094d8f184fe85ff",
+      "bytes": 139569
+    }
+  ],
+  "outputs": [
+    {
+      "name": "local_production_root",
+      "path": "/mnt/pikachu/SLAM-Seq-PE-results/prod_full_20260511T103908Z",
+      "retention": "local result tree"
+    },
+    {
+      "name": "globus_destination_root",
+      "path": "/SLAM-seq-PE-results/prod_full_20260511T103908Z/",
+      "retention": "Globus destination"
+    },
+    {
+      "name": "file_inventory",
+      "path": "outputs/MANIFEST.files.tsv",
+      "sha256": "031cbb57bdc1a756770fdc20e33210e75b760b8a205ddd825ed7fd1a38a89973",
+      "bytes": 1124141
+    }
+  ],
+  "dataset_releases": [
+    {
+      "release_key": "slam_seq_pe/2026-05-12",
+      "release_date": "2026-05-12",
+      "path": "dataset_releases/slam_seq_pe/2026-05-12",
+      "globus_path": "/SLAM-seq-PE-results/prod_full_20260511T103908Z/"
+    },
+    {
+      "release_key": "slam_seq_pe/2026-05-15",
+      "release_date": "2026-05-15",
+      "path": "dataset_releases/slam_seq_pe/2026-05-15",
+      "globus_path": "/SLAM-seq-PE-results/prod_full_20260511T103908Z/"
+    }
+  ],
+  "corrections": [
+    {
+      "created_utc": "2026-05-28T00:00:00Z",
+      "author": "lhhung/codex",
+      "reason": "Promote the attached SLAM-seq provenance document into morphic-provenance and preserve it as temporary packet provenance.",
+      "changed_fields": [
+        "handoff",
+        "README.md"
+      ]
+    },
+    {
+      "created_utc": "2026-05-28T00:00:00Z",
+      "author": "lhhung/codex",
+      "reason": "Add dated release notes for the 2026-05-12 remaining-results push and 2026-05-15 DESeq2 push.",
+      "changed_fields": [
+        "dataset_releases",
+        "README.md"
+      ]
+    }
+  ]
+}

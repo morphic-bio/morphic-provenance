@@ -1,0 +1,10 @@
+metric	value
+prepared_utc	2026-05-08T19:37:18Z
+staging_root	/mnt/pikachu/globus_uploads/NW-ATAC-SEQ-results-libmacs3-05-05-26
+final_files	2401
+final_sample_directories	201
+final_du	212G
+metadata_files	1082
+script_files	73
+fastq_files_in_staging	0
+bam_bai_files_in_final	0

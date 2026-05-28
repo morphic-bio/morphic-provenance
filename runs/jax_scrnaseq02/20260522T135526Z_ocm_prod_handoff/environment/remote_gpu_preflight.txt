@@ -1,0 +1,3 @@
+biocloudgpu1
+0, NVIDIA RTX 6000 Ada Generation, 48415 MiB, 49140 MiB
+1, NVIDIA RTX 6000 Ada Generation, 48495 MiB, 49140 MiB

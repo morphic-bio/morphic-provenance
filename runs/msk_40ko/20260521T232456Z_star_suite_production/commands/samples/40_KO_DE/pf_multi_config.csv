@@ -1,0 +1,5 @@
+[libraries]
+fastqs,sample,library_type,feature_types,star_chemistry,star_whitelist,star_feature_ref,star_library_id,star_max_hamming
+/mnt/pikachu/MSK_40KO_processed/msk40ko_prod_20260521T232456Z_setsid/samples/40_KO_DE/staged_fastqs/mRNA,40_KO_DE,Gene Expression,Gene Expression,TRU,,,gex_40_ko_de,
+/mnt/pikachu/MSK_40KO_processed/msk40ko_prod_20260521T232456Z_setsid/samples/40_KO_DE/staged_fastqs/PolyIII,40_KO_DE,CRISPR Guide Capture,CRISPR Guide Capture,NXT,/home/lhhung/cellranger-9.0.1/lib/python/cellranger/barcodes/translation/3M-february-2018_NXT.txt,/mnt/pikachu/MSK-whitelists/ref_feature_geneBC_crispr.csv,grna_40_ko_de,1
+/mnt/pikachu/MSK_40KO_processed/msk40ko_prod_20260521T232456Z_setsid/samples/40_KO_DE/staged_fastqs/LARRY,40_KO_DE,Custom,Custom,TRU,/storage/scRNAseq_output/whitelists/3M-february-2018_TRU.txt,/mnt/pikachu/MSK-whitelists/ref_feature_larryBC.csv,larry_40_ko_de,1

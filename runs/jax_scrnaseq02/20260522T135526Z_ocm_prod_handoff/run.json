@@ -1,0 +1,101 @@
+{
+  "schema_version": "0.1",
+  "run_id": "20260522T135526Z_ocm_prod_handoff",
+  "project": "jax_scrnaseq02",
+  "created_utc": "2026-05-22T13:55:26Z",
+  "operator": "lhhung",
+  "status": "complete",
+  "star_suite": {
+    "repo": "git@github.com:morphic-bio/STAR-suite.git",
+    "commit": "d55a1a7d27c85df0f780a0e50039392e83a31260",
+    "github_tree": "https://github.com/morphic-bio/STAR-suite/tree/d55a1a7d27c85df0f780a0e50039392e83a31260",
+    "binary": "/mnt/pikachu/STAR-suite/core/legacy/source/STAR",
+    "dirty_status": "not captured in source provenance"
+  },
+  "recipes": {
+    "repo": "git@github.com:morphic-bio/morphic-recipes.git",
+    "commit": "c41c2fd11f9bedd0f8b2b6e81a726a9da12b5d0f",
+    "workflow_id": "jax_scrnaseq02_ocm_production",
+    "workflow_runbook": "docs/RUNBOOK_JAX_SCRNASEQ02_OCM_20260518.md",
+    "reproduction_entrypoint": "",
+    "notes": "No single run_all wrapper exists yet; rendered production commands are committed in this record."
+  },
+  "environment": {
+    "container_image": "biodepot/scrna-matrices:latest and biodepot/cellbender:0.3.2 where CellBender ran",
+    "cuda_required": true,
+    "cellbender_cuda": true,
+    "remote_host": "10.159.4.53"
+  },
+  "inputs": [
+    {
+      "name": "raw_fastq_root",
+      "path": "/mnt/pikachu/JAX_scRNAseq02/raw",
+      "retention": "local raw inputs retained"
+    },
+    {
+      "name": "ocm_configs",
+      "path": "inputs/configs/*.config.csv"
+    },
+    {
+      "name": "downsample_manifests",
+      "path": "inputs/*.downsample_manifest.tsv"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "source_run_root",
+      "path": "/mnt/pikachu/JAX_scRNAseq02_processed/ocm_prod_batch_flex_native_yremove_trace_20260521T034223Z",
+      "retention": "local production root"
+    },
+    {
+      "name": "handoff_packet_root",
+      "path": "/mnt/pikachu/JAX_scRNAseq02_handoff/JAX-scRNAseq02-5-22-26",
+      "retention": "local Globus packet root"
+    },
+    {
+      "name": "globus_destination_root",
+      "path": "/JAX_scRNAseq02_processed/JAX-scRNAseq02-5-22-26",
+      "retention": "Globus destination"
+    },
+    {
+      "name": "payload_manifest",
+      "path": "outputs/MANIFEST.tsv",
+      "sha256": "0132c1a809d8028165a5ebe77c960cd644f86027c96032ebe428acfdb148d657",
+      "bytes": 80381
+    },
+    {
+      "name": "packet_provenance_table",
+      "path": "outputs/PROVENANCE.tsv",
+      "sha256": "25c68598bb4a1f0a4d152b6232ceb586e48c0d5681e1d7c934ca5eb099c54a4d",
+      "bytes": 80946
+    }
+  ],
+  "dataset_releases": [
+    {
+      "release_key": "jax_scrnaseq02/2026-05-22",
+      "release_date": "2026-05-22",
+      "path": "dataset_releases/jax_scrnaseq02/2026-05-22",
+      "globus_path": "/JAX_scRNAseq02_processed/JAX-scRNAseq02-5-22-26"
+    }
+  ],
+  "corrections": [
+    {
+      "created_utc": "2026-05-28T00:00:00Z",
+      "author": "lhhung/codex",
+      "reason": "Promote the packet provenance into morphic-provenance and preserve the packet PROVENANCE.md as temporary handoff context.",
+      "changed_fields": [
+        "handoff",
+        "README.md"
+      ]
+    },
+    {
+      "created_utc": "2026-05-28T00:00:00Z",
+      "author": "lhhung/codex",
+      "reason": "Add dated release notes keyed by the 2026-05-22 Globus push date.",
+      "changed_fields": [
+        "dataset_releases",
+        "README.md"
+      ]
+    }
+  ]
+}

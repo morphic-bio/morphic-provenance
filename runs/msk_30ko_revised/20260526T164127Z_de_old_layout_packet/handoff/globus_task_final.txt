@@ -1,0 +1,24 @@
+Label:                        MSK 30KO DE old-layout packet 20260526
+Task ID:                      a69c399b-591d-11f1-affc-0e9d40238285
+Is Paused:                    False
+Type:                         TRANSFER
+Directories:                  0
+Files:                        7
+Status:                       SUCCEEDED
+Request Time:                 2026-05-26T16:12:12+00:00
+Faults:                       7
+Total Subtasks:               14
+Subtasks Succeeded:           14
+Subtasks Pending:             0
+Subtasks Retrying:            0
+Subtasks Failed:              0
+Subtasks Canceled:            0
+Subtasks Expired:             0
+Subtasks with Skipped Errors: 0
+Completion Time:              2026-05-26T16:39:15+00:00
+Source Endpoint:              pikachu
+Source Endpoint ID:           07446cad-33b8-11f0-8c0c-0afffb017b7d
+Destination Endpoint:         Morphic Processing
+Destination Endpoint ID:      61fb8b9a-9b52-456e-928c-30c0fb0140bf
+Bytes Transferred:            8426401434
+Bytes Per Second:             5189145

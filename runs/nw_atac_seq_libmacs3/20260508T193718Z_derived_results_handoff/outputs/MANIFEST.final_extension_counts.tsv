@@ -1,0 +1,10 @@
+bed	200
+extension	count
+fragments.bed	200
+json	200
+log	600
+peaks.narrowPeak	200
+summary.txt	200
+summary.txt.macs3_frag_peaks.tsv	200
+txt	401
+unstranded.bw	200

@@ -1,0 +1,106 @@
+{
+  "schema_version": "0.1",
+  "run_id": "20260519T000000Z_revised_delivery",
+  "project": "msk_30ko_revised",
+  "created_utc": "2026-05-19T00:00:00Z",
+  "operator": "lhhung",
+  "status": "complete",
+  "star_suite": {
+    "repo": "git@github.com:morphic-bio/STAR-suite.git",
+    "commit": "c082c6582cca229032c7bb34a157e97511561da8",
+    "github_tree": "https://github.com/morphic-bio/STAR-suite/tree/c082c6582cca229032c7bb34a157e97511561da8",
+    "dirty": true,
+    "binary": "/mnt/pikachu/STAR-suite/core/legacy/source/STAR",
+    "runtime_checkout_at_provenance_generation": "c535e327f626a61a601b5472b1589511ad6a8d9e"
+  },
+  "recipes": {
+    "repo": "/mnt/pikachu/msk-30ko-production-planning",
+    "commit": "a7587d1b4fc7a27bd9d563d34744c1ff386cd462",
+    "workflow_id": "msk_30ko_revised_delivery",
+    "reproduction_entrypoint": "",
+    "notes": "Planning checkout had local uncommitted changes; exact script hashes are preserved in handoff/temporary_packet_provenance.md."
+  },
+  "environment": {
+    "container_image": "biodepot/scrna-matrices:latest; biodepot/cellbender:0.3.2; biodepot/gather_features:latest",
+    "cuda_required": true,
+    "cellbender_cuda": true,
+    "remote_host": "10.159.4.53"
+  },
+  "inputs": [
+    {
+      "name": "fastq_manifest",
+      "path": "/mnt/pikachu/msk-30ko-production-planning/docs/MSK_30KO_FASTQ_MANIFEST.tsv"
+    },
+    {
+      "name": "provider_metadata",
+      "path": "/mnt/pikachu/df.meta.rds"
+    },
+    {
+      "name": "sample_archives",
+      "path": "/mnt/pikachu/msk30ko-production-sample-archive/MSK-05-13-26-large-files"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "compact_delivery_root",
+      "path": "/mnt/pikachu/MSK_30_KO_revised",
+      "retention": "local compact delivery tree"
+    },
+    {
+      "name": "samplewise_delivery_root",
+      "path": "/mnt/pikachu/msk30ko-h5ad-qc-delivery/MSK-05-13-26-large-files",
+      "retention": "local sample-wise staging tree"
+    },
+    {
+      "name": "globus_destination_root",
+      "path": "/MSK-KO-5-18-26-revised",
+      "retention": "Globus destination"
+    },
+    {
+      "name": "staged_manifest",
+      "path": "outputs/STAGED_MANIFEST.tsv",
+      "sha256": "c26c5121a7fc31930e990b79abcc5ade94d6d53f15c4cfe8351dfccaa061efbe",
+      "bytes": 140771
+    },
+    {
+      "name": "compact_delivery_manifest",
+      "path": "outputs/compact_delivery_manifest.tsv",
+      "sha256": "6da4d05f5cad15ef7c76fdfc54b7aceb631953cde52ea00af80593d710e4ff2b",
+      "bytes": 2234
+    }
+  ],
+  "dataset_releases": [
+    {
+      "release_key": "msk_30ko_revised/2026-05-19",
+      "release_date": "2026-05-19",
+      "path": "dataset_releases/msk_30ko_revised/2026-05-19",
+      "globus_path": "/MSK-KO-5-18-26-revised"
+    },
+    {
+      "release_key": "msk_30ko_revised/2026-05-26",
+      "release_date": "2026-05-26",
+      "path": "dataset_releases/msk_30ko_revised/2026-05-26",
+      "globus_path": "/MSK-KO-5-18-26-revised/30_KO_DE"
+    }
+  ],
+  "corrections": [
+    {
+      "created_utc": "2026-05-28T00:00:00Z",
+      "author": "lhhung/codex",
+      "reason": "Promote the attached MSK 30KO revised delivery provenance into morphic-provenance and preserve packet provenance as temporary handoff context.",
+      "changed_fields": [
+        "handoff",
+        "README.md"
+      ]
+    },
+    {
+      "created_utc": "2026-05-28T00:00:00Z",
+      "author": "lhhung/codex",
+      "reason": "Add dated release notes for 2026-05-19 and link the 2026-05-26 DE repair addendum.",
+      "changed_fields": [
+        "dataset_releases",
+        "README.md"
+      ]
+    }
+  ]
+}

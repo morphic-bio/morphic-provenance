@@ -1,0 +1,5 @@
+MSK KO revised old-layout delivery
+generated_utc=2026-05-19T19:05:21Z
+Layout modeled after /mnt/pikachu/MSK_30_KO/30_KO_ES.
+counts.h5ad files are from /mnt/pikachu/MSK_30_KO_revised after the revised MT policy conversion.
+features and QC/counts files preserve the prior MSK_30_KO layout; 30_KO_DE_XM is the DE_GemX sample.

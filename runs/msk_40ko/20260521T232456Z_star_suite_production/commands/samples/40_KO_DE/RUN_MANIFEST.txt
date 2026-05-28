@@ -1,0 +1,12 @@
+created_utc=2026-05-22T02:45:07Z
+sample=40_KO_DE
+repo=/mnt/pikachu/STAR-suite
+manifest=/mnt/pikachu/STAR-suite/docs/MSK_40KO_FASTQ_MANIFEST.tsv
+star_bin=/mnt/pikachu/STAR-suite/core/legacy/source/STAR
+genome_dir=/storage/autoindex_110_44/bulk_index
+threads=32
+cr_min_umi=2
+out_samtype=BAM Unsorted
+run_downstream=1
+downstream_async=1
+globus_enabled=1

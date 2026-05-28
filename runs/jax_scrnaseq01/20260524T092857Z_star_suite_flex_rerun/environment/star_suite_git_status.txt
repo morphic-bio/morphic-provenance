@@ -1,0 +1,15 @@
+?? -.slam_qc.html
+?? -.slam_qc.json
+?? .claude/
+?? .codex
+?? 1
+?? core/features/libchromap_contract/objs/
+?? core/legacy/source/.depend.with_chromap_0
+?? docs/RUNBOOK_JAX_SCRNASEQ01_FLEX_RERUN_20260524.md
+?? docs/RUNBOOK_NIH_PROGRAM_OFFICER_PROGRESS_SLIDES_20260519.md
+?? docs/artifacts/
+?? scripts/run_jax_scrnaseq01_flex_2024.sh
+?? tests/fixtures/ocm_multi_tiny/outs/
+?? tests/fixtures/ocm_multi_velocyto_shuffle/outs/
+?? tests/jax_multiome_lane_smoke_20260517T052512Z/
+?? tests/jax_multiome_lane_smoke_native_20260517T073556Z/

@@ -1,0 +1,15 @@
+[gene-expression]
+reference,/sc/service/pipelines/references/10x-rna/refdata-gex-GRCh38-2024-A
+create-bam,true
+include-introns,true
+
+[libraries]
+fastq_id,fastqs,feature_types
+25E34-L3_GT25-03396_GCACTGAGAA-TTCACGCATA,/mnt/pikachu/JAX_scRNAseq02/raw,Gene Expression
+
+[samples]
+sample_id,ocm_barcode_ids,description
+GCM1-Day-5,OB1,iPSCs
+GRHL1-Day-5,OB2,iPSCs
+OVOL1-Day-5,OB3,iPSCs
+WT-PrS-20pct-Day-5,OB4,iPSCs

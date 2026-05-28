@@ -1,0 +1,6 @@
+name	path	sha256	bytes	notes
+fastq_manifest	/mnt/pikachu/STAR-suite/docs/MSK_40KO_FASTQ_MANIFEST.tsv	003b42923e03b16d226bbec86b30856e23ea8ef62d07eefbbc92dab6d47b7e24	2834	copied to inputs/MSK_40KO_FASTQ_MANIFEST.tsv
+production_runbook	/mnt/pikachu/STAR-suite/docs/RUNBOOK_MSK_40KO_PRODUCTION.md	038387fb6b2e4f066027d9f78a0546e69092c402ef6436b9e6bdc4277f4912ca	5301	copied to inputs/RUNBOOK_MSK_40KO_PRODUCTION.md
+raw_fastq_root	/mnt/pikachu/scRNAseq_40KO			source FASTQ root from runbook/manifest
+genome_dir	/storage/autoindex_110_44/bulk_index			STAR genome index used by RUN_MANIFEST.txt
+whitelist	/storage/scRNAseq_output/whitelists/3M-february-2018_TRU.txt			STAR Solo whitelist recorded in Log.out

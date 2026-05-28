@@ -1,0 +1,117 @@
+{
+  "schema_version": "0.1",
+  "run_id": "20260521T232456Z_star_suite_production",
+  "project": "msk_40ko",
+  "created_utc": "2026-05-21T23:24:56Z",
+  "operator": "lhhung",
+  "status": "complete",
+  "star_suite": {
+    "repo": "git@github.com:morphic-bio/STAR-suite.git",
+    "commit": "87a45d34e7c9ea08a34507adbde4cfcb360a6c11",
+    "github_tree": "https://github.com/morphic-bio/STAR-suite/tree/87a45d34e7c9ea08a34507adbde4cfcb360a6c11",
+    "runtime_branch": "master",
+    "dirty": false,
+    "dirty_note": "STAR Log.out reports an empty tracked diff file list. Launcher files were not present at this binary commit and are tracked separately under recipes/commands.",
+    "binary": "/mnt/pikachu/STAR-suite/core/legacy/source/STAR",
+    "star_version": "2.7.11b",
+    "compile_time_utc": "2026-05-21T03:39:11+00:00",
+    "first_committed_launcher_commit": "d55a1a7d27c85df0f780a0e50039392e83a31260",
+    "first_committed_launcher_sha256": "2bca8091c581048581402e86f53a916f29d9fa5c8aa2e09a97d15c6a996557b5"
+  },
+  "recipes": {
+    "repo": "git@github.com:morphic-bio/morphic-recipes.git",
+    "commit": "682f55493e9342aaed425dd89fb87b0148e8c258",
+    "workflow_id": "msk_40ko_production",
+    "workflow_schema_version": "",
+    "current_canonical_head_at_record_creation": "c41c2fd11f9bedd0f8b2b6e81a726a9da12b5d0f",
+    "reproduction_entrypoint": "scripts/run_msk_40ko_pipeline_from_manifest.py",
+    "run_all_entrypoint": "",
+    "notes": "No single run_all.sh wrapper has been mirrored yet. The production launcher content first appears in STAR-suite d55a1a7 and morphic-recipes 682f554; exact launch commands are preserved under commands/."
+  },
+  "environment": {
+    "container_image": "biodepot/scrna-matrices:latest; biodepot/cellbender:0.3.2; biodepot/gather_features:latest",
+    "cuda_required": true,
+    "cellbender_cuda": true,
+    "remote_host": "10.159.4.53",
+    "remote_root": "/tmp/msk40ko_cellbender",
+    "cellbender_cpu_cores": 8,
+    "rf_celltyping_model": "/mnt/pikachu/msk-30ko-production-planning/results/provider_rf_celltyping_20260515_065032/models"
+  },
+  "inputs": [
+    {
+      "name": "fastq_manifest",
+      "path": "inputs/MSK_40KO_FASTQ_MANIFEST.tsv",
+      "sha256": "003b42923e03b16d226bbec86b30856e23ea8ef62d07eefbbc92dab6d47b7e24",
+      "bytes": 2834
+    },
+    {
+      "name": "production_runbook",
+      "path": "inputs/RUNBOOK_MSK_40KO_PRODUCTION.md",
+      "sha256": "038387fb6b2e4f066027d9f78a0546e69092c402ef6436b9e6bdc4277f4912ca",
+      "bytes": 5301
+    },
+    {
+      "name": "raw_fastq_root",
+      "path": "/mnt/pikachu/scRNAseq_40KO",
+      "retention": "local raw inputs retained"
+    },
+    {
+      "name": "genome_dir",
+      "path": "/storage/autoindex_110_44/bulk_index"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "local_production_root",
+      "path": "/mnt/pikachu/MSK_40KO_processed/msk40ko_prod_20260521T232456Z_setsid",
+      "bytes": 359406952337,
+      "retention": "local result tree"
+    },
+    {
+      "name": "output_manifest",
+      "path": "outputs/manifest.tsv",
+      "sha256": "75a187ac8b0e37ad97cb1a143e4ff2efa7083e15267cc4883df8bd548cdaa7b7",
+      "bytes": 14423
+    },
+    {
+      "name": "globus_large_bam_destination",
+      "path": "/MSK-40KO-large-files",
+      "bytes": 79648146868,
+      "retention": "Globus destination"
+    },
+    {
+      "name": "bam_upload_manifest",
+      "path": "handoff/bam_upload_manifest.tsv",
+      "sha256": "168663ecd6c4a0eba926a515690f9838d65fbb832078731b4a5d6da3523a380a",
+      "bytes": 777
+    },
+    {
+      "name": "provider_rf_celltyping_provenance",
+      "path": "analysis/provider_rf_celltyping_provenance.json",
+      "sha256": "537f421586fd6f6e9197fb5c2505714a562e1e411c576d5191afe1b658fe1709",
+      "bytes": 2886
+    }
+  ],
+  "dataset_releases": [
+    {
+      "release_key": "msk_40ko/2026-05-22",
+      "release_date": "2026-05-22",
+      "path": "dataset_releases/msk_40ko/2026-05-22",
+      "globus_path": "/MSK-40KO-large-files",
+      "notes": "Large BAM upload only; no standalone packet provenance.md found."
+    }
+  ],
+  "corrections": [
+    {
+      "created_utc": "2026-05-28T00:00:00Z",
+      "author": "lhhung/codex",
+      "reason": "Add missing MSK 40KO production and Globus upload provenance after identifying the 2026-05-22 transfer tasks.",
+      "changed_fields": [
+        "README.md",
+        "run.json",
+        "handoff",
+        "dataset_releases"
+      ]
+    }
+  ]
+}
