@@ -90,6 +90,23 @@
       "path": "analysis/provider_rf_celltyping_provenance.json",
       "sha256": "537f421586fd6f6e9197fb5c2505714a562e1e411c576d5191afe1b658fe1709",
       "bytes": 2886
+    },
+    {
+      "name": "compact_h5ad_qc_packet_root",
+      "path": "/mnt/pikachu/MSK_40_KO_revised",
+      "retention": "local compact collaborator packet root; uploaded to Globus /MSK-40KO-revised"
+    },
+    {
+      "name": "globus_compact_h5ad_qc_destination",
+      "path": "/MSK-40KO-revised",
+      "bytes": 19719172769,
+      "retention": "Globus destination"
+    },
+    {
+      "name": "compact_h5ad_qc_upload_manifest",
+      "path": "handoff/compact_h5ad_qc_upload_manifest.tsv",
+      "sha256": "553d55adf1a4a54cf0611bcca96425fe059024f217eb50949b88602e221c651c",
+      "bytes": 8458
     }
   ],
   "dataset_releases": [
@@ -99,6 +116,14 @@
       "path": "dataset_releases/msk_40ko/2026-05-22",
       "globus_path": "/MSK-40KO-large-files",
       "notes": "Large BAM upload only; no standalone packet provenance.md found."
+    },
+    {
+      "release_key": "msk_40ko/2026-05-28",
+      "release_date": "2026-05-28",
+      "path": "dataset_releases/msk_40ko/2026-05-28",
+      "globus_path": "/MSK-40KO-revised",
+      "globus_task_id": "46b34ad4-5ac3-11f1-8e36-0affd989f133",
+      "notes": "Compact h5ad/QC packet included provenance.md and provenance/run.json."
     }
   ],
   "corrections": [
@@ -106,6 +131,17 @@
       "created_utc": "2026-05-28T00:00:00Z",
       "author": "lhhung/codex",
       "reason": "Add missing MSK 40KO production and Globus upload provenance after identifying the 2026-05-22 transfer tasks.",
+      "changed_fields": [
+        "README.md",
+        "run.json",
+        "handoff",
+        "dataset_releases"
+      ]
+    },
+    {
+      "created_utc": "2026-05-28T19:30:00Z",
+      "author": "lhhung/codex",
+      "reason": "Record the 2026-05-28 compact MSK 40KO h5ad/QC Globus packet and note that the packet included provenance.md and provenance/run.json.",
       "changed_fields": [
         "README.md",
         "run.json",

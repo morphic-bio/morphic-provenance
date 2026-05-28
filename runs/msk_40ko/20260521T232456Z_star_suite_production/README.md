@@ -11,10 +11,12 @@ Created UTC: 2026-05-21T23:24:56Z
 ## Purpose
 
 Canonical provenance record for the MSK 40KO STAR-suite two-sample production
-run and the 2026-05-22 Globus large-BAM upload.
+run, the 2026-05-22 Globus large-BAM upload, and the 2026-05-28 compact
+h5ad/QC packet.
 
-No standalone packet `provenance.md` was found for this upload, so this
-repository entry is the source of truth.
+The 2026-05-28 compact packet included `provenance.md` and
+`provenance/run.json`. This repository entry remains the source of truth for
+additions and corrections.
 
 ## Code
 
@@ -76,12 +78,23 @@ The Globus large-BAM destination was:
 Both sample BAM transfers succeeded on 2026-05-22. See
 `handoff/bam_upload_manifest.tsv` and `handoff/samples/`.
 
+The compact h5ad/QC packet was uploaded to:
+
+```text
+/MSK-40KO-revised
+```
+
+That packet included `provenance.md`, `provenance/run.json`, checksums, and
+`STAGED_MANIFEST.tsv`. See `handoff/compact_h5ad_qc_upload_manifest.tsv` and
+`handoff/compact_h5ad_qc_globus_transfer_task_final.json`.
+
 ## Dataset Release Notes
 
 The collaborator-facing Globus release notes keyed by push date are:
 
 ```text
 dataset_releases/msk_40ko/2026-05-22/
+dataset_releases/msk_40ko/2026-05-28/
 ```
 
 ## Reproduction Entrypoint
