@@ -65,10 +65,17 @@ See `upload_manifest.tsv` for per-file and per-task details.
 Human-facing recipe READMEs are in `morphic-recipes`:
 
 ```text
+docs/production_recipes/jax_multiome01/
 docs/production_recipes/jax_multiome01_star_multiome/
 docs/production_recipes/jax_multiome01_remote_post_mex/
 docs/production_recipes/jax_multiome01_mt_adaptive_retrofit/
 docs/production_recipes/jax_multiome01_globus_large_files/
+```
+
+The single-entry reproduction script is:
+
+```text
+docs/production_recipes/jax_multiome01/run_all.sh
 ```
 
 The executed script hashes and source commits are in:
