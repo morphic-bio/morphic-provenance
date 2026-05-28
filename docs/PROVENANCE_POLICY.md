@@ -14,6 +14,32 @@ Every completed run should include:
 - `outputs/checksums.tsv`: checksums for handoff payloads.
 - `handoff/transfer-status.json`: transfer task ids and final status when used.
 
+## Dataset Release Notes
+
+Every collaborator-facing dataset push should also have a dated release note
+under:
+
+```text
+dataset_releases/<project>/<YYYY-MM-DD>/
+```
+
+Use the date the analysis packet was pushed to Globus as the release key. If
+supporting large-file transfers continue after that date, keep them in the
+same release note and record their final completion dates explicitly.
+
+Each release note should include:
+
+- `README.md`: human-facing summary of the delivery, destination paths,
+  linked run records, status, and known caveats.
+- `upload_manifest.tsv`: files or upload bundles sent to Globus, with task
+  IDs, destination paths, byte counts, checksums when available, and status.
+- `updates.md`: append-only additions, corrections, or later clarifications for
+  that release.
+
+Run records remain the canonical source for exact commands and environment.
+Dataset release notes are the canonical source for what was delivered to
+collaborators on a given Globus release date.
+
 ## Environment
 
 Record resolved image digests, not just tags. For GPU workflows also record

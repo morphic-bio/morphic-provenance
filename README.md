@@ -10,6 +10,8 @@ handoff transfer status. It should not contain large data payloads.
 
 ```text
 runs/<project>/<run_id>/  One immutable production or handoff run record
+dataset_releases/<project>/<release_date>/
+                           Human-facing Globus/dataset release notes
 schemas/                  Machine-readable provenance schemas
 templates/run/            Starter files for a new run record
 docs/                     Provenance policy and conventions
@@ -20,9 +22,11 @@ docs/                     Provenance policy and conventions
 When reproducing a STAR-suite processing pipeline:
 
 1. Start from `runs/<project>/<run_id>/README.md` and `run.json`.
-2. Follow the recorded recipes repo commit and workflow id.
-3. Follow the recorded STAR-suite commit and binary checksum.
-4. Use the handoff packet only as a collaborator-facing convenience view.
+2. Check `dataset_releases/<project>/<release_date>/` for what was actually
+   uploaded to collaborators and any later release-specific notes.
+3. Follow the recorded recipes repo commit and workflow id.
+4. Follow the recorded STAR-suite commit and binary checksum.
+5. Use the handoff packet only as a collaborator-facing convenience view.
 
 ## Large Data Policy
 

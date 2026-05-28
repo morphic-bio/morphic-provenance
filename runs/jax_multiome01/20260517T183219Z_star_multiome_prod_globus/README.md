@@ -84,3 +84,14 @@ Globus transfer state is preserved in
 
 Handoff notes, task ids, and the temporary packet provenance status are in
 `handoff/README.md` and `handoff/transfer-status.json`.
+
+## Dataset Release Notes
+
+The collaborator-facing Globus release notes keyed by analysis push date are:
+
+```text
+dataset_releases/jax_multiome01/2026-05-18/
+```
+
+Those notes track what was uploaded, release-specific updates, and the status
+of the temporary packet provenance file.

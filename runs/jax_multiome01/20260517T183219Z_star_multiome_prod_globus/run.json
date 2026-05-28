@@ -67,12 +67,28 @@
       "retention": "Globus destination; generated local BAM/YFASTQ artifacts deleted after successful upload"
     }
   ],
+  "dataset_releases": [
+    {
+      "release_key": "jax_multiome01/2026-05-18",
+      "release_date": "2026-05-18",
+      "path": "dataset_releases/jax_multiome01/2026-05-18",
+      "globus_compact_h5mu_path": "/JAX_Multiome01_processed/JAX-Multiome01-5-18-26-revised/h5mu",
+      "globus_large_files_path": "/JAX_Multiome01_processed/large_files/star_multiome_prod_globus_20260517T183219Z",
+      "notes": "Release key follows the compact analysis h5mu Globus push date. Per-sample large-file tasks completed through 2026-05-19."
+    }
+  ],
   "corrections": [
     {
       "created_utc": "2026-05-28T00:00:00Z",
       "author": "lhhung/codex",
       "reason": "Promote provenance into morphic-provenance as the canonical source of truth and supersede the temporary provenance file included in the Globus packet. Add explicit morphic-recipes repository and commit linkage.",
       "changed_fields": ["recipes", "handoff", "README.md"]
+    },
+    {
+      "created_utc": "2026-05-28T00:00:00Z",
+      "author": "lhhung/codex",
+      "reason": "Add dated dataset release notes keyed by the Globus analysis push date and link them from this run record.",
+      "changed_fields": ["dataset_releases", "README.md"]
     }
   ]
 }
