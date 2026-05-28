@@ -78,6 +78,12 @@ The single-entry reproduction script is:
 docs/production_recipes/jax_multiome01/run_all.sh
 ```
 
+That reproduction entrypoint was added in `morphic-recipes` commit:
+
+```text
+c41c2fd11f9bedd0f8b2b6e81a726a9da12b5d0f
+```
+
 The executed script hashes and source commits are in:
 
 ```text

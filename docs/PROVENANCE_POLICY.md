@@ -40,6 +40,10 @@ Run records remain the canonical source for exact commands and environment.
 Dataset release notes are the canonical source for what was delivered to
 collaborators on a given Globus release date.
 
+Executable reproduction scripts, including `run_all.sh` style root-directory
+orchestrators, may live in `morphic-recipes`. The provenance run record and
+dataset release note must point to the exact script path and recipes commit.
+
 ## Environment
 
 Record resolved image digests, not just tags. For GPU workflows also record

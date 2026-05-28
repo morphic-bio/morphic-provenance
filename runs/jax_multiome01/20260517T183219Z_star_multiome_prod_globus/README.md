@@ -95,3 +95,14 @@ dataset_releases/jax_multiome01/2026-05-18/
 
 Those notes track what was uploaded, release-specific updates, and the status
 of the temporary packet provenance file.
+
+## Reproduction Entrypoint
+
+The one-command reproduction script lives in `morphic-recipes`:
+
+```text
+docs/production_recipes/jax_multiome01/run_all.sh
+```
+
+Use the recipes commit recorded in `run.json` and
+`commands/script_hashes.tsv` when reproducing the original May 2026 delivery.

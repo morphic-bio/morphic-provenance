@@ -22,6 +22,8 @@
     "workflow_id": "jax_multiome01_production",
     "workflow_schema_version": "",
     "current_canonical_head_at_record_creation": "2552631cc822697cca69134952ca8d58f8cbd5c4",
+    "reproduction_entrypoint": "docs/production_recipes/jax_multiome01/run_all.sh",
+    "reproduction_entrypoint_commit": "c41c2fd11f9bedd0f8b2b6e81a726a9da12b5d0f",
     "notes": "Executed script hashes match morphic-recipes initial mirror commit 682f5549. STAR-suite compatibility copies at commit 2ebea741 also contain the same script content for the primary production scripts."
   },
   "environment": {
@@ -89,6 +91,12 @@
       "author": "lhhung/codex",
       "reason": "Add dated dataset release notes keyed by the Globus analysis push date and link them from this run record.",
       "changed_fields": ["dataset_releases", "README.md"]
+    },
+    {
+      "created_utc": "2026-05-28T00:00:00Z",
+      "author": "lhhung/codex",
+      "reason": "Add explicit run-level pointer to the morphic-recipes run_all.sh reproduction entrypoint.",
+      "changed_fields": ["recipes.reproduction_entrypoint", "README.md"]
     }
   ]
 }

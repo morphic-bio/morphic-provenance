@@ -6,6 +6,10 @@ This repo records what actually ran: exact commits, rendered commands,
 parameters, input/output inventories, checksums, environment pins, logs, and
 handoff transfer status. It should not contain large data payloads.
 
+Executable reproduction scripts may live in `morphic-recipes`. Provenance
+records and dataset release notes should point to the exact recipe entrypoint,
+commit, and workflow id used for reproduction.
+
 ## Layout
 
 ```text
@@ -22,11 +26,13 @@ docs/                     Provenance policy and conventions
 When reproducing a STAR-suite processing pipeline:
 
 1. Start from `runs/<project>/<run_id>/README.md` and `run.json`.
-2. Check `dataset_releases/<project>/<release_date>/` for what was actually
+2. Check the recorded reproduction entrypoint, usually in `morphic-recipes`,
+   when rerunning from a fresh root directory.
+3. Check `dataset_releases/<project>/<release_date>/` for what was actually
    uploaded to collaborators and any later release-specific notes.
-3. Follow the recorded recipes repo commit and workflow id.
-4. Follow the recorded STAR-suite commit and binary checksum.
-5. Use the handoff packet only as a collaborator-facing convenience view.
+4. Follow the recorded recipes repo commit and workflow id.
+5. Follow the recorded STAR-suite commit and binary checksum.
+6. Use the handoff packet only as a collaborator-facing convenience view.
 
 ## Large Data Policy
 
