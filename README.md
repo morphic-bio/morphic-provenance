@@ -21,6 +21,21 @@ templates/run/            Starter files for a new run record
 docs/                     Provenance policy and conventions
 ```
 
+## Query Service
+
+The standalone provenance index service ingests idempotent provenance events
+and provides artifact, lineage, location, transfer, and release queries without
+serving large payloads. See
+[`docs/PROVENANCE_SERVICE_RUNBOOK.md`](docs/PROVENANCE_SERVICE_RUNBOOK.md) for
+the contract, setup, and operational checks.
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -e '.[test]'
+.venv/bin/morphic-provenance init
+.venv/bin/pytest
+```
+
 ## Lookup Order
 
 When reproducing a STAR-suite processing pipeline:
