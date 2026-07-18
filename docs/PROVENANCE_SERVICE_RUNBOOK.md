@@ -47,7 +47,9 @@ The service keeps two layers:
 Artifact identity and checksums are immutable once registered. Storage
 locations are mutable projections. Every location update remains auditable
 because it is driven by an immutable event and requires an increasing
-`mapping_revision`.
+`mapping_revision`. A transfer's source and destination locations must both
+belong to the transferred artifact, and later transfer reports cannot decrease
+the recorded mapping revision.
 
 The initial event types are:
 

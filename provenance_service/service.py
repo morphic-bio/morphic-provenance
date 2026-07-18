@@ -297,6 +297,25 @@ class ProvenanceService:
     def _record_transfer(
         self, connection: sqlite3.Connection, event: EventEnvelope, payload: TransferRecorded
     ) -> None:
+        location_rows = connection.execute(
+            """
+            SELECT location_id, artifact_id
+            FROM locations
+            WHERE location_id IN (?, ?)
+            """,
+            (payload.source_location_id, payload.destination_location_id),
+        ).fetchall()
+        locations = {row["location_id"]: row for row in location_rows}
+        for location_id in (payload.source_location_id, payload.destination_location_id):
+            location = locations.get(location_id)
+            if location is None:
+                raise ConflictError(f"transfer location {location_id!r} is not registered")
+            if location["artifact_id"] != payload.artifact_id:
+                raise ConflictError(
+                    f"transfer location {location_id!r} does not belong to "
+                    f"artifact {payload.artifact_id!r}"
+                )
+
         existing = connection.execute(
             "SELECT * FROM transfers WHERE transfer_id = ?", (payload.transfer_id,)
         ).fetchone()
@@ -328,6 +347,8 @@ class ProvenanceService:
                 raise ConflictError("transfer identity cannot change artifact or locations")
             if payload.report_revision <= existing["report_revision"]:
                 raise ConflictError("transfer report_revision must increase")
+            if payload.mapping_revision < existing["mapping_revision"]:
+                raise ConflictError("transfer mapping_revision cannot decrease")
             if payload.status not in self.TRANSFER_TRANSITIONS[existing["status"]]:
                 raise ConflictError(
                     f"invalid transfer transition: {existing['status']} -> {payload.status}"

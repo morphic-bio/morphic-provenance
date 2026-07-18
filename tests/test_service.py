@@ -276,6 +276,69 @@ def test_transfer_reports_preserve_identity_and_increase_revision(service, event
                 base | {"report_revision": 3, "status": "active"},
             )
         )
+    service.ingest(
+        event_factory(
+            "event:transfer-mapping-2",
+            "transfer.recorded",
+            base | {"report_revision": 3, "mapping_revision": 2, "status": "succeeded"},
+        )
+    )
+    with pytest.raises(ConflictError, match="mapping_revision cannot decrease"):
+        service.ingest(
+            event_factory(
+                "event:transfer-mapping-regression",
+                "transfer.recorded",
+                base | {"report_revision": 4, "mapping_revision": 1, "status": "succeeded"},
+            )
+        )
+
+
+def test_transfer_locations_must_belong_to_the_transferred_artifact(service, event_factory):
+    for artifact_id in ("artifact:expected", "artifact:other"):
+        service.ingest(
+            event_factory(
+                f"event:{artifact_id}",
+                "artifact.registered",
+                artifact_payload(artifact_id, f"{artifact_id}.h5ad"),
+            )
+        )
+    for location_id, artifact_id in (
+        ("location:source", "artifact:expected"),
+        ("location:destination", "artifact:other"),
+    ):
+        service.ingest(
+            event_factory(
+                f"event:{location_id}",
+                "location.recorded",
+                {
+                    "location_id": location_id,
+                    "artifact_id": artifact_id,
+                    "kind": "archive",
+                    "uri": f"archive:/{location_id}",
+                    "status": "declared",
+                    "mapping_revision": 1,
+                },
+            )
+        )
+
+    with pytest.raises(ConflictError, match="does not belong"):
+        service.ingest(
+            event_factory(
+                "event:cross-artifact-transfer",
+                "transfer.recorded",
+                {
+                    "transfer_id": "transfer:cross-artifact",
+                    "report_revision": 1,
+                    "artifact_id": "artifact:expected",
+                    "source_location_id": "location:source",
+                    "destination_location_id": "location:destination",
+                    "mapping_revision": 1,
+                    "status": "requested",
+                },
+            )
+        )
+    with pytest.raises(NotFoundError):
+        service.get_event("event:cross-artifact-transfer")
 
 
 def test_release_membership_transitions_and_search(service, event_factory):

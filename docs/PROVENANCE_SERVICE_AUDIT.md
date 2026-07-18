@@ -1,6 +1,6 @@
 # Provenance Service Audit
 
-Audit date: 2026-07-17
+Audit date: 2026-07-18
 
 ## Scope
 
@@ -49,6 +49,8 @@ views. The following properties were reviewed and tested:
 - a failed event projection rolls back the entire batch and event log;
 - artifact identity is immutable after registration;
 - location and transfer reports require increasing revisions;
+- transfer source and destination locations must belong to the transferred
+  artifact;
 - transfer and release status regressions are rejected;
 - derivation traversal is cycle-bounded and depth-bounded;
 - local reconciliation resolves symlinks and rejects paths outside the artifact
@@ -61,9 +63,10 @@ views. The following properties were reviewed and tested:
 
 ## Verification
 
-- Repository test suite: 14 passed.
-- Clean Python 3.10 virtual environment: 14 passed.
-- Host Python 3.11 environment: 14 passed.
+- Repository test suite: 15 passed.
+- Clean Python 3.10 virtual environment: 15 passed.
+- Python 3.11 was not rerun after the transfer-integrity fix because this
+  host's available 3.11.0 release candidate lacks `ensurepip`/venv support.
 - Wheel build: passed; `provenance_service/schema.sql` present.
 - Live Uvicorn smoke test: health, event schemas, search, release lookup, and
   lineage lookup returned HTTP 200 against 220 imported events.
