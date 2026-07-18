@@ -1,6 +1,8 @@
 # MSK 30polyKO Revised DRACC Processed v3
 
-Updated: 2026-07-18
+Packet released: `2026-07-06`
+
+Documentation updated: `2026-07-18`
 
 ## Release status
 
@@ -343,14 +345,20 @@ matrices or the eight non-DE_XM counts H5ADs.
 
 ## Provenance references
 
-Canonical local provenance records:
+Tracked base-production provenance and this release record:
 
 ```text
 morphic-provenance/
   runs/msk_30ko_revised/20260519T000000Z_revised_delivery/
-  runs/msk_feature_h5ad_top_feature_repair/20260706T000000Z_top_feature_name_fix/
-  dataset_releases/msk_30ko_revised/2026-07-18/
+  dataset_releases/msk_30ko_revised/2026-07-06/
 ```
+
+The correction overlay's project-scoped file checksums, destinations, and
+source paths are recorded in this release directory's `upload_manifest.tsv`.
+Its Globus feature-repair transfer was task
+`6cf6db59-7951-11f1-9530-0e9f7c26f401` (`SUCCEEDED`). The subsequent DE_XM
+counts/QC consolidation used task
+`ab3ea3fe-7956-11f1-a5c1-02f0d340f1a1` (`SUCCEEDED`).
 
 The production STAR logs recorded STAR 2.7.11b and STAR-Suite commit
 `c082c6582cca229032c7bb34a157e97511561da8`, with a dirty working tree at

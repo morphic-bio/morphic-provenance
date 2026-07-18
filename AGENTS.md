@@ -13,6 +13,30 @@ This repo is for run provenance, not source code or analysis development.
 - Every CellBender production/handoff record must state whether CUDA was used;
   production CellBender without CUDA is a failed/mislaunched run.
 
+## Dataset Release Documentation
+
+- Follow `dataset_releases/README.md` for every collaborator-facing delivery.
+- Key `dataset_releases/<project>/<YYYY-MM-DD>/` by the date the analysis
+  packet was first pushed to Globus, not the date its documentation was added.
+- Record later documentation, validation, and correction-overlay activity in
+  that release's `updates.md`. Create a new date only for a newly pushed
+  analysis packet.
+- Every release directory must contain `README.md`, `upload_manifest.tsv`, and
+  `updates.md`. The manifest must inventory the analysis packet, not only its
+  README or other documentation files.
+- Link only to run records and repository paths that are tracked on the branch
+  being published. Never describe an untracked local path as canonical
+  repository provenance.
+- A replacement overlay must identify its base release, exact Globus path,
+  replacement-relative paths, scope, and transfer task/status. State whether
+  it is a complete packet or must be applied over a base release.
+- H5AD release documentation must define the recommended cell-selection mask
+  and every released `obs` field. Also describe relevant `X`, `layers`, `var`,
+  `obsm`, and `uns` contents, including fields intentionally omitted.
+- Before pushing, run `git diff --check`, verify release dates and repository
+  links, and stage only the intended release/provenance files. Use a clean
+  worktree when the main checkout contains unrelated work.
+
 ## Run Folder
 
 Use `templates/run/` as the starting point for each new run:

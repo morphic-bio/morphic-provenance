@@ -1,3 +1,0 @@
-source_path	destination_endpoint	destination_path	bytes	sha256	globus_task_id	status
-/mnt/pikachu/release_checks/msk_feature_h5ad_top_feature_repair_20260706/README.MSK_30POLYKO_REVISED_V3.md	Morphic Processing	/MSK-feature-h5ad-top-feature-repair-20260706/README.MSK_30POLYKO_REVISED_V3.md	14180	98454e6e9241988e234c2dfea1e300a35bcf7597e8d9a623e2ca11083ead47d5	ea1edfc9-82a1-11f1-9068-0ee7ef9370d9	SUCCEEDED
-/mnt/pikachu/release_checks/msk30ko_de_xm_repair_20260706/processed/30_KO_DE_XM/README.MSK_30POLYKO_REVISED_V3.md	Morphic Processing	/MSK-KO-5-18-26-revised/corrected_release/processed/30_KO_DE_XM/README.MSK_30POLYKO_REVISED_V3.md	14180	98454e6e9241988e234c2dfea1e300a35bcf7597e8d9a623e2ca11083ead47d5	eae494f9-82a1-11f1-88b0-02ce27bde401	SUCCEEDED

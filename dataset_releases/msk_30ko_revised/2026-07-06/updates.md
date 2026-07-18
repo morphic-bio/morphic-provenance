@@ -15,3 +15,10 @@
 - Staged the same README with the immediate DE_XM correction at:
   `/MSK-KO-5-18-26-revised/corrected_release/processed/30_KO_DE_XM/README.MSK_30POLYKO_REVISED_V3.md`
   (Globus task `eae494f9-82a1-11f1-88b0-02ce27bde401`, succeeded).
+
+## 2026-07-06
+
+- Uploaded the feature-H5AD correction packet to Morphic Processing at
+  `/MSK-feature-h5ad-top-feature-repair-20260706/processed/`.
+- Consolidated the corrected DE_XM counts and counts-derived QC files into the
+  same overlay, so one relative-path overlay contains all MSK 30KO repairs.
