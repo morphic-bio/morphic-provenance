@@ -1,0 +1,5 @@
+name	path	role
+dataset_metadata_workbook	/mnt/pikachu/JAX_scRNAseq02/DPC_metadata_template_scRNAseq2-complete.xlsx	expected library/sample metadata; sha256 55bb958efae36abbe84abc5091f5a12bbcc1ee06e5477f15f9ea07543afb6a59
+canonical_production_run	runs/jax_scrnaseq02/20260522T135526Z_ocm_prod_handoff/	processing provenance
+production_output_root	/mnt/pikachu/JAX_scRNAseq02_processed/ocm_prod_batch_flex_native_yremove_trace_20260521T034223Z	source of 12 completed samples
+base_globus_release	/JAX_scRNAseq02_processed/JAX-scRNAseq02-5-22-26	10-sample base to which this overlay must be added

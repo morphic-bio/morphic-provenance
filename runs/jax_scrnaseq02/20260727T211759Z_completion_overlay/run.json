@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "run_id": "20260727T211759Z_completion_overlay",
+  "project": "jax_scrnaseq02",
+  "created_utc": "2026-07-27T21:17:59Z",
+  "operator": "lhhung",
+  "status": "complete",
+  "star_suite": {
+    "repo": "git@github.com:morphic-bio/STAR-suite.git",
+    "commit": "d55a1a7d27c85df0f780a0e50039392e83a31260",
+    "github_tree": "https://github.com/morphic-bio/STAR-suite/tree/d55a1a7d27c85df0f780a0e50039392e83a31260",
+    "notes": "No processing was rerun; values are inherited from the canonical production run."
+  },
+  "recipes": {
+    "repo": "git@github.com:morphic-bio/morphic-recipes.git",
+    "commit": "c41c2fd11f9bedd0f8b2b6e81a726a9da12b5d0f",
+    "workflow_id": "jax_scrnaseq02_ocm_production",
+    "notes": "This record covers completion-overlay staging and transfer only."
+  },
+  "environment": {
+    "container_image": "biodepot/scrna-matrices:latest and biodepot/cellbender:0.3.2 where CellBender ran",
+    "cuda_required": true,
+    "cellbender_cuda": true,
+    "handoff_host": "pikachu"
+  },
+  "inputs": [
+    {
+      "name": "dataset_metadata_workbook",
+      "path": "/mnt/pikachu/JAX_scRNAseq02/DPC_metadata_template_scRNAseq2-complete.xlsx",
+      "sha256": "55bb958efae36abbe84abc5091f5a12bbcc1ee06e5477f15f9ea07543afb6a59",
+      "bytes": 108335
+    },
+    {
+      "name": "canonical_production_run",
+      "path": "runs/jax_scrnaseq02/20260522T135526Z_ocm_prod_handoff/"
+    },
+    {
+      "name": "source_run_root",
+      "path": "/mnt/pikachu/JAX_scRNAseq02_processed/ocm_prod_batch_flex_native_yremove_trace_20260521T034223Z",
+      "retention": "local production root"
+    },
+    {
+      "name": "base_globus_release",
+      "path": "/JAX_scRNAseq02_processed/JAX-scRNAseq02-5-22-26",
+      "retention": "Globus destination; 10-sample base release"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "handoff_packet_root",
+      "path": "/mnt/pikachu/JAX_scRNAseq02_handoff/JAX-scRNAseq02-5-22-26-completion-7-27-26",
+      "retention": "local Globus packet root"
+    },
+    {
+      "name": "globus_destination_root",
+      "path": "/JAX_scRNAseq02_processed/JAX-scRNAseq02-5-22-26-completion-7-27-26",
+      "retention": "Globus additive completion overlay"
+    },
+    {
+      "name": "payload_manifest",
+      "path": "outputs/MANIFEST.tsv",
+      "sha256": "5d32e903b5a0c8cd34f342015c8637f1488f328960f1a9107e334d4a21155835",
+      "bytes": 100087
+    },
+    {
+      "name": "packet_checksums",
+      "path": "outputs/SHA256SUMS.tsv",
+      "sha256": "299c9044b82f7194109a69065d1c2502a7178dd9c2aaa217eec9ede04dd91380",
+      "bytes": 31929
+    }
+  ],
+  "dataset_releases": [
+    {
+      "release_key": "jax_scrnaseq02/2026-07-27",
+      "release_date": "2026-07-27",
+      "path": "dataset_releases/jax_scrnaseq02/2026-07-27",
+      "base_release": "jax_scrnaseq02/2026-05-22",
+      "globus_path": "/JAX_scRNAseq02_processed/JAX-scRNAseq02-5-22-26-completion-7-27-26"
+    }
+  ],
+  "transfer": {
+    "globus_task_id": "6d5e713a-8a01-11f1-881a-02ce27bde401",
+    "status": "SUCCEEDED",
+    "completion_time": "2026-07-27T22:04:41Z",
+    "sync_level": "checksum",
+    "verify_checksum": true,
+    "files": 210,
+    "bytes_transferred": 54830077298
+  }
+}

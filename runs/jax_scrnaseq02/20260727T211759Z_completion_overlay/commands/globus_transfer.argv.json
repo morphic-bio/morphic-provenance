@@ -1,0 +1,17 @@
+[
+  "globus",
+  "transfer",
+  "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+  "61fb8b9a-9b52-456e-928c-30c0fb0140bf",
+  "--batch",
+  "/mnt/pikachu/JAX_scRNAseq02_handoff/JAX-scRNAseq02-5-22-26-completion-7-27-26/globus_batch.tsv",
+  "--sync-level",
+  "checksum",
+  "--verify-checksum",
+  "--label",
+  "JAX scRNAseq02 completion overlay 2026-07-27",
+  "--notify",
+  "off",
+  "--format",
+  "json"
+]
