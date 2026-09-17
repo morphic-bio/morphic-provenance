@@ -39,7 +39,10 @@ def transfer(source: str, destination: str, recursive: bool = False) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--attempt", type=int, default=1)
     args = parser.parse_args()
+    if args.attempt < 1:
+        raise SystemExit("--attempt must be at least 1")
     commands_dir = Path(__file__).resolve().parent
     slurm_script = (commands_dir / "slurm_cardiac_subsample.sh").read_text()
 
@@ -71,14 +74,15 @@ def main() -> None:
         ),
     ]
 
+    attempt_suffix = "" if args.attempt == 1 else f"-attempt{args.attempt}"
     payload = {
-        "workflow_id": f"msk-cardiac-staged-pilot-{RUN_STAMP}",
+        "workflow_id": f"msk-cardiac-staged-pilot-{RUN_STAMP}{attempt_suffix}",
         "task_queue": f"cardiac-staged-pilot-{RUN_STAMP}",
         "stage_in": {
             "source_endpoint_id": PIKACHU_ENDPOINT,
             "destination_endpoint_id": BRIDGES_ENDPOINT,
             "items": stage_in_items,
-            "label": f"MSK Cardiac Temporal pilot stage-in {RUN_STAMP}",
+            "label": f"MSK Cardiac Temporal pilot stage-in {RUN_STAMP}{attempt_suffix}",
             "submission_id": submission_id(),
             "poll_interval_seconds": 15,
             "timeout_seconds": 21600,
@@ -105,7 +109,7 @@ def main() -> None:
             "source_endpoint_id": BRIDGES_ENDPOINT,
             "destination_endpoint_id": PIKACHU_ENDPOINT,
             "items": stage_back_items,
-            "label": f"MSK Cardiac Temporal pilot stage-back {RUN_STAMP}",
+            "label": f"MSK Cardiac Temporal pilot stage-back {RUN_STAMP}{attempt_suffix}",
             "submission_id": submission_id(),
             "poll_interval_seconds": 15,
             "timeout_seconds": 21600,
@@ -157,7 +161,7 @@ def main() -> None:
                     True,
                 )
             ],
-            "label": f"MSK Cardiac Temporal pilot publish {RUN_STAMP}",
+            "label": f"MSK Cardiac Temporal pilot publish {RUN_STAMP}{attempt_suffix}",
             "submission_id": submission_id(),
             "poll_interval_seconds": 15,
             "timeout_seconds": 21600,
