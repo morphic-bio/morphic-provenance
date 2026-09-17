@@ -1,0 +1,40 @@
+{
+  "gpu": {
+    "job": {
+      "cleanup": true,
+      "cmd": [
+        "bash",
+        "-lc",
+        "set -euo pipefail; cellbender remove-background --input raw_feature_bc_matrix --output output/cellbender_counts.h5 --checkpoint ckpt.tar.gz --cuda --expected-cells 300 --total-droplets-included 3000 --epochs 10 --low-count-threshold 2 --estimator mean --exclude-feature-types 'CRISPR Guide Capture'; mv ckpt.tar.gz output/ckpt.tar.gz"
+      ],
+      "gpu_device": "0",
+      "gpu_wait_timeout_seconds": 7200,
+      "image": "biodepot/cellbender:0.3.2",
+      "input_files": {
+        "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/slurm/raw_feature_bc_matrix": "raw_feature_bc_matrix"
+      },
+      "local_output_dir": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/gpu",
+      "min_gpu_free_mb": 6000,
+      "timeout_seconds": 7200,
+      "use_gpu": true
+    },
+    "task_queue": "lhhung@localhost:22"
+  },
+  "publish": {
+    "destination_endpoint_id": "d9e522d3-c51e-4037-b375-55ffd155c715",
+    "items": [
+      {
+        "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/results/published",
+        "recursive": true,
+        "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/gpu"
+      }
+    ],
+    "label": "MSK Cardiac Temporal pilot publish 20260917T193023Z-attempt5",
+    "poll_interval_seconds": 15,
+    "source_endpoint_id": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+    "submission_id": "9b6d8615-b2dc-11f1-8195-0effcb3df825",
+    "timeout_seconds": 21600
+  },
+  "task_queue": "cardiac-staged-pilot-20260917T193023Z",
+  "workflow_id": "msk-cardiac-staged-pilot-20260917T193023Z-attempt5"
+}

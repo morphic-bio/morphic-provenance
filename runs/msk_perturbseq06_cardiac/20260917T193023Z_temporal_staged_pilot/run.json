@@ -4,8 +4,8 @@
   "purpose": "Temporal Globus-Slurm-GPU integration pilot",
   "preflight_completed_utc": "2026-09-17T19:35:01Z",
   "run_id": "20260917T193023Z_temporal_staged_pilot",
-  "scheduler_commit": "0b9c7fddf13cad00789824b338e44b61e0469ef6",
+  "scheduler_commit": "97e64118bdfec80bf42a3e2361e738afa852b1ab",
   "star_suite_commit": "1c9ddb9a5a2a3e62748e8e4ef28e553582affeed",
   "star_suite_version": "1.9.4",
-  "status": "attempt_4_prepared_after_slurm_memory_limit_correction"
+  "status": "attempt_5_gpu_publish_recovery_prepared"
 }

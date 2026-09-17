@@ -41,6 +41,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--attempt", type=int, default=1)
     parser.add_argument("--skip-stage-in", action="store_true")
+    parser.add_argument("--resume-gpu", action="store_true")
     args = parser.parse_args()
     if args.attempt < 1:
         raise SystemExit("--attempt must be at least 1")
@@ -76,7 +77,7 @@ def main() -> None:
     ]
 
     attempt_suffix = "" if args.attempt == 1 else f"-attempt{args.attempt}"
-    stage_in_submission_id = None if args.skip_stage_in else submission_id()
+    stage_in_submission_id = None if (args.skip_stage_in or args.resume_gpu) else submission_id()
     payload = {
         "workflow_id": f"msk-cardiac-staged-pilot-{RUN_STAMP}{attempt_suffix}",
         "task_queue": f"cardiac-staged-pilot-{RUN_STAMP}",
@@ -121,25 +122,20 @@ def main() -> None:
             "job": {
                 "image": "biodepot/cellbender:0.3.2",
                 "cmd": [
-                    "cellbender",
-                    "remove-background",
-                    "--input",
-                    "raw_feature_bc_matrix",
-                    "--output",
-                    "output/cellbender_counts.h5",
-                    "--checkpoint",
-                    "output/ckpt.tar.gz",
-                    "--cuda",
-                    "--expected-cells",
-                    "300",
-                    "--total-droplets-included",
-                    "3000",
-                    "--epochs",
-                    "10",
-                    "--low-count-threshold",
-                    "2",
-                    "--exclude-feature-types",
-                    "CRISPR Guide Capture",
+                    "bash",
+                    "-lc",
+                    (
+                        "set -euo pipefail; "
+                        "cellbender remove-background "
+                        "--input raw_feature_bc_matrix "
+                        "--output output/cellbender_counts.h5 "
+                        "--checkpoint ckpt.tar.gz --cuda "
+                        "--expected-cells 300 --total-droplets-included 3000 "
+                        "--epochs 10 --low-count-threshold 2 "
+                        "--estimator mean "
+                        "--exclude-feature-types 'CRISPR Guide Capture'; "
+                        "mv ckpt.tar.gz output/ckpt.tar.gz"
+                    ),
                 ],
                 "input_files": {
                     str(LOCAL_ROOT / "slurm/raw_feature_bc_matrix"): "raw_feature_bc_matrix"
@@ -169,8 +165,11 @@ def main() -> None:
             "timeout_seconds": 21600,
         },
     }
-    if args.skip_stage_in:
+    if args.skip_stage_in or args.resume_gpu:
         del payload["stage_in"]
+    if args.resume_gpu:
+        del payload["slurm"]
+        del payload["stage_back"]
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")

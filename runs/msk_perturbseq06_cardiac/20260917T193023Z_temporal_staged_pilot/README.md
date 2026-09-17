@@ -21,7 +21,7 @@ source files remain native gzip. No zshard or gzip transcoding is used.
   `1c9ddb9a5a2a3e62748e8e4ef28e553582affeed`.
 - Temporal scheduler staged-runtime implementation: commits
   `a4fdc15b38766b9e3c4ecfc16c12dd68ba40b1b4` and
-  `0b9c7fddf13cad00789824b338e44b61e0469ef6`.
+  `97e64118bdfec80bf42a3e2361e738afa852b1ab`.
 - Genome index: GRCh38 2024-A / GENCODE v44 at
   `/ocean/projects/bio230034p/shared/processing/references/GRCh38-2024-A-star-msk30`.
 - GEX chemistry and whitelist: TRU, February 2018 3M.
@@ -71,4 +71,8 @@ rejected the 64G request because 65536 MB / 32 CPUs exceeds RM-shared's 2000
 MB/core site limit. Scheduler commit `0b9c7fd` preserves remote submission
 diagnostics, and attempt 4 requests 62G / 32 CPUs (1984 MB/core). It resumes at
 the Slurm stage because Globus stage-in succeeded and was checksum-validated
-twice.
+twice. Attempt 4 completed Slurm and stage-back, then exposed directory nesting
+in SSH/Docker rsync and a CellBender MCKP edge case on the deliberately
+low-depth pilot. Scheduler commit `97e6411` fixes mapped-directory semantics and
+supports an explicit GPU-and-publish recovery mode. Attempt 5 uses that mode
+with CellBender's `mean` estimator and does not submit a second Slurm job.
