@@ -40,6 +40,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--attempt", type=int, default=1)
+    parser.add_argument("--skip-stage-in", action="store_true")
     args = parser.parse_args()
     if args.attempt < 1:
         raise SystemExit("--attempt must be at least 1")
@@ -75,6 +76,7 @@ def main() -> None:
     ]
 
     attempt_suffix = "" if args.attempt == 1 else f"-attempt{args.attempt}"
+    stage_in_submission_id = None if args.skip_stage_in else submission_id()
     payload = {
         "workflow_id": f"msk-cardiac-staged-pilot-{RUN_STAMP}{attempt_suffix}",
         "task_queue": f"cardiac-staged-pilot-{RUN_STAMP}",
@@ -83,7 +85,7 @@ def main() -> None:
             "destination_endpoint_id": BRIDGES_ENDPOINT,
             "items": stage_in_items,
             "label": f"MSK Cardiac Temporal pilot stage-in {RUN_STAMP}{attempt_suffix}",
-            "submission_id": submission_id(),
+            "submission_id": stage_in_submission_id,
             "poll_interval_seconds": 15,
             "timeout_seconds": 21600,
         },
@@ -167,6 +169,8 @@ def main() -> None:
             "timeout_seconds": 21600,
         },
     }
+    if args.skip_stage_in:
+        del payload["stage_in"]
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")

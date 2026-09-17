@@ -21,7 +21,7 @@ source files remain native gzip. No zshard or gzip transcoding is used.
   `1c9ddb9a5a2a3e62748e8e4ef28e553582affeed`.
 - Temporal scheduler staged-runtime implementation: commits
   `a4fdc15b38766b9e3c4ecfc16c12dd68ba40b1b4` and
-  `4ae1fa455e50745336ccbd29cbf02df17b065fba`.
+  `b661511c218555ba6630e1e893e688ea0a54ff21`.
 - Genome index: GRCh38 2024-A / GENCODE v44 at
   `/ocean/projects/bio230034p/shared/processing/references/GRCh38-2024-A-star-msk30`.
 - GEX chemistry and whitelist: TRU, February 2018 3M.
@@ -61,6 +61,11 @@ only to the dedicated paths above.
 Attempt 1 completed the four-file Globus stage-in, then failed before `sbatch`:
 Bridges-2 has no login-node `rsync`, and the inherited Slurm transport used
 rsync to upload only the generated batch script. Scheduler commit `4ae1fa4`
-changes that internal batch-script write to Paramiko SFTP. No Slurm job was
-submitted in attempt 1. Attempt 2 reuses the checksum-synchronized inputs with
-a new workflow ID and new retry-safe Globus submission IDs.
+changed that internal batch-script write to Paramiko SFTP. Bridges-2 also
+disables its SFTP subsystem, so attempt 2 failed at the same pre-submission
+boundary after checksum-validating and skipping all four staged inputs.
+Scheduler commit `b661511` uses the existing SSH exec channel and streams the
+script on stdin, which was tested directly against this Ocean run directory.
+No Slurm job was submitted in attempts 1 or 2. Attempt 3 starts at the affected
+Slurm stage because the Globus stage-in already succeeded and was independently
+checksum-validated twice.
