@@ -1,0 +1,14 @@
+{
+  "status": "FAILED_AND_CANCELED",
+  "production_array_job": "46249747",
+  "failed_array_task": 0,
+  "failed_slurm_job": "46249925",
+  "failed_capture": "CP_A1",
+  "failed_utc": "2026-09-17T14:43:00Z",
+  "failure": "process_features v1.9.4 interpreted the non-terminal CP_R3_ provider prefix in guide FASTQ basenames as an R3 read-role token",
+  "durable_output_written": false,
+  "remaining_array_tasks_canceled": true,
+  "canceled_validator_job": "46250387",
+  "resolution": "Use a reversible node-local CP_R3_ to CPR3_ prefix rewrite, retain the existing CP_R2_ to CPR2_ rewrite, and require equal terminal R1/R2 counts with zero terminal R3 files before STAR",
+  "corrected_script": "commands/run_cardiac_production_array_v2.sbatch"
+}

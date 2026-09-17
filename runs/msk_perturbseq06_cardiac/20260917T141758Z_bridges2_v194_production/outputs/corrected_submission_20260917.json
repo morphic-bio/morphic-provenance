@@ -1,0 +1,13 @@
+{
+  "status": "IN_PROGRESS",
+  "submitted_utc": "2026-09-17T14:47:57Z",
+  "production_gate_job": "46251625",
+  "production_gate_array": "0",
+  "remaining_array_job": "46251626",
+  "remaining_array": "1-7%1",
+  "remaining_dependency": "afterok:46251625",
+  "validation_job": "46251627",
+  "validation_dependency": "afterok:46251625:46251626",
+  "production_script": "commands/run_cardiac_production_array_v2.sbatch",
+  "production_script_sha256": "6528a29d85320f72020f53a7b4372498581e1e5c68d6081e117e5cf1d0c2e076"
+}

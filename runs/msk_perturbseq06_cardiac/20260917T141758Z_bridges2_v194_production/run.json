@@ -1,0 +1,94 @@
+{
+  "schema_version": "0.1",
+  "run_id": "20260917T141758Z_bridges2_v194_production",
+  "project": "msk_perturbseq06_cardiac",
+  "created_utc": "2026-09-17T14:17:58Z",
+  "operator": "lhhung",
+  "status": "in_progress",
+  "star_suite": {
+    "repo": "STAR-suite",
+    "version": "1.9.4",
+    "commit": "1c9ddb9a5a2a3e62748e8e4ef28e553582affeed",
+    "dirty": false,
+    "binary": "/ocean/projects/bio230034p/shared/processing/tools/star-suite-v1.9.4/bin/STAR",
+    "binary_sha256": "2f4ab4ccac64d17b7a82f102ffe6a9f98ad81984d70b88e21602699e8f49805a"
+  },
+  "recipes": {
+    "repo": "morphic-recipes",
+    "commit": "e27f1745bf3d59aaf71cc0301b2f31845c759180",
+    "runbook": "docs/RUNBOOK_MSK_PERTURBSEQ06_CARDIAC_BRIDGES2.md"
+  },
+  "environment": {
+    "primary_host": "PSC Bridges-2",
+    "slurm_partition": "RM-shared",
+    "threads_per_task": 64,
+    "allocated_cpus_per_task": 64,
+    "memory_gb_per_task": 120,
+    "array": "0-7%1",
+    "bridges_build_mode": "WITH_CHROMAP=0",
+    "container_image": "",
+    "cuda_required": false,
+    "cellbender_cuda": false
+  },
+  "inputs": [
+    {
+      "name": "Cardiac FASTQ delivery",
+      "path": "/ocean/projects/bio230034p/lhung2/incoming/MSK_Perturbseq_20260910/MSK_Perturbseq06_Cardiac_20260910",
+      "role": "fastq_input"
+    },
+    {
+      "name": "GRCh38 2024-A MSK-30 STAR index",
+      "path": "/ocean/projects/bio230034p/shared/processing/references/GRCh38-2024-A-star-msk30",
+      "role": "gex_reference"
+    },
+    {
+      "name": "MSK LEG guide reference",
+      "path": "/ocean/projects/bio230034p/shared/processing/references/MSK_Perturbseq_LEG/MSK_LEG_star_suite_feature_reference.csv",
+      "role": "feature_reference"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "Cardiac production captures",
+      "path": "/ocean/projects/bio230034p/lhung2/msk-perturbseq06-cardiac-20260917/results/production",
+      "role": "upstream_results"
+    },
+    {
+      "name": "Whole-set validation",
+      "path": "/ocean/projects/bio230034p/lhung2/msk-perturbseq06-cardiac-20260917/results/production/PRODUCTION_GATHER.json",
+      "role": "validation_report"
+    }
+  ],
+  "slurm": {
+    "failed_production_array_job": "46249747",
+    "canceled_validation_job": "46250387",
+    "production_gate_job": "46251625",
+    "remaining_production_array_job": "46251626",
+    "validation_job": "46251627",
+    "validation_dependency": "afterok:46251625:46251626",
+    "scratch_cleanup_jobs": ["46251631", "46251632"]
+  },
+  "downstream": {
+    "orchestrator": "commands/run_ocean_gpu_h5ad_pipeline.py",
+    "systemd_unit": "msk-cardiac-downstream-20260917.service",
+    "cellbender_version": "0.3.2",
+    "cellbender_cuda_required": true,
+    "scimilarity_enabled": false,
+    "ocean_output": "/ocean/projects/bio230034p/lhung2/msk-perturbseq06-cardiac-20260917/results/downstream"
+  },
+  "policies": {
+    "zshard_used": false,
+    "fastq_transcode": false,
+    "gzip_mode": "native",
+    "y_removal": false,
+    "production_submitted": true
+  },
+  "corrections": [
+    {
+      "issue": "process_features v1.9.4 treated the provider CP_R3_ prefix as a reverse-read token",
+      "production_resolution": "Reversible node-local CP_R1_/CP_R2_/CP_R3_ prefix aliases plus a complete terminal R1/R2 and zero-R3 gate",
+      "source_fix_commit": "e9c1ff7a2fb8c46d49bf33f6e976f29220101eaa",
+      "source_fix_used_for_this_run": false
+    }
+  ]
+}

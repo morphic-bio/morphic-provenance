@@ -1,0 +1,6 @@
+name	path	sha256	bytes
+STAR Suite binary	/ocean/projects/bio230034p/shared/processing/tools/star-suite-v1.9.4/bin/STAR	2f4ab4ccac64d17b7a82f102ffe6a9f98ad81984d70b88e21602699e8f49805a	13563792
+TRU GEX whitelist	/ocean/projects/bio230034p/shared/processing/references/MSK_Perturbseq_LEG/3M-february-2018_TRU.txt	5e3969f11d28615ca47efd409205c6a17972edd7d1b2a756aaaccf36e6fd5c84	62668800
+NXT guide whitelist	/ocean/projects/bio230034p/shared/processing/references/MSK_Perturbseq_LEG/3M-february-2018_NXT.txt	f898a606b7b6a9f7e538e7f22da776094b4a25e8804c88d66023a70bbf9fbb1e	62668800
+MSK LEG feature reference	/ocean/projects/bio230034p/shared/processing/references/MSK_Perturbseq_LEG/MSK_LEG_star_suite_feature_reference.csv	a25c4dabc5c4011925fdee7fcf1cebc0b982ebfcfa6e37d530592c37baf16f06	1569913
+production array script	commands/run_cardiac_production_array_v2.sbatch	6528a29d85320f72020f53a7b4372498581e1e5c68d6081e117e5cf1d0c2e076	7059

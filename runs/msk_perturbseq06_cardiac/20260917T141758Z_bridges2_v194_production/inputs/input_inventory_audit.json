@@ -1,0 +1,22 @@
+{
+  "expected_fastqs": 1020,
+  "fastq_root": "/ocean/projects/bio230034p/lhung2/incoming/MSK_Perturbseq_20260910/MSK_Perturbseq06_Cardiac_20260910",
+  "gzip_policy": "native gzip; byte-preserving node-local copy; no transcode",
+  "libraries": 16,
+  "logical_captures": [
+    "CP_A1",
+    "CP_A2",
+    "CP_A3",
+    "CP_B1",
+    "CP_B2",
+    "CP_B3",
+    "CP_R1",
+    "CP_R2"
+  ],
+  "observed_fastqs": 1020,
+  "processing_read_pairs": 255,
+  "provider_checksums": 1020,
+  "status": "PASS",
+  "total_bytes": 707990121243,
+  "zshard_allowed": false
+}

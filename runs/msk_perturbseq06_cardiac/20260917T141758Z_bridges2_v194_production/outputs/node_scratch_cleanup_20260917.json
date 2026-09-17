@@ -1,0 +1,16 @@
+{
+  "status": "PENDING",
+  "jobs": [
+    {
+      "job_id": "46251631",
+      "node": "r225",
+      "path": "/local/msk-cardiac-cp_a1-46249925"
+    },
+    {
+      "job_id": "46251632",
+      "node": "r203",
+      "path": "/local/msk-cardiac-cp_a2-46251382"
+    }
+  ],
+  "scope": "Only exact node-local directories from the failed or canceled jobs; no broad node cleanup"
+}

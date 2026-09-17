@@ -1,0 +1,9 @@
+{
+  "status": "REJECTED_BEFORE_JOB_CREATION",
+  "production_array_job": "46249747",
+  "requested_cpus": 8,
+  "requested_memory": "16G",
+  "reason": "Bridges-2 RM-shared enforces at most 2000 MB per allocated CPU; 16G/8 resolves above that ceiling",
+  "resolution": "Changed the validation allocation to 16 CPUs and 16G before resubmission",
+  "production_affected": false
+}

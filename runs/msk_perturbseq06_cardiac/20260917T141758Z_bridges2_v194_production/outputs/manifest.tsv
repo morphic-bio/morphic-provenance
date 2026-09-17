@@ -1,0 +1,3 @@
+name	path	bytes	notes
+production captures	/ocean/projects/bio230034p/lhung2/msk-perturbseq06-cardiac-20260917/results/production		Eight capture directories written atomically after per-capture acceptance
+whole-set validation	/ocean/projects/bio230034p/lhung2/msk-perturbseq06-cardiac-20260917/results/production/PRODUCTION_GATHER.json		Written only after every array task and validation succeeds
