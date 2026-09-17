@@ -1,0 +1,147 @@
+{
+  "captures": [
+    "CP_R1",
+    "CP_R2"
+  ],
+  "distinct_nodes": 2,
+  "gzip_policy": "native gzip, no transcode",
+  "host": "bridges2",
+  "nodes": [
+    "r039",
+    "r067"
+  ],
+  "reports": [
+    {
+      "artifact_sha256": {
+        "combined_filtered_barcodes": "d2bd6120bf8446cf2a6afcbd9a580b9585f1420f7e8209a84608c0219e9e7c5d",
+        "combined_filtered_matrix": "b2781af51bfbd11ceeef0e51eea0b9d549192286299f3dc05535e1c6456f511d",
+        "combined_raw_barcodes": "45556a560be3651431ba874c713802a6ec429cbadb955c25942ab0f62fb5845f",
+        "combined_raw_matrix": "0440d9532449decb24f8896062272874598eb063dd552ec7b5ed95ca69ae9161",
+        "gene_raw_barcodes": "5e3969f11d28615ca47efd409205c6a17972edd7d1b2a756aaaccf36e6fd5c84",
+        "gene_raw_features": "447849e4e7672eb17179ab613465881eb673c465dd65f8f08612f3f7ccee7681",
+        "gene_raw_matrix": "275ffc68058c1e20ec7e6bbb031e9aecc0c88bb175a694eb9a0c23a0bbd29d5f",
+        "guide_barcodes": "21774e6e0823cba1d3682e748fb0131f4acd97f5f18ccc17f012adb9133f9333",
+        "guide_features": "980515f204a98a87a3ccf1707fcff093b5931d0ab77d344415bda6ccc2e00b4b",
+        "guide_matrix": "320690120c8251fe4a37c6681abee62a1504a78448b2f778b4c26e1a6bd8985b"
+      },
+      "canonical_output_namespace": "TRU",
+      "combined_filtered_barcodes_checked": 24542,
+      "combined_filtered_dimensions": [
+        54262,
+        24542,
+        186376
+      ],
+      "combined_filtered_umi_sum": 203346,
+      "combined_output_namespace": "TRU",
+      "combined_raw_barcodes_checked": 47739,
+      "combined_raw_dimensions": [
+        54262,
+        47739,
+        216253
+      ],
+      "combined_raw_umi_sum": 233824,
+      "filtered_gene_dimensions": [
+        38606,
+        24542,
+        126938
+      ],
+      "filtered_gene_umi_sum": 127431,
+      "gex_input_namespace": "TRU",
+      "guide_assignment_namespace": "NXT",
+      "guide_barcodes_checked": 43020,
+      "guide_dimensions": [
+        15656,
+        43020,
+        90930
+      ],
+      "guide_features": 15656,
+      "guide_input_namespace": "NXT",
+      "guide_umi_sum": 108271,
+      "gzip_policy": "native gzip, no transcode",
+      "host": "bridges2",
+      "node": "r039",
+      "pilot_capture": "CP_R1",
+      "raw_gene_dimensions": [
+        38606,
+        3686400,
+        150135
+      ],
+      "raw_gene_umi_sum": 150628,
+      "read_limit": 250000,
+      "reference": "GRCh38-2024-A/Gencode-v44 MSK-30 index",
+      "run_dir": "/local/msk-cardiac-cp_r1-pilot-46246783/run",
+      "star_suite_commit": "1c9ddb9a5a2a3e62748e8e4ef28e553582affeed",
+      "star_suite_version": "1.9.4",
+      "status": "PASS",
+      "translated_guide_overlap_combined_raw": 21363,
+      "zshard_used": false
+    },
+    {
+      "artifact_sha256": {
+        "combined_filtered_barcodes": "83f4d5801dae17020201e6bbd428e6810d5304da23c6f2f40bf5e6db06d9c1c7",
+        "combined_filtered_matrix": "cf3a50d081663a5f87c54305e133c54e76f7b928a0421c97c5d8261f15c0a9a0",
+        "combined_raw_barcodes": "323299d1207f3623d04dc1ad5210d6a2afdf332c785bd1d2a2ce0311254c80c7",
+        "combined_raw_matrix": "4804a51dd007bcb7e046d885044eda65a04d0b3717cc566d6ade9e3098b7cc6e",
+        "gene_raw_barcodes": "5e3969f11d28615ca47efd409205c6a17972edd7d1b2a756aaaccf36e6fd5c84",
+        "gene_raw_features": "447849e4e7672eb17179ab613465881eb673c465dd65f8f08612f3f7ccee7681",
+        "gene_raw_matrix": "14b23729a9517af97691ae57aba1fd9dda64aa791f8d4c69097d0082c692e890",
+        "guide_barcodes": "2806eb65d9023747b3c51316947dca32ccf6c935422dffe6b4ed6dc5fed7584e",
+        "guide_features": "980515f204a98a87a3ccf1707fcff093b5931d0ab77d344415bda6ccc2e00b4b",
+        "guide_matrix": "b7d26454e653e9c1bd69035b8002a6bb0096a9659979312a697111d2e2436bae"
+      },
+      "canonical_output_namespace": "TRU",
+      "combined_filtered_barcodes_checked": 54452,
+      "combined_filtered_dimensions": [
+        54262,
+        54452,
+        181299
+      ],
+      "combined_filtered_umi_sum": 187641,
+      "combined_output_namespace": "TRU",
+      "combined_raw_barcodes_checked": 75851,
+      "combined_raw_dimensions": [
+        54262,
+        75851,
+        214201
+      ],
+      "combined_raw_umi_sum": 220950,
+      "filtered_gene_dimensions": [
+        38606,
+        54452,
+        119741
+      ],
+      "filtered_gene_umi_sum": 120022,
+      "gex_input_namespace": "TRU",
+      "guide_assignment_namespace": "NXT",
+      "guide_barcodes_checked": 74822,
+      "guide_dimensions": [
+        15656,
+        74822,
+        127715
+      ],
+      "guide_features": 15656,
+      "guide_input_namespace": "NXT",
+      "guide_umi_sum": 134618,
+      "gzip_policy": "native gzip, no transcode",
+      "host": "bridges2",
+      "node": "r067",
+      "pilot_capture": "CP_R2",
+      "raw_gene_dimensions": [
+        38606,
+        3686400,
+        141140
+      ],
+      "raw_gene_umi_sum": 141421,
+      "read_limit": 250000,
+      "reference": "GRCh38-2024-A/Gencode-v44 MSK-30 index",
+      "run_dir": "/local/msk-cardiac-cp_r2-pilot-46246784/run",
+      "star_suite_commit": "1c9ddb9a5a2a3e62748e8e4ef28e553582affeed",
+      "star_suite_version": "1.9.4",
+      "status": "PASS",
+      "translated_guide_overlap_combined_raw": 33626,
+      "zshard_used": false
+    }
+  ],
+  "status": "PASS",
+  "zshard_used": false
+}

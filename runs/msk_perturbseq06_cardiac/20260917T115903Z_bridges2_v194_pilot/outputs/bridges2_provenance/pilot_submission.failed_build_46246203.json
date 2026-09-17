@@ -1,0 +1,12 @@
+{
+  "submitted_utc": "2026-09-17T13:16:27Z",
+  "build_job": "46246203",
+  "pilot_cp_r1_job": "46246204",
+  "pilot_cp_r2_job": "46246205",
+  "pilot_array": "two one-element submissions: 0 and 1",
+  "pilot_captures": ["CP_R1", "CP_R2"],
+  "pilot_nodes": ["r039", "r043"],
+  "gather_job": "46246206",
+  "production_submitted": false,
+  "zshard_used": false
+}

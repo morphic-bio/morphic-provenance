@@ -1,0 +1,8 @@
+name	path	role
+Cardiac corrected file manifest	inputs/Cardiac_corrected_file_manifest.tsv	corrected_file_manifest
+Cardiac corrected library manifest	inputs/Cardiac_corrected_library_manifest.tsv	corrected_library_manifest
+MSK LEG STAR Suite feature reference	inputs/MSK_LEG_star_suite_feature_reference.csv	feature_reference
+Pilot FASTQ basenames	inputs/pilot_fastq_basenames.txt	pilot_selection
+Provider MD5 manifest	/ocean/projects/bio230034p/lhung2/incoming/MSK_Perturbseq_20260910/MSK_Perturbseq06_Cardiac_20260910/cp.checksums.md5	provider_checksums
+Cardiac FASTQ root	/ocean/projects/bio230034p/lhung2/incoming/MSK_Perturbseq_20260910/MSK_Perturbseq06_Cardiac_20260910	fastq_root
+GRCh38 2024-A STAR index	/ocean/projects/bio230034p/shared/processing/references/GRCh38-2024-A-star-msk30	gex_reference

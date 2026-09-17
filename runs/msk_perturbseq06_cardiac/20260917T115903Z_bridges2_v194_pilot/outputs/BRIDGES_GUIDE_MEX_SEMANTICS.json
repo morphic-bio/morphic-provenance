@@ -1,0 +1,28 @@
+{
+  "captures": [
+    {
+      "barcode_keyed_matrix_sha256": "319b40545004671a3b227162549be41e2c699a0d11c8244ce874f4d28bca700e",
+      "barcode_set_sha256": "a8390e5b019b659fceca24867723ceef7a5bb71d24d4ef71c1a2e4beb90c4cf1",
+      "capture": "CP_R1",
+      "dimensions": [
+        15656,
+        43020,
+        90930
+      ],
+      "value_sum": 108271
+    },
+    {
+      "barcode_keyed_matrix_sha256": "27f71ba2d6920b9e542b729fe675bea1b39bcd9a55e374b4b1c2c129176e5490",
+      "barcode_set_sha256": "27d392a5e6e61704cfcf07a192b77bbe35b447cd10e68e680625356194293a9d",
+      "capture": "CP_R2",
+      "dimensions": [
+        15656,
+        74822,
+        127715
+      ],
+      "value_sum": 134618
+    }
+  ],
+  "method": "sort barcodes; hash sorted (barcode, feature row, integer count) tuples",
+  "status": "PASS"
+}

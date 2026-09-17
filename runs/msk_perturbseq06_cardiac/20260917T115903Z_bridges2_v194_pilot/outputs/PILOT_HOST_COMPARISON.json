@@ -1,0 +1,94 @@
+{
+  "build_modes": {
+    "bridges2": "WITH_CHROMAP=0",
+    "pikachu": "WITH_CHROMAP=1",
+    "scope": "same GEX/Solo/process_features code; Chromap is not invoked"
+  },
+  "comparisons": [
+    {
+      "all_artifact_sha256_equal": false,
+      "all_guide_semantics_equal": true,
+      "all_metrics_equal": true,
+      "artifact_sha256_equal": {
+        "combined_filtered_barcodes": true,
+        "combined_filtered_matrix": true,
+        "combined_raw_barcodes": true,
+        "combined_raw_matrix": true,
+        "gene_raw_barcodes": true,
+        "gene_raw_features": true,
+        "gene_raw_matrix": true,
+        "guide_barcodes": false,
+        "guide_features": true,
+        "guide_matrix": false
+      },
+      "capture": "CP_R1",
+      "guide_semantic_equal": {
+        "barcode_keyed_matrix_sha256": true,
+        "barcode_set_sha256": true,
+        "dimensions": true,
+        "value_sum": true
+      },
+      "metric_equal": {
+        "combined_filtered_barcodes_checked": true,
+        "combined_filtered_dimensions": true,
+        "combined_filtered_umi_sum": true,
+        "combined_raw_barcodes_checked": true,
+        "combined_raw_dimensions": true,
+        "combined_raw_umi_sum": true,
+        "filtered_gene_dimensions": true,
+        "filtered_gene_umi_sum": true,
+        "guide_barcodes_checked": true,
+        "guide_dimensions": true,
+        "guide_features": true,
+        "guide_umi_sum": true,
+        "raw_gene_dimensions": true,
+        "raw_gene_umi_sum": true,
+        "translated_guide_overlap_combined_raw": true
+      }
+    },
+    {
+      "all_artifact_sha256_equal": false,
+      "all_guide_semantics_equal": true,
+      "all_metrics_equal": true,
+      "artifact_sha256_equal": {
+        "combined_filtered_barcodes": true,
+        "combined_filtered_matrix": true,
+        "combined_raw_barcodes": true,
+        "combined_raw_matrix": true,
+        "gene_raw_barcodes": true,
+        "gene_raw_features": true,
+        "gene_raw_matrix": true,
+        "guide_barcodes": false,
+        "guide_features": true,
+        "guide_matrix": false
+      },
+      "capture": "CP_R2",
+      "guide_semantic_equal": {
+        "barcode_keyed_matrix_sha256": true,
+        "barcode_set_sha256": true,
+        "dimensions": true,
+        "value_sum": true
+      },
+      "metric_equal": {
+        "combined_filtered_barcodes_checked": true,
+        "combined_filtered_dimensions": true,
+        "combined_filtered_umi_sum": true,
+        "combined_raw_barcodes_checked": true,
+        "combined_raw_dimensions": true,
+        "combined_raw_umi_sum": true,
+        "filtered_gene_dimensions": true,
+        "filtered_gene_umi_sum": true,
+        "guide_barcodes_checked": true,
+        "guide_dimensions": true,
+        "guide_features": true,
+        "guide_umi_sum": true,
+        "raw_gene_dimensions": true,
+        "raw_gene_umi_sum": true,
+        "translated_guide_overlap_combined_raw": true
+      }
+    }
+  ],
+  "method": "same FASTQs, 250000-read cap, STAR Suite v1.9.4, GRCh38 2024-A, native gzip",
+  "note": "Metric and barcode-keyed guide MEX equality are required; raw artifact byte equality is reported separately because assignment columns may be reordered.",
+  "status": "PASS"
+}

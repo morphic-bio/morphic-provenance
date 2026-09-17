@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "build": {
+    "job_id": "46246773",
+    "node": "r290",
+    "elapsed": "00:01:28"
+  },
+  "cp_r1": {
+    "job_id": "46246783",
+    "array_task_id": 0,
+    "node": "r039",
+    "elapsed": "00:23:31"
+  },
+  "cp_r2": {
+    "job_id": "46246784",
+    "array_task_id": 1,
+    "submitted_node": "r043",
+    "node": "r067",
+    "elapsed": "00:17:42",
+    "note": "Repinned before execution because r043 became fully allocated"
+  },
+  "gather": {
+    "job_id": "46246785",
+    "node": "r055",
+    "elapsed": "00:00:04"
+  },
+  "production_submitted": false
+}

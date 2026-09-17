@@ -1,0 +1,12 @@
+star_suite_version=1.9.4
+commit=1c9ddb9a5a2a3e62748e8e4ef28e553582affeed
+source_archive=/ocean/projects/bio230034p/shared/processing/tools/star-suite-v1.9.4/source/STAR-suite-v1.9.4-1c9ddb9.tar.gz
+source_archive_sha256=0ed560291908b2a045c34a5200907c3d07d6dd423c1d99adcbc1b105b94df0bc
+with_chromap=0
+build_scope=scRNA-only portable Bridges-2 build
+htslib_headers=/local/star-suite-v1.9.4-build-46246773/core/legacy/source/htslib
+portable_link_adjustment=deduplicate process_features BGZF reader objects
+binary_sha256=2f4ab4ccac64d17b7a82f102ffe6a9f98ad81984d70b88e21602699e8f49805a
+compiler=g++ (GCC) 8.5.0 20210514 (Red Hat 8.5.0-22)
+built_utc=2026-09-17T13:27:57Z
+slurm_job_id=46246773

@@ -1,0 +1,7 @@
+star_suite_version=1.9.4
+commit=1c9ddb9a5a2a3e62748e8e4ef28e553582affeed
+source_archive_sha256=0ed560291908b2a045c34a5200907c3d07d6dd423c1d99adcbc1b105b94df0bc
+with_chromap=1
+binary_sha256=f154640e0df5040818e4d5aee80cc5d65f098737906741efd1c5add0597a0631
+compiler=g++ (Ubuntu 12.3.0-1ubuntu1~22.04.3) 12.3.0
+built_utc=2026-09-17T12:38:50Z

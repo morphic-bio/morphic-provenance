@@ -1,0 +1,115 @@
+{
+  "schema_version": "0.1",
+  "run_id": "20260917T115903Z_bridges2_v194_pilot",
+  "project": "msk_perturbseq06_cardiac",
+  "created_utc": "2026-09-17T11:59:03Z",
+  "operator": "lhhung",
+  "status": "pilot_complete_production_not_submitted",
+  "star_suite": {
+    "repo": "STAR-suite",
+    "version": "1.9.4",
+    "commit": "1c9ddb9a5a2a3e62748e8e4ef28e553582affeed",
+    "dirty": false,
+    "source_archive_sha256": "0ed560291908b2a045c34a5200907c3d07d6dd423c1d99adcbc1b105b94df0bc"
+  },
+  "recipes": {
+    "repo": "morphic-recipes",
+    "commit": "73148581d5261a2d83e8fdd0eff08adde18a979e",
+    "runbook": "docs/RUNBOOK_MSK_PERTURBSEQ06_CARDIAC_BRIDGES2.md"
+  },
+  "environment": {
+    "primary_host": "PSC Bridges-2",
+    "control_host": "pikachu",
+    "slurm_partition": "RM-shared",
+    "pilot_threads_per_task": 32,
+    "pilot_allocated_cpus_per_task": 64,
+    "pilot_memory_gb_per_task": 120,
+    "pilot_array": "two one-element submissions pinned to distinct nodes",
+    "bridges_build_mode": "WITH_CHROMAP=0",
+    "pikachu_build_mode": "WITH_CHROMAP=1",
+    "production_threads_per_task": 64,
+    "production_allocated_cpus_per_task": 64,
+    "production_memory_gb_per_task": 120,
+    "production_array": "0-7%1",
+    "container_image": "",
+    "cuda_required": false,
+    "cellbender_cuda": false
+  },
+  "inputs": [
+    {
+      "name": "Cardiac FASTQ delivery",
+      "path": "/ocean/projects/bio230034p/lhung2/incoming/MSK_Perturbseq_20260910/MSK_Perturbseq06_Cardiac_20260910",
+      "role": "fastq_input"
+    },
+    {
+      "name": "GRCh38 2024-A MSK-30 STAR index",
+      "path": "/ocean/projects/bio230034p/shared/processing/references/GRCh38-2024-A-star-msk30",
+      "role": "gex_reference"
+    },
+    {
+      "name": "MSK LEG guide reference",
+      "path": "inputs/MSK_LEG_star_suite_feature_reference.csv",
+      "role": "feature_reference"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "Bridges two-node pilot",
+      "path": "/ocean/projects/bio230034p/lhung2/msk-perturbseq06-cardiac-20260917/results/pilot_nodes",
+      "role": "pilot_results"
+    },
+    {
+      "name": "Pikachu control pilot",
+      "path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_results_20260917",
+      "role": "control_results"
+    },
+    {
+      "name": "Cross-host pilot comparison",
+      "path": "outputs/PILOT_HOST_COMPARISON.json",
+      "role": "validation_report"
+    }
+  ],
+  "pilot_result": {
+    "status": "PASS",
+    "build_job": "46246773",
+    "cp_r1_job": "46246783",
+    "cp_r1_node": "r039",
+    "cp_r2_job": "46246784",
+    "cp_r2_node": "r067",
+    "gather_job": "46246785",
+    "gather_node": "r055",
+    "distinct_pilot_nodes": 2,
+    "all_metrics_equal_across_hosts": true,
+    "all_guide_semantics_equal_across_hosts": true,
+    "integrated_mex_byte_identical_across_hosts": true
+  },
+  "policies": {
+    "zshard_used": false,
+    "fastq_transcode": false,
+    "gzip_mode": "native",
+    "y_removal": false,
+    "production_submitted": false
+  },
+  "corrections": [
+    {
+      "scope": "Bridges batch entrypoint",
+      "issue": "Slurm spool changed BASH_SOURCE-relative command lookup",
+      "resolution": "Use the fixed deployed provenance command directory"
+    },
+    {
+      "scope": "STAR Suite v1.9.4 portable build",
+      "issue": "Missing system HTSlib headers and duplicate integrated BGZF objects",
+      "resolution": "Use bundled headers and de-duplicate the portable link; durable fix is STAR Suite commit 99a6536"
+    },
+    {
+      "scope": "CP_R2 guide staging",
+      "issue": "Provider prefix contained a non-terminal _R2_ token",
+      "resolution": "Rewrite only the node-local prefix CP_R2_ to CPR2_ and record STAGING_MAP.tsv"
+    },
+    {
+      "scope": "Cross-host guide MEX comparison",
+      "issue": "Assignment-layer barcode column order differed by host",
+      "resolution": "Require identical sorted barcode sets and barcode-keyed count digests; integrated MEX files are byte-identical"
+    }
+  ]
+}
