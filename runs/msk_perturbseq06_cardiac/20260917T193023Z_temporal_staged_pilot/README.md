@@ -76,3 +76,25 @@ in SSH/Docker rsync and a CellBender MCKP edge case on the deliberately
 low-depth pilot. Scheduler commit `97e6411` fixes mapped-directory semantics and
 supports an explicit GPU-and-publish recovery mode. Attempt 5 uses that mode
 with CellBender's `mean` estimator and does not submit a second Slurm job.
+
+## Final result
+
+The staged pilot passed as a two-part durable recovery sequence:
+
+- attempt 4: Slurm job `46275807` completed on `r243` in `00:57:16`, then
+  Globus stage-back task `be2140af-b2d2-11f1-be05-02ffe792127d` transferred 7
+  files / 4,455,273 bytes with zero faults;
+- attempt 5: GPU-and-publish recovery run
+  `f9ac18d7-149e-413f-b11b-4bbcb0b9d29a` ran CellBender with CUDA on Pikachu,
+  produced 9 output artifacts, and published them with Globus task
+  `9b6d8577-b2dc-11f1-9987-0effcb3df825` (1,086,539,425 bytes, zero faults).
+
+Validation passed for the raw combined MEX (`54,262 x 97,789`, 801,269
+entries), CellBender full output (`54,262 x 97,789`), and CellBender filtered
+output (`54,262 x 629`). Ocean retains GeneFull, raw/filtered Velocyto layers,
+and the integrated CRISPR call outputs. See `outputs/final_validation.json`,
+`outputs/final_artifact_manifest.tsv`, and `outputs/final_report.md`.
+
+This is an orchestration smoke test on one million reads. Its 629-cell
+CellBender result is not a scientific Cardiac release or a substitute for the
+independent full-capture production run.
