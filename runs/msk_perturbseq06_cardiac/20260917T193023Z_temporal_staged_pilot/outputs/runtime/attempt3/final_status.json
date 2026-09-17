@@ -1,0 +1,12 @@
+{
+  "observed_utc": "2026-09-17T19:58:50.612898Z",
+  "status": {
+    "condition_results": {},
+    "node_statuses": {},
+    "run_id": "255a53ce-fea7-45ed-b213-28e9e5a619b9",
+    "status_source": "describe",
+    "workflow_id": "msk-cardiac-staged-pilot-20260917T193023Z-attempt3",
+    "workflow_status": "Failed",
+    "workflow_type": "StagedSlurmGpuWorkflow"
+  }
+}

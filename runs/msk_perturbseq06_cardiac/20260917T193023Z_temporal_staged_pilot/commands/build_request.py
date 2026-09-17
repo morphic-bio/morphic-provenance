@@ -96,14 +96,14 @@ def main() -> None:
             "job": {
                 "name": "cardiac-temporal-pilot",
                 "script": slurm_script,
-                "resources": {"cpus": 32, "gpus": 0, "mem_mb": 65536},
+                "resources": {"cpus": 32, "gpus": 0, "mem_mb": 63488},
                 "config": {
                     "partition": "RM-shared",
                     "time": "04:00:00",
                     "nodes": 1,
                     "ntasks": 1,
                     "cpus_per_task": 32,
-                    "mem": "64G",
+                    "mem": "62G",
                 },
             },
         },
