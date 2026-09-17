@@ -85,7 +85,11 @@ captures, 255 processing read pairs, and 707,990,121,243 delivered bytes.
 - Initial production array `46249747`: failed task 0, remaining tasks canceled.
 - Initial validator `46250387`: canceled with the failed array.
 - Corrected CP_A1 gate: `46251625` (`--array=0`).
-- Remaining captures: `46251626` (`--array=1-7%1`, after `46251625`).
+- Remaining captures: `46251626`, submitted as `--array=1-7%1` after
+  `46251625`, then corrected in place to `--array=1-7%7`. The CP_A1 gate
+  already prevents a failed configuration from reaching the other captures;
+  after that gate, all seven captures are independent and can use separate
+  nodes as scheduler capacity permits.
 - Whole-set validator: `46251627` (after `46251625` and `46251626`).
 - Exact failed-job scratch cleanup: `46251631` on `r225` and `46251632` on
   `r203`; these target only `/local/msk-cardiac-cp_a1-46249925` and

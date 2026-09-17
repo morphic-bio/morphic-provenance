@@ -24,7 +24,8 @@
     "threads_per_task": 64,
     "allocated_cpus_per_task": 64,
     "memory_gb_per_task": 120,
-    "array": "0-7%1",
+    "array": "gate 0; remaining 1-7%7",
+    "array_initial": "gate 0; remaining 1-7%1",
     "bridges_build_mode": "WITH_CHROMAP=0",
     "container_image": "",
     "cuda_required": false,
@@ -89,6 +90,11 @@
       "production_resolution": "Reversible node-local CP_R1_/CP_R2_/CP_R3_ prefix aliases plus a complete terminal R1/R2 and zero-R3 gate",
       "source_fix_commit": "e9c1ff7a2fb8c46d49bf33f6e976f29220101eaa",
       "source_fix_used_for_this_run": false
+    },
+    {
+      "issue": "The remaining independent captures were initially submitted with an unnecessary one-task array throttle",
+      "production_resolution": "Updated Slurm job 46251626 in place from 1-7%1 to 1-7%7 after retaining CP_A1 as the validation gate",
+      "command": "scontrol update JobId=46251626 ArrayTaskThrottle=7"
     }
   ]
 }

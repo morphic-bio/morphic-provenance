@@ -14,6 +14,11 @@ sbatch --parsable --array=0 \
 sbatch --parsable --array=1-7%1 --dependency=afterok:46251625 \
   /ocean/projects/bio230034p/lhung2/msk-perturbseq06-cardiac-20260917/provenance-production/20260917T141758Z_bridges2_v194_production/commands/run_cardiac_production_array_v2.sbatch
 
+# Applied in place after confirming that the CP_A1 gate already provides the
+# required production safety check. The seven remaining captures are
+# independent and may occupy separate nodes as scheduler capacity permits.
+scontrol update JobId=46251626 ArrayTaskThrottle=7
+
 sbatch --parsable --dependency=afterok:46251625:46251626 \
   /ocean/projects/bio230034p/lhung2/msk-perturbseq06-cardiac-20260917/provenance-production/20260917T141758Z_bridges2_v194_production/commands/gather_cardiac_production.sbatch
 

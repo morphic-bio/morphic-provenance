@@ -1,0 +1,10 @@
+{
+  "timestamp_utc": "2026-09-17T16:17:00Z",
+  "job_id": "46251626",
+  "dependency": "afterok:46251625",
+  "initial_array": "1-7%1",
+  "corrected_array": "1-7%7",
+  "command": "scontrol update JobId=46251626 ArrayTaskThrottle=7",
+  "reason": "CP_A1 is already the production validation gate; the seven dependent captures are independent and can use separate nodes.",
+  "result": "Slurm reported ArrayTaskThrottle=7"
+}
