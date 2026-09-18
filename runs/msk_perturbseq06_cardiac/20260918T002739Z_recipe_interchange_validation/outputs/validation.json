@@ -1,0 +1,27 @@
+{
+  "adapter_commit": "577c27f39e1dc3c83cf133eaf489dde37d85752e",
+  "checks": {
+    "approval_still_unconfirmed": true,
+    "gex_chemistry_is_tru": true,
+    "gpu_input_is_raw_mex": true,
+    "gpu_uses_cuda": true,
+    "guide_input_chemistry_is_nxt": true,
+    "guide_output_chemistry_is_tru": true,
+    "native_gzip_preserved": true,
+    "pilot_is_one_million_reads": true,
+    "plan_has_no_endpoint_ids": true,
+    "plan_has_no_task_queues": true,
+    "plan_schema": true,
+    "preflight_ready": true,
+    "publish_preserved": true,
+    "slurm_uses_32_cpus": true,
+    "slurm_wrapper_hash_recorded": true,
+    "stage_back_preserves_five_items": true,
+    "stage_in_has_four_fastqs_plus_wrapper": true
+  },
+  "scheduler_commit": "2e35bcc",
+  "schema": "morphic.recipe-interchange-validation/v1",
+  "source_pilot": "/mnt/pikachu/morphic-provenance-card-prod/runs/msk_perturbseq06_cardiac/20260917T193023Z_temporal_staged_pilot",
+  "status": "PASS",
+  "submitted": false
+}
