@@ -1,0 +1,157 @@
+{
+  "globus_task_queue": "cardiac-staged-pilot-20260917T193023Z",
+  "gpu": {
+    "job": {
+      "cmd": [
+        "cellbender",
+        "remove-background",
+        "--input",
+        "raw_feature_bc_matrix",
+        "--output",
+        "output/cellbender_counts.h5",
+        "--checkpoint",
+        "output/ckpt.tar.gz",
+        "--cuda",
+        "--expected-cells",
+        "300",
+        "--total-droplets-included",
+        "3000",
+        "--epochs",
+        "10",
+        "--low-count-threshold",
+        "2",
+        "--exclude-feature-types",
+        "CRISPR Guide Capture"
+      ],
+      "env": {},
+      "gpu_device": "0",
+      "gpu_wait_timeout_seconds": 7200,
+      "image": "biodepot/cellbender:0.3.2",
+      "input_files": {
+        "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/slurm/raw_feature_bc_matrix": "raw_feature_bc_matrix"
+      },
+      "local_output_dir": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/gpu",
+      "min_gpu_free_mb": 6000,
+      "timeout_seconds": 7200,
+      "use_gpu": true
+    },
+    "task_queue": "lhhung@localhost:22"
+  },
+  "publish": {
+    "destination_endpoint_id": "d9e522d3-c51e-4037-b375-55ffd155c715",
+    "items": [
+      {
+        "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/results/published",
+        "recursive": true,
+        "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/gpu"
+      }
+    ],
+    "label": "msk-cardiac-cp-r1-recipe-adapter-dry-run-20260918-publish",
+    "poll_interval_seconds": 15,
+    "preserve_timestamp": true,
+    "source_endpoint_id": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+    "submission_id": "d7dc13fd-a63e-5500-a54e-33b5a82c1d5f",
+    "sync_level": "checksum",
+    "timeout_seconds": 21600,
+    "verify_checksum": true
+  },
+  "slurm": {
+    "job": {
+      "config": {
+        "cpus_per_task": 32,
+        "mem": "64G",
+        "nodes": 1,
+        "ntasks": 1,
+        "partition": "RM-shared",
+        "time": "04:00:00"
+      },
+      "name": "msk-cardiac-cp-r1-recipe-adapter-dry-run-20260918",
+      "resources": {
+        "cpus": 32,
+        "gpus": 0,
+        "mem_mb": 65536
+      },
+      "script": "set -euo pipefail\nexec /bin/bash /ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/input/slurm_cardiac_subsample.sh\n"
+    },
+    "task_queue": "lhung2@bridges2.psc.edu:22",
+    "timeout_seconds": 21600
+  },
+  "stage_back": {
+    "destination_endpoint_id": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+    "items": [
+      {
+        "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/slurm/raw_feature_bc_matrix",
+        "recursive": true,
+        "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/results/slurm/run/outs/raw_feature_bc_matrix"
+      },
+      {
+        "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/slurm/SLURM_COMPLETE.json",
+        "recursive": false,
+        "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/results/slurm/SLURM_COMPLETE.json"
+      },
+      {
+        "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/slurm/Log.final.out",
+        "recursive": false,
+        "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/results/slurm/run/Log.final.out"
+      },
+      {
+        "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/slurm/RUN_COMMAND.sh",
+        "recursive": false,
+        "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/results/slurm/RUN_COMMAND.sh"
+      },
+      {
+        "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/slurm/time.txt",
+        "recursive": false,
+        "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/results/slurm/time.txt"
+      }
+    ],
+    "label": "msk-cardiac-cp-r1-recipe-adapter-dry-run-20260918-stage_back",
+    "poll_interval_seconds": 15,
+    "preserve_timestamp": true,
+    "source_endpoint_id": "d9e522d3-c51e-4037-b375-55ffd155c715",
+    "submission_id": "33383758-c5b7-564b-8588-2e1eaf072801",
+    "sync_level": "checksum",
+    "timeout_seconds": 21600,
+    "verify_checksum": true
+  },
+  "stage_in": {
+    "destination_endpoint_id": "d9e522d3-c51e-4037-b375-55ffd155c715",
+    "items": [
+      {
+        "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/input/CP_R1_mRNA_IGO_18593_2_S45_L007_R1_001.fastq.gz",
+        "recursive": false,
+        "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_R1_mRNA_IGO_18593_2_S45_L007_R1_001.fastq.gz"
+      },
+      {
+        "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/input/CP_R1_mRNA_IGO_18593_2_S45_L007_R2_001.fastq.gz",
+        "recursive": false,
+        "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_R1_mRNA_IGO_18593_2_S45_L007_R2_001.fastq.gz"
+      },
+      {
+        "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/input/CP_gRNA_IGO_17967_B_4_S38_L005_R1_001.fastq.gz",
+        "recursive": false,
+        "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_gRNA_IGO_17967_B_4_S38_L005_R1_001.fastq.gz"
+      },
+      {
+        "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/input/CP_gRNA_IGO_17967_B_4_S38_L005_R2_001.fastq.gz",
+        "recursive": false,
+        "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_gRNA_IGO_17967_B_4_S38_L005_R2_001.fastq.gz"
+      },
+      {
+        "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/input/slurm_cardiac_subsample.sh",
+        "recursive": false,
+        "source_path": "/mnt/pikachu/morphic-provenance-card-prod/runs/msk_perturbseq06_cardiac/20260917T193023Z_temporal_staged_pilot/commands/slurm_cardiac_subsample.sh"
+      }
+    ],
+    "label": "msk-cardiac-cp-r1-recipe-adapter-dry-run-20260918-stage_in",
+    "poll_interval_seconds": 15,
+    "preserve_timestamp": true,
+    "source_endpoint_id": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+    "submission_id": "f5a7afb0-423c-5e24-9ce4-a35000ad27df",
+    "sync_level": "checksum",
+    "timeout_seconds": 21600,
+    "verify_checksum": true
+  },
+  "task_queue": "cardiac-staged-pilot-20260917T193023Z",
+  "workflow_id": "msk-cardiac-cp-r1-recipe-adapter-dry-run-20260918"
+}

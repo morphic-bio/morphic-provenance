@@ -1,0 +1,10 @@
+/usr/bin/sbatch
+/usr/bin/sacct
+sha256:f31f1e993f3d87659c3dd541a22f505fec7ee4366f6d5da1324061c2c09dcb2a
+NVIDIA GeForce RTX 4060
+0, NVIDIA GeForce RTX 4060, 8188, 7823
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p2  1.8T  1.4T  360G  80% /
+/dev/md0         60T   51T  6.5T  89% /mnt/pikachu
+preflight_status=PASS
+completed_utc=2026-09-17T19:35:01Z

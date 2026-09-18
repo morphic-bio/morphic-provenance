@@ -1,0 +1,95 @@
+{
+  "handoffs": [
+    {
+      "from_stage": "star",
+      "input_port": "raw_mex",
+      "output_port": "raw_mex",
+      "to_stage": "cellbender"
+    }
+  ],
+  "recipe_id": "msk_cardiac_cp_r1_star_cellbender",
+  "recipe_schema": "biodepot.execution-recipe/v0",
+  "schema": "biodepot.staged-execution-plan/v1",
+  "stages": [
+    {
+      "command_profile": {
+        "args": [
+          {
+            "input_ref": "launch_script"
+          }
+        ],
+        "program": "/bin/bash"
+      },
+      "id": "star",
+      "inputs": {
+        "launch_script": {
+          "from": "recipe.inputs.launch_script",
+          "recipe_key": "launch_script",
+          "source": "recipe_input",
+          "type": "file"
+        }
+      },
+      "node_id": "launch",
+      "outputs": {
+        "raw_mex": {
+          "type": "directory"
+        }
+      },
+      "parameters": {},
+      "role": "slurm",
+      "source_language": "star-suite",
+      "workflow_id": "msk_cardiac_cp_r1_star_wrapper"
+    },
+    {
+      "command_profile": {
+        "args": [
+          "remove-background",
+          "--input",
+          {
+            "input_ref": "raw_mex"
+          },
+          "--output",
+          "output/cellbender_counts.h5",
+          "--checkpoint",
+          "output/ckpt.tar.gz",
+          "--cuda",
+          "--expected-cells",
+          "300",
+          "--total-droplets-included",
+          "3000",
+          "--epochs",
+          "10",
+          "--low-count-threshold",
+          "2",
+          "--exclude-feature-types",
+          "CRISPR Guide Capture"
+        ],
+        "program": "cellbender"
+      },
+      "id": "cellbender",
+      "inputs": {
+        "raw_mex": {
+          "from": "steps.star.outputs.raw_mex",
+          "output_port": "raw_mex",
+          "source": "step_output",
+          "type": "directory",
+          "upstream_step_id": "star"
+        }
+      },
+      "node_id": "cellbender",
+      "outputs": {
+        "filtered_h5": {
+          "type": "file"
+        }
+      },
+      "parameters": {},
+      "role": "gpu",
+      "source_language": "star-suite",
+      "workflow_id": "cellbender_0_3_2_cp_r1"
+    }
+  ],
+  "step_order": [
+    "star",
+    "cellbender"
+  ]
+}

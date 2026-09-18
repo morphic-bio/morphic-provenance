@@ -1,0 +1,7 @@
+name	path	bytes	notes
+staged_plan	staged-plan.json	2190	Site-neutral interchange plan
+workbench_bundle	workbench-bundle.json	75403	Frontend review artifact
+scheduler_request	scheduler-request.dry-run.json	6732	Exact no-submit Temporal request
+scheduler_parser_validation	scheduler-parser-validation.json	356	Pinned scheduler typed-parser checks
+preflight	preflight.json	87	Workbench preflight result
+validation	validation.json	972	Machine-readable acceptance checks

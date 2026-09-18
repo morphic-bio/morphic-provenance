@@ -1,0 +1,113 @@
+{
+  "gpu": {
+    "job": {
+      "cleanup": true,
+      "cmd": [
+        "cellbender",
+        "remove-background",
+        "--input",
+        "raw_feature_bc_matrix",
+        "--output",
+        "output/cellbender_counts.h5",
+        "--checkpoint",
+        "output/ckpt.tar.gz",
+        "--cuda",
+        "--expected-cells",
+        "300",
+        "--total-droplets-included",
+        "3000",
+        "--epochs",
+        "10",
+        "--low-count-threshold",
+        "2",
+        "--exclude-feature-types",
+        "CRISPR Guide Capture"
+      ],
+      "gpu_device": "0",
+      "gpu_wait_timeout_seconds": 7200,
+      "image": "biodepot/cellbender:0.3.2",
+      "input_files": {
+        "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/slurm/raw_feature_bc_matrix": "raw_feature_bc_matrix"
+      },
+      "local_output_dir": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/gpu",
+      "min_gpu_free_mb": 6000,
+      "timeout_seconds": 7200,
+      "use_gpu": true
+    },
+    "task_queue": "lhhung@localhost:22"
+  },
+  "publish": {
+    "destination_endpoint_id": "d9e522d3-c51e-4037-b375-55ffd155c715",
+    "items": [
+      {
+        "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/results/published",
+        "recursive": true,
+        "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/gpu"
+      }
+    ],
+    "label": "MSK Cardiac Temporal pilot publish 20260917T193023Z-attempt4",
+    "poll_interval_seconds": 15,
+    "source_endpoint_id": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+    "submission_id": "be98fab8-b2d2-11f1-9b5b-0affd5e180af",
+    "timeout_seconds": 21600
+  },
+  "slurm": {
+    "job": {
+      "config": {
+        "cpus_per_task": 32,
+        "mem": "62G",
+        "nodes": 1,
+        "ntasks": 1,
+        "partition": "RM-shared",
+        "time": "04:00:00"
+      },
+      "name": "cardiac-temporal-pilot",
+      "resources": {
+        "cpus": 32,
+        "gpus": 0,
+        "mem_mb": 63488
+      },
+      "script": "set -euo pipefail\n\nreadonly run_root=\"/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z\"\nreadonly input_root=\"${run_root}/input\"\nreadonly result_root=\"${run_root}/results/slurm\"\nreadonly star_bin=\"/ocean/projects/bio230034p/shared/processing/tools/star-suite-v1.9.4/bin/STAR\"\nreadonly genome_dir=\"/ocean/projects/bio230034p/shared/processing/references/GRCh38-2024-A-star-msk30\"\nreadonly reference_root=\"/ocean/projects/bio230034p/shared/processing/references/MSK_Perturbseq_LEG\"\nreadonly gex_whitelist=\"${reference_root}/3M-february-2018_TRU.txt\"\nreadonly guide_whitelist=\"${reference_root}/3M-february-2018_NXT.txt\"\nreadonly feature_ref=\"${reference_root}/MSK_LEG_star_suite_feature_reference.csv\"\n\nreadonly gex_r1_name=\"CP_R1_mRNA_IGO_18593_2_S45_L007_R1_001.fastq.gz\"\nreadonly gex_r2_name=\"CP_R1_mRNA_IGO_18593_2_S45_L007_R2_001.fastq.gz\"\nreadonly guide_r1_name=\"CP_gRNA_IGO_17967_B_4_S38_L005_R1_001.fastq.gz\"\nreadonly guide_r2_name=\"CP_gRNA_IGO_17967_B_4_S38_L005_R2_001.fastq.gz\"\n\ntest ! -e \"${result_root}\"\nfor path in \\\n  \"${star_bin}\" \\\n  \"${genome_dir}/Genome\" \\\n  \"${gex_whitelist}\" \\\n  \"${guide_whitelist}\" \\\n  \"${feature_ref}\" \\\n  \"${input_root}/${gex_r1_name}\" \\\n  \"${input_root}/${gex_r2_name}\" \\\n  \"${input_root}/${guide_r1_name}\" \\\n  \"${input_root}/${guide_r2_name}\"; do\n  test -s \"${path}\"\ndone\n[[ \"$(\"${star_bin}\" --version)\" == \"1.9.4\" ]]\n\nscratch_root=\"${LOCAL:-/tmp}/temporal-cardiac-pilot-${SLURM_JOB_ID}\"\ngex_dir=\"${scratch_root}/fastqs/gex\"\nguide_dir=\"${scratch_root}/fastqs/PolyIII\"\nrun_dir=\"${scratch_root}/run\"\npartial=\"${run_root}/results/.slurm.partial.${SLURM_JOB_ID}\"\ntrap 'rm -rf \"${scratch_root}\" \"${partial}\"' EXIT\nmkdir -p \"${gex_dir}\" \"${guide_dir}\" \"${run_dir}\" \"${partial}\"\n\ncp_checked() {\n  local source=\"$1\"\n  local destination=\"$2\"\n  local expected_md5=\"$3\"\n  cp \"${source}\" \"${destination}\"\n  printf '%s  %s\\n' \"${expected_md5}\" \"${destination}\" | md5sum -c -\n  gzip -t \"${destination}\"\n}\n\ncp_checked \"${input_root}/${gex_r1_name}\" \"${gex_dir}/${gex_r1_name}\" fbf09717ce4445eb179156cfde7cb63d &\np1=$!\ncp_checked \"${input_root}/${gex_r2_name}\" \"${gex_dir}/${gex_r2_name}\" 1df1bf3d60bb87e4b40845208360b5eb &\np2=$!\ncp_checked \"${input_root}/${guide_r1_name}\" \"${guide_dir}/${guide_r1_name}\" 7cba6a93df74b135faf7e5b2d857b875 &\np3=$!\ncp_checked \"${input_root}/${guide_r2_name}\" \"${guide_dir}/${guide_r2_name}\" 1f93718c2b0f89d417df2f359def2264 &\np4=$!\nwait \"${p1}\" \"${p2}\" \"${p3}\" \"${p4}\"\n\npf_config=\"${scratch_root}/pf_multi_config.csv\"\ncat > \"${pf_config}\" <<EOF\n[libraries]\nfastqs,sample,library_type,feature_types,star_chemistry,star_whitelist,star_feature_ref,star_library_id,star_max_hamming\n${gex_dir},CP_R1,Gene Expression,Gene Expression,TRU,,,gex_cp_r1,\n${guide_dir},CP_R1,CRISPR Guide Capture,CRISPR Guide Capture,NXT,${guide_whitelist},${feature_ref},grna_cp_r1,1\nEOF\n\nunset STAR_SOLO_NONFLEX_HASH_BRIDGE\nexport STAR_VELOCYTO_LOW_MEM=1\nexport STAR_SOLO_BINARY_SPOOL=1\n\ncmd=(\n  \"${star_bin}\"\n  --runThreadN 32\n  --genomeDir \"${genome_dir}\"\n  --readFilesIn \"${gex_dir}/${gex_r2_name}\" \"${gex_dir}/${gex_r1_name}\"\n  --readFilesBgzfMode auto\n  --outFileNamePrefix \"${run_dir}/\"\n  --outTmpDir \"${scratch_root}/tmp_STAR\"\n  --outSAMtype None\n  --clipAdapterType CellRanger4\n  --alignEndsType Local\n  --chimSegmentMin 1000000\n  --clip3pPolyG yes\n  --soloType CB_UMI_Simple\n  --soloCBstart 1\n  --soloCBlen 16\n  --soloUMIstart 17\n  --soloUMIlen 12\n  --soloBarcodeReadLength 0\n  --soloInlineHashMode no\n  --soloCBwhitelist \"${gex_whitelist}\"\n  --soloStrand Forward\n  --soloFeatures GeneFull Velocyto\n  --soloUMIdedup 1MM_CR\n  --soloCBmatchWLtype 1MM_multi_Nbase_pseudocounts\n  --soloCellFilter EmptyDrops_CR\n  --soloUMIfiltering MultiGeneUMI_CR\n  --soloMultiMappers Unique\n  --soloCbUbRequireTogether no\n  --soloCrGexFeature genefull\n  --soloCrMultimapRescue yes\n  --pfMultiConfig \"${pf_config}\"\n  --crFeatureRef \"${feature_ref}\"\n  --crWhitelist \"${guide_whitelist}\"\n  --crChemistry auto\n  --crOutputChemistry TRU\n  --crMinUmi 2\n  --crAssignMaxHamming 1\n  --crAssignFeatureOffset -1\n  --crAssignLimitSearch -1\n  --crAssignMinCounts 0\n  --crAssignMaxBarcodeMismatches 5\n  --crAssignFeatureN 0\n  --crAssignBarcodeN 1\n  --crAssignConsumerThreads -1\n  --crAssignSearchThreads 1\n  --crAssignSkipQcOutputs 0\n  --crAssignBgzfMode auto\n  --defaultCrCompat yes\n  --dynamicThreadInterface 1\n  --dynamicThreadConstMapPermits 32\n  --dynamicThreadTelemetry 1\n  --readMapNumber 1000000\n)\n\nprintf '%q ' \"${cmd[@]}\" > \"${scratch_root}/RUN_COMMAND.sh\"\nprintf '\\n' >> \"${scratch_root}/RUN_COMMAND.sh\"\n/usr/bin/time -v -o \"${scratch_root}/time.txt\" \"${cmd[@]}\"\n\ntest -s \"${run_dir}/Log.final.out\"\ntest -s \"${run_dir}/outs/raw_feature_bc_matrix/matrix.mtx.gz\"\ntest -s \"${run_dir}/outs/filtered_feature_bc_matrix/matrix.mtx.gz\"\ntest -s \"${run_dir}/outs/raw_velocyto_feature_bc_matrix/spliced.mtx.gz\"\ntest -s \"${run_dir}/cr_assign/CRISPR_Guide_Capture/grna_cp_r1/PolyIII/matrix.mtx\"\n\nmkdir -p \"${partial}/run\"\ncp -a \"${run_dir}/.\" \"${partial}/run/\"\ncp \"${pf_config}\" \"${scratch_root}/RUN_COMMAND.sh\" \"${scratch_root}/time.txt\" \"${partial}/\"\npython3 - \"${partial}/SLURM_COMPLETE.json\" <<'PY'\nimport json\nimport os\nimport sys\nfrom datetime import datetime, timezone\n\npayload = {\n    \"completed_utc\": datetime.now(timezone.utc).isoformat().replace(\"+00:00\", \"Z\"),\n    \"node\": os.environ.get(\"SLURMD_NODENAME\", \"unknown\"),\n    \"read_map_number\": 1000000,\n    \"slurm_job_id\": os.environ[\"SLURM_JOB_ID\"],\n    \"star_suite_version\": \"1.9.4\",\n    \"status\": \"PASS\",\n}\nwith open(sys.argv[1], \"w\") as handle:\n    json.dump(payload, handle, indent=2, sort_keys=True)\n    handle.write(\"\\n\")\nPY\n\nmv \"${partial}\" \"${result_root}\"\ntrap 'rm -rf \"${scratch_root}\"' EXIT\ncat \"${result_root}/SLURM_COMPLETE.json\"\n"
+    },
+    "poll_interval_seconds": 15,
+    "task_queue": "lhung2@bridges2.psc.edu:22",
+    "timeout_seconds": 21600
+  },
+  "stage_back": {
+    "destination_endpoint_id": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+    "items": [
+      {
+        "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/slurm/raw_feature_bc_matrix",
+        "recursive": true,
+        "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/results/slurm/run/outs/raw_feature_bc_matrix"
+      },
+      {
+        "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/slurm/SLURM_COMPLETE.json",
+        "recursive": false,
+        "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/results/slurm/SLURM_COMPLETE.json"
+      },
+      {
+        "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/slurm/Log.final.out",
+        "recursive": false,
+        "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/results/slurm/run/Log.final.out"
+      },
+      {
+        "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/slurm/RUN_COMMAND.sh",
+        "recursive": false,
+        "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/results/slurm/RUN_COMMAND.sh"
+      },
+      {
+        "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/slurm/time.txt",
+        "recursive": false,
+        "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-pilot-20260917T193023Z/results/slurm/time.txt"
+      }
+    ],
+    "label": "MSK Cardiac Temporal pilot stage-back 20260917T193023Z-attempt4",
+    "poll_interval_seconds": 15,
+    "source_endpoint_id": "d9e522d3-c51e-4037-b375-55ffd155c715",
+    "submission_id": "be214157-b2d2-11f1-8b95-02ffe792127d",
+    "timeout_seconds": 21600
+  },
+  "task_queue": "cardiac-staged-pilot-20260917T193023Z",
+  "workflow_id": "msk-cardiac-staged-pilot-20260917T193023Z-attempt4"
+}

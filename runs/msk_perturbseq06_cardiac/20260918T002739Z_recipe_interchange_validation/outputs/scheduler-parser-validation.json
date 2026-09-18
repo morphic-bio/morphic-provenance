@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "gpu_cuda": true,
+    "gpu_present": true,
+    "publish_item_count": true,
+    "slurm_cpus": true,
+    "slurm_present": true,
+    "stage_back_item_count": true,
+    "stage_in_item_count": true
+  },
+  "scheduler_commit": "2e35bcc",
+  "schema": "morphic.scheduler-payload-parser-validation/v1",
+  "status": "PASS",
+  "submitted": false
+}

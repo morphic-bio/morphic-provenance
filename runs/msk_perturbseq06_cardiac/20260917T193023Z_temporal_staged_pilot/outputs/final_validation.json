@@ -1,0 +1,42 @@
+{
+  "cellbender_filtered": {
+    "analyzed_barcodes": 3000,
+    "analyzed_features": 17480,
+    "estimator": "mean",
+    "matrix_nnz": 48562,
+    "matrix_shape": [
+      54262,
+      629
+    ]
+  },
+  "cellbender_full": {
+    "analyzed_barcodes": 3000,
+    "analyzed_features": 17480,
+    "estimator": "mean",
+    "matrix_nnz": 48562,
+    "matrix_shape": [
+      54262,
+      97789
+    ]
+  },
+  "gpu_artifact_bytes": 1086539425,
+  "gpu_artifact_count": 9,
+  "manifest": "outputs/final_artifact_manifest.tsv",
+  "publish_globus_task": "9b6d8577-b2dc-11f1-9987-0effcb3df825",
+  "raw_mex_shape": [
+    54262,
+    97789,
+    801269
+  ],
+  "slurm": {
+    "completed_utc": "2026-09-17T21:02:36.497190Z",
+    "node": "r243",
+    "read_map_number": 1000000,
+    "slurm_job_id": "46275807",
+    "star_suite_version": "1.9.4",
+    "status": "PASS"
+  },
+  "stage_back_globus_task": "be2140af-b2d2-11f1-be05-02ffe792127d",
+  "status": "PASS",
+  "validated_utc": "2026-09-17T21:19:50.641554Z"
+}

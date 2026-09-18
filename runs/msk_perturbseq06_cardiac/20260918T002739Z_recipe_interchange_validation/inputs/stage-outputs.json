@@ -1,0 +1,8 @@
+{
+  "cellbender": {
+    "filtered_h5": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/gpu/cellbender_counts_filtered.h5"
+  },
+  "star": {
+    "raw_mex": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_pilot_20260917T193023Z/slurm/raw_feature_bc_matrix"
+  }
+}

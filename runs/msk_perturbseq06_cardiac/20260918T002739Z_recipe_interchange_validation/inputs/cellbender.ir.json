@@ -1,0 +1,77 @@
+{
+  "annotations": {
+    "provenance": {
+      "cellbender_version": "0.3.2",
+      "cuda": true
+    }
+  },
+  "execution_hints": {},
+  "metadata": {
+    "id": "cellbender_0_3_2_cp_r1",
+    "name": "CellBender CP_R1",
+    "source_language": "star-suite"
+  },
+  "optional_specs": {},
+  "schema": "biodepot.workflow-ir/v0",
+  "workflow": {
+    "conditions": [],
+    "edges": [],
+    "inputs": {
+      "raw_mex": {
+        "required": true,
+        "type": "directory"
+      }
+    },
+    "nodes": [
+      {
+        "extensions": {
+          "command_profile": {
+            "args": [
+              "remove-background",
+              "--input",
+              {
+                "input_ref": "raw_mex"
+              },
+              "--output",
+              "output/cellbender_counts.h5",
+              "--checkpoint",
+              "output/ckpt.tar.gz",
+              "--cuda",
+              "--expected-cells",
+              "300",
+              "--total-droplets-included",
+              "3000",
+              "--epochs",
+              "10",
+              "--low-count-threshold",
+              "2",
+              "--exclude-feature-types",
+              "CRISPR Guide Capture"
+            ],
+            "program": "cellbender"
+          }
+        },
+        "id": "cellbender",
+        "inputs": {
+          "raw_mex": {
+            "required": true,
+            "type": "directory"
+          }
+        },
+        "kind": "x-command",
+        "name": "CellBender remove-background",
+        "outputs": {
+          "filtered_h5": {
+            "type": "file"
+          }
+        }
+      }
+    ],
+    "outputs": {
+      "filtered_h5": {
+        "type": "file"
+      }
+    },
+    "subworkflows": []
+  }
+}

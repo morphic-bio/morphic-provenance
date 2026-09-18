@@ -1,0 +1,12 @@
+{
+  "created_utc": "2026-09-17T19:30:23Z",
+  "completed_utc": "2026-09-17T21:18:01Z",
+  "dataset": "MSK Perturb-seq 06 Cardiac",
+  "purpose": "Temporal Globus-Slurm-GPU integration pilot",
+  "preflight_completed_utc": "2026-09-17T19:35:01Z",
+  "run_id": "20260917T193023Z_temporal_staged_pilot",
+  "scheduler_commit": "97e64118bdfec80bf42a3e2361e738afa852b1ab",
+  "star_suite_commit": "1c9ddb9a5a2a3e62748e8e4ef28e553582affeed",
+  "star_suite_version": "1.9.4",
+  "status": "complete"
+}

@@ -1,0 +1,8 @@
+name	path	bytes	notes
+source_pilot	../20260917T193023Z_temporal_staged_pilot		Completed execution evidence used for adapter validation
+recipe	recipe.json	1184	Two-stage scheduler-chained scientific recipe
+align_ir	align.ir.json	1440	STAR Suite wrapper Workflow IR
+cellbender_ir	cellbender.ir.json	1701	CellBender Workflow IR with CUDA command
+executor_profile	executor-profile.json	5280	Reviewable Pikachu and Bridges-2 deployment values
+recipe_inputs	recipe-inputs.json	132	Resolved wrapper input path
+stage_outputs	stage-outputs.json	283	Resolved Slurm-to-GPU handoff and final output paths
