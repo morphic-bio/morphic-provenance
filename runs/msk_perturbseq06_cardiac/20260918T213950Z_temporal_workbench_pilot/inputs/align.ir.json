@@ -1,0 +1,64 @@
+{
+  "annotations": {
+    "provenance": {
+      "gex_chemistry": "TRU",
+      "guide_input_chemistry": "NXT",
+      "guide_output_chemistry": "TRU",
+      "reference": "refdata-gex-GRCh38-2024-A",
+      "star_suite_version": "1.9.4",
+      "wrapper_sha256": "f0a5e258048ff1ef2a2a279b4cb12e00326fefad95c2dcf03badf8a9dbb1808e"
+    }
+  },
+  "execution_hints": {},
+  "metadata": {
+    "id": "msk_cardiac_cp_r1_star_wrapper",
+    "name": "MSK Cardiac CP_R1 STAR Suite wrapper",
+    "source_language": "star-suite"
+  },
+  "optional_specs": {},
+  "schema": "biodepot.workflow-ir/v0",
+  "workflow": {
+    "conditions": [],
+    "edges": [],
+    "inputs": {
+      "launch_script": {
+        "required": true,
+        "type": "file"
+      }
+    },
+    "nodes": [
+      {
+        "extensions": {
+          "command_profile": {
+            "args": [
+              {
+                "input_ref": "launch_script"
+              }
+            ],
+            "program": "/bin/bash"
+          }
+        },
+        "id": "launch",
+        "inputs": {
+          "launch_script": {
+            "required": true,
+            "type": "file"
+          }
+        },
+        "kind": "x-command",
+        "name": "Launch STAR Suite CP_R1 wrapper",
+        "outputs": {
+          "raw_mex": {
+            "type": "directory"
+          }
+        }
+      }
+    ],
+    "outputs": {
+      "raw_mex": {
+        "type": "directory"
+      }
+    },
+    "subworkflows": []
+  }
+}

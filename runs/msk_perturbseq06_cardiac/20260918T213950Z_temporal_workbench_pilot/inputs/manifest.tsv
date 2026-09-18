@@ -1,0 +1,9 @@
+name	path	bytes	notes
+source_pilot	/mnt/pikachu/morphic-provenance-msk-temporal-workbench/runs/msk_perturbseq06_cardiac/20260917T193023Z_temporal_staged_pilot		Completed staged Temporal execution evidence
+template_run	/mnt/pikachu/morphic-provenance-msk-temporal-workbench/runs/msk_perturbseq06_cardiac/20260918T002739Z_recipe_interchange_validation		Validated recipe/interchange template
+recipe	recipe.json	1656	Two-stage STAR Suite to CellBender recipe
+align.ir	align.ir.json	1440	STAR Suite wrapper Workflow IR
+cellbender.ir	cellbender.ir.json	1701	CellBender Workflow IR with CUDA
+executor-profile	executor-profile.json	5395	Reviewable Pikachu and Bridges-2 deployment values
+recipe-inputs	recipe-inputs.json	136	Fresh Ocean wrapper path
+stage-outputs	stage-outputs.json	291	Fresh Slurm-to-GPU handoff and output paths

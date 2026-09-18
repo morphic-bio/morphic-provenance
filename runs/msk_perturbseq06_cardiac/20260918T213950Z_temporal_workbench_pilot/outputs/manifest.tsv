@@ -1,0 +1,6 @@
+name	path	bytes	notes
+workbench-bundle	workbench-bundle.json	76364	Schema-driven review and approval artifact
+preflight	preflight.json	87	Workbench bundle preflight
+scheduler-request.dry-run	scheduler-request.dry-run.json	6809	Exact staged Temporal request; not submitted
+validation	validation.json	439	Machine-readable semantic and parser checks
+workbench-live-validation	workbench-live-validation.json	627	Live UI preflight and no-submit dry-run validation

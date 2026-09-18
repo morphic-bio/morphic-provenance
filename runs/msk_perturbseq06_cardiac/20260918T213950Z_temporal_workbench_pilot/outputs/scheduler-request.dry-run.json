@@ -1,0 +1,157 @@
+{
+  "globus_task_queue": "cardiac-workbench-pilot-20260918T213950Z",
+  "gpu": {
+    "job": {
+      "cmd": [
+        "cellbender",
+        "remove-background",
+        "--input",
+        "raw_feature_bc_matrix",
+        "--output",
+        "output/cellbender_counts.h5",
+        "--checkpoint",
+        "output/ckpt.tar.gz",
+        "--cuda",
+        "--expected-cells",
+        "300",
+        "--total-droplets-included",
+        "3000",
+        "--epochs",
+        "10",
+        "--low-count-threshold",
+        "2",
+        "--exclude-feature-types",
+        "CRISPR Guide Capture"
+      ],
+      "env": {},
+      "gpu_device": "0",
+      "gpu_wait_timeout_seconds": 7200,
+      "image": "biodepot/cellbender:0.3.2",
+      "input_files": {
+        "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/raw_feature_bc_matrix": "raw_feature_bc_matrix"
+      },
+      "local_output_dir": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/gpu",
+      "min_gpu_free_mb": 6000,
+      "timeout_seconds": 7200,
+      "use_gpu": true
+    },
+    "task_queue": "lhhung@localhost:22"
+  },
+  "publish": {
+    "destination_endpoint_id": "d9e522d3-c51e-4037-b375-55ffd155c715",
+    "items": [
+      {
+        "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/published",
+        "recursive": true,
+        "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/gpu"
+      }
+    ],
+    "label": "msk-cardiac-cp-r1-workbench-20260918T213950Z-publish",
+    "poll_interval_seconds": 15,
+    "preserve_timestamp": true,
+    "source_endpoint_id": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+    "submission_id": "37dada87-70b4-5544-93c6-60b0f0e54287",
+    "sync_level": "checksum",
+    "timeout_seconds": 21600,
+    "verify_checksum": true
+  },
+  "slurm": {
+    "job": {
+      "config": {
+        "cpus_per_task": 32,
+        "mem": "64G",
+        "nodes": 1,
+        "ntasks": 1,
+        "partition": "RM-shared",
+        "time": "04:00:00"
+      },
+      "name": "msk-cardiac-cp-r1-workbench-20260918T213950Z",
+      "resources": {
+        "cpus": 32,
+        "gpus": 0,
+        "mem_mb": 65536
+      },
+      "script": "set -euo pipefail\nexec /bin/bash /ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/slurm_cardiac_subsample.sh\n"
+    },
+    "task_queue": "lhung2@bridges2.psc.edu:22",
+    "timeout_seconds": 21600
+  },
+  "stage_back": {
+    "destination_endpoint_id": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+    "items": [
+      {
+        "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/raw_feature_bc_matrix",
+        "recursive": true,
+        "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/run/outs/raw_feature_bc_matrix"
+      },
+      {
+        "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/SLURM_COMPLETE.json",
+        "recursive": false,
+        "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/SLURM_COMPLETE.json"
+      },
+      {
+        "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/Log.final.out",
+        "recursive": false,
+        "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/run/Log.final.out"
+      },
+      {
+        "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/RUN_COMMAND.sh",
+        "recursive": false,
+        "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/RUN_COMMAND.sh"
+      },
+      {
+        "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/time.txt",
+        "recursive": false,
+        "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/time.txt"
+      }
+    ],
+    "label": "msk-cardiac-cp-r1-workbench-20260918T213950Z-stage_back",
+    "poll_interval_seconds": 15,
+    "preserve_timestamp": true,
+    "source_endpoint_id": "d9e522d3-c51e-4037-b375-55ffd155c715",
+    "submission_id": "7a5912d5-e152-5b23-bf2c-3334784629d9",
+    "sync_level": "checksum",
+    "timeout_seconds": 21600,
+    "verify_checksum": true
+  },
+  "stage_in": {
+    "destination_endpoint_id": "d9e522d3-c51e-4037-b375-55ffd155c715",
+    "items": [
+      {
+        "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_R1_mRNA_IGO_18593_2_S45_L007_R1_001.fastq.gz",
+        "recursive": false,
+        "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_R1_mRNA_IGO_18593_2_S45_L007_R1_001.fastq.gz"
+      },
+      {
+        "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_R1_mRNA_IGO_18593_2_S45_L007_R2_001.fastq.gz",
+        "recursive": false,
+        "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_R1_mRNA_IGO_18593_2_S45_L007_R2_001.fastq.gz"
+      },
+      {
+        "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_gRNA_IGO_17967_B_4_S38_L005_R1_001.fastq.gz",
+        "recursive": false,
+        "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_gRNA_IGO_17967_B_4_S38_L005_R1_001.fastq.gz"
+      },
+      {
+        "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_gRNA_IGO_17967_B_4_S38_L005_R2_001.fastq.gz",
+        "recursive": false,
+        "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_gRNA_IGO_17967_B_4_S38_L005_R2_001.fastq.gz"
+      },
+      {
+        "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/slurm_cardiac_subsample.sh",
+        "recursive": false,
+        "source_path": "/mnt/pikachu/morphic-provenance-msk-temporal-workbench/runs/msk_perturbseq06_cardiac/20260918T213950Z_temporal_workbench_pilot/commands/slurm_cardiac_subsample.sh"
+      }
+    ],
+    "label": "msk-cardiac-cp-r1-workbench-20260918T213950Z-stage_in",
+    "poll_interval_seconds": 15,
+    "preserve_timestamp": true,
+    "source_endpoint_id": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+    "submission_id": "af230036-6a8d-50a8-83b5-f9ea8ab234b2",
+    "sync_level": "checksum",
+    "timeout_seconds": 21600,
+    "verify_checksum": true
+  },
+  "task_queue": "cardiac-workbench-pilot-20260918T213950Z",
+  "workflow_id": "msk-cardiac-cp-r1-workbench-20260918T213950Z"
+}

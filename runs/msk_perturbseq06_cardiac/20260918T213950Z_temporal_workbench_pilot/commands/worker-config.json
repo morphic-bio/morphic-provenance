@@ -1,0 +1,14 @@
+{
+  "executors": {
+    "globus": {
+      "allowed_endpoint_ids": [
+        "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+        "d9e522d3-c51e-4037-b375-55ffd155c715"
+      ],
+      "cli_path": "/home/lhhung/.local/bin/globus"
+    }
+  },
+  "pipeline": {
+    "task_queue": "cardiac-workbench-pilot-20260918T213950Z"
+  }
+}

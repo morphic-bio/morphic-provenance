@@ -1,0 +1,2138 @@
+{
+  "execution_recipe": {
+    "id": "msk_cardiac_cp_r1_star_cellbender",
+    "inputs": {
+      "launch_script": {
+        "kind": "path",
+        "required": true
+      }
+    },
+    "metadata": {
+      "prepared_run": "/mnt/pikachu/morphic-provenance-msk-temporal-workbench/runs/msk_perturbseq06_cardiac/20260918T213950Z_temporal_workbench_pilot",
+      "source_execution_evidence": "/mnt/pikachu/morphic-provenance-msk-temporal-workbench/runs/msk_perturbseq06_cardiac/20260917T193023Z_temporal_staged_pilot",
+      "source_run": "/mnt/pikachu/morphic-provenance-card-prod/runs/msk_perturbseq06_cardiac/20260917T193023Z_temporal_staged_pilot",
+      "source_template_run": "/mnt/pikachu/morphic-provenance-msk-temporal-workbench/runs/msk_perturbseq06_cardiac/20260918T002739Z_recipe_interchange_validation"
+    },
+    "outputs": {
+      "filtered_h5": {
+        "from": "steps.cellbender.outputs.filtered_h5"
+      }
+    },
+    "schema": "biodepot.execution-recipe/v0",
+    "steps": [
+      {
+        "exports": {
+          "raw_mex": {
+            "checkpoint": true,
+            "kind": "path"
+          }
+        },
+        "id": "star",
+        "inputs": {
+          "launch_script": {
+            "from": "recipe.inputs.launch_script"
+          }
+        },
+        "workflow_id": "msk_cardiac_cp_r1_star_wrapper"
+      },
+      {
+        "depends_on": [
+          "star"
+        ],
+        "exports": {
+          "filtered_h5": {
+            "kind": "path"
+          }
+        },
+        "id": "cellbender",
+        "inputs": {
+          "raw_mex": {
+            "from": "steps.star.outputs.raw_mex"
+          }
+        },
+        "workflow_id": "cellbender_0_3_2_cp_r1"
+      }
+    ],
+    "strategy": "scheduler_chained",
+    "title": "MSK Cardiac CP_R1 STAR Suite and CellBender"
+  },
+  "form_data": {
+    "execution": {
+      "profile": "pikachu-bridges2-cardiac-workbench-20260918T213950Z",
+      "project_label": "msk_cardiac_cp_r1_star_cellbender",
+      "run_id": "msk-cardiac-cp-r1-workbench-20260918T213950Z",
+      "target": "temporal",
+      "workdir": "/tmp/staged-recipe"
+    },
+    "recipe_inputs": {
+      "launch_script": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/slurm_cardiac_subsample.sh"
+    },
+    "stage_outputs": {
+      "cellbender": {
+        "filtered_h5": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/gpu/cellbender_counts_filtered.h5"
+      },
+      "star": {
+        "raw_mex": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/raw_feature_bc_matrix"
+      }
+    },
+    "stage_parameters": {
+      "cellbender": {},
+      "star": {}
+    },
+    "staged": {
+      "globus": {
+        "task_queue": "cardiac-workbench-pilot-20260918T213950Z"
+      },
+      "gpu": {
+        "device": "0",
+        "image": "biodepot/cellbender:0.3.2",
+        "local_output_dir": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/gpu",
+        "min_free_mb": 6000,
+        "task_queue": "lhhung@localhost:22",
+        "timeout_seconds": 7200,
+        "wait_timeout_seconds": 7200
+      },
+      "orchestration": {
+        "task_queue": "cardiac-workbench-pilot-20260918T213950Z"
+      },
+      "slurm": {
+        "config": {
+          "cpus_per_task": 32,
+          "mem": "64G",
+          "nodes": 1,
+          "ntasks": 1,
+          "partition": "RM-shared",
+          "time": "04:00:00"
+        },
+        "cpus": 32,
+        "mem_mb": 65536,
+        "partition": "RM-shared",
+        "task_queue": "lhung2@bridges2.psc.edu:22",
+        "time": "04:00:00",
+        "timeout_seconds": 21600
+      },
+      "transfers": {
+        "publish": {
+          "destination_endpoint_id": "d9e522d3-c51e-4037-b375-55ffd155c715",
+          "items": [
+            {
+              "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/published",
+              "recursive": true,
+              "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/gpu"
+            }
+          ],
+          "poll_interval_seconds": 15,
+          "source_endpoint_id": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+          "timeout_seconds": 21600
+        },
+        "stage_back": {
+          "destination_endpoint_id": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+          "items": [
+            {
+              "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/raw_feature_bc_matrix",
+              "recursive": true,
+              "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/run/outs/raw_feature_bc_matrix"
+            },
+            {
+              "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/SLURM_COMPLETE.json",
+              "recursive": false,
+              "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/SLURM_COMPLETE.json"
+            },
+            {
+              "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/Log.final.out",
+              "recursive": false,
+              "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/run/Log.final.out"
+            },
+            {
+              "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/RUN_COMMAND.sh",
+              "recursive": false,
+              "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/RUN_COMMAND.sh"
+            },
+            {
+              "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/time.txt",
+              "recursive": false,
+              "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/time.txt"
+            }
+          ],
+          "poll_interval_seconds": 15,
+          "source_endpoint_id": "d9e522d3-c51e-4037-b375-55ffd155c715",
+          "timeout_seconds": 21600
+        },
+        "stage_in": {
+          "destination_endpoint_id": "d9e522d3-c51e-4037-b375-55ffd155c715",
+          "items": [
+            {
+              "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_R1_mRNA_IGO_18593_2_S45_L007_R1_001.fastq.gz",
+              "recursive": false,
+              "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_R1_mRNA_IGO_18593_2_S45_L007_R1_001.fastq.gz"
+            },
+            {
+              "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_R1_mRNA_IGO_18593_2_S45_L007_R2_001.fastq.gz",
+              "recursive": false,
+              "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_R1_mRNA_IGO_18593_2_S45_L007_R2_001.fastq.gz"
+            },
+            {
+              "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_gRNA_IGO_17967_B_4_S38_L005_R1_001.fastq.gz",
+              "recursive": false,
+              "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_gRNA_IGO_17967_B_4_S38_L005_R1_001.fastq.gz"
+            },
+            {
+              "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_gRNA_IGO_17967_B_4_S38_L005_R2_001.fastq.gz",
+              "recursive": false,
+              "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_gRNA_IGO_17967_B_4_S38_L005_R2_001.fastq.gz"
+            },
+            {
+              "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/slurm_cardiac_subsample.sh",
+              "recursive": false,
+              "source_path": "/mnt/pikachu/morphic-provenance-msk-temporal-workbench/runs/msk_perturbseq06_cardiac/20260918T213950Z_temporal_workbench_pilot/commands/slurm_cardiac_subsample.sh"
+            }
+          ],
+          "poll_interval_seconds": 15,
+          "source_endpoint_id": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+          "timeout_seconds": 21600
+        }
+      }
+    }
+  },
+  "form_schema": {
+    "data_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "execution": {
+          "additionalProperties": false,
+          "properties": {
+            "profile": {
+              "default": "pikachu-bridges2-cardiac-workbench-20260918T213950Z",
+              "type": "string"
+            },
+            "project_label": {
+              "default": "msk_cardiac_cp_r1_star_cellbender",
+              "type": "string"
+            },
+            "run_id": {
+              "default": "msk_cardiac_cp_r1_star_cellbender-dbe66ec4",
+              "type": "string"
+            },
+            "target": {
+              "default": "temporal",
+              "enum": [
+                "temporal"
+              ],
+              "type": "string"
+            },
+            "workdir": {
+              "default": "/tmp/staged-recipe",
+              "type": "string"
+            }
+          },
+          "required": [
+            "target",
+            "profile",
+            "workdir",
+            "project_label",
+            "run_id"
+          ],
+          "type": "object"
+        },
+        "recipe_inputs": {
+          "additionalProperties": false,
+          "properties": {
+            "launch_script": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "launch_script"
+          ],
+          "type": "object"
+        },
+        "stage_outputs": {
+          "additionalProperties": false,
+          "properties": {
+            "cellbender": {
+              "additionalProperties": false,
+              "properties": {
+                "filtered_h5": {
+                  "default": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/gpu/cellbender_counts_filtered.h5",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "filtered_h5"
+              ],
+              "type": "object"
+            },
+            "star": {
+              "additionalProperties": false,
+              "properties": {
+                "raw_mex": {
+                  "default": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/raw_feature_bc_matrix",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "raw_mex"
+              ],
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "staged": {
+          "additionalProperties": false,
+          "properties": {
+            "globus": {
+              "additionalProperties": false,
+              "properties": {
+                "task_queue": {
+                  "default": "cardiac-workbench-pilot-20260918T213950Z",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "task_queue"
+              ],
+              "type": "object"
+            },
+            "gpu": {
+              "additionalProperties": false,
+              "properties": {
+                "device": {
+                  "default": "0",
+                  "type": "string"
+                },
+                "image": {
+                  "default": "biodepot/cellbender:0.3.2",
+                  "type": "string"
+                },
+                "local_output_dir": {
+                  "default": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/gpu",
+                  "type": "string"
+                },
+                "min_free_mb": {
+                  "default": 6000,
+                  "type": "integer"
+                },
+                "task_queue": {
+                  "default": "lhhung@localhost:22",
+                  "type": "string"
+                },
+                "timeout_seconds": {
+                  "default": 7200,
+                  "type": "integer"
+                },
+                "wait_timeout_seconds": {
+                  "default": 7200,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "task_queue",
+                "image",
+                "min_free_mb",
+                "timeout_seconds",
+                "wait_timeout_seconds",
+                "local_output_dir"
+              ],
+              "type": "object"
+            },
+            "orchestration": {
+              "additionalProperties": false,
+              "properties": {
+                "task_queue": {
+                  "default": "cardiac-workbench-pilot-20260918T213950Z",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "task_queue"
+              ],
+              "type": "object"
+            },
+            "slurm": {
+              "additionalProperties": false,
+              "properties": {
+                "account": {
+                  "type": "string"
+                },
+                "config": {
+                  "additionalProperties": true,
+                  "default": {
+                    "cpus_per_task": 32,
+                    "mem": "64G",
+                    "nodes": 1,
+                    "ntasks": 1,
+                    "partition": "RM-shared",
+                    "time": "04:00:00"
+                  },
+                  "properties": {},
+                  "type": "object"
+                },
+                "cpus": {
+                  "default": 32,
+                  "type": "integer"
+                },
+                "mem_mb": {
+                  "default": 65536,
+                  "type": "integer"
+                },
+                "partition": {
+                  "default": "RM-shared",
+                  "type": "string"
+                },
+                "task_queue": {
+                  "default": "lhung2@bridges2.psc.edu:22",
+                  "type": "string"
+                },
+                "time": {
+                  "default": "04:00:00",
+                  "type": "string"
+                },
+                "timeout_seconds": {
+                  "default": 21600,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "task_queue",
+                "partition",
+                "time",
+                "cpus",
+                "mem_mb",
+                "timeout_seconds"
+              ],
+              "type": "object"
+            },
+            "transfers": {
+              "additionalProperties": false,
+              "properties": {
+                "publish": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "destination_endpoint_id": {
+                      "default": "d9e522d3-c51e-4037-b375-55ffd155c715",
+                      "type": "string"
+                    },
+                    "items": {
+                      "default": [
+                        {
+                          "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/published",
+                          "recursive": true,
+                          "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/gpu"
+                        }
+                      ],
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "destination_path": {
+                            "type": "string"
+                          },
+                          "recursive": {
+                            "default": false,
+                            "type": "boolean"
+                          },
+                          "source_path": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "source_path",
+                          "destination_path"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "poll_interval_seconds": {
+                      "default": 15,
+                      "type": "integer"
+                    },
+                    "source_endpoint_id": {
+                      "default": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+                      "type": "string"
+                    },
+                    "timeout_seconds": {
+                      "default": 21600,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "source_endpoint_id",
+                    "destination_endpoint_id",
+                    "items",
+                    "timeout_seconds",
+                    "poll_interval_seconds"
+                  ],
+                  "type": "object"
+                },
+                "stage_back": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "destination_endpoint_id": {
+                      "default": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+                      "type": "string"
+                    },
+                    "items": {
+                      "default": [
+                        {
+                          "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/raw_feature_bc_matrix",
+                          "recursive": true,
+                          "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/run/outs/raw_feature_bc_matrix"
+                        },
+                        {
+                          "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/SLURM_COMPLETE.json",
+                          "recursive": false,
+                          "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/SLURM_COMPLETE.json"
+                        },
+                        {
+                          "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/Log.final.out",
+                          "recursive": false,
+                          "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/run/Log.final.out"
+                        },
+                        {
+                          "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/RUN_COMMAND.sh",
+                          "recursive": false,
+                          "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/RUN_COMMAND.sh"
+                        },
+                        {
+                          "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/time.txt",
+                          "recursive": false,
+                          "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/time.txt"
+                        }
+                      ],
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "destination_path": {
+                            "type": "string"
+                          },
+                          "recursive": {
+                            "default": false,
+                            "type": "boolean"
+                          },
+                          "source_path": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "source_path",
+                          "destination_path"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "poll_interval_seconds": {
+                      "default": 15,
+                      "type": "integer"
+                    },
+                    "source_endpoint_id": {
+                      "default": "d9e522d3-c51e-4037-b375-55ffd155c715",
+                      "type": "string"
+                    },
+                    "timeout_seconds": {
+                      "default": 21600,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "source_endpoint_id",
+                    "destination_endpoint_id",
+                    "items",
+                    "timeout_seconds",
+                    "poll_interval_seconds"
+                  ],
+                  "type": "object"
+                },
+                "stage_in": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "destination_endpoint_id": {
+                      "default": "d9e522d3-c51e-4037-b375-55ffd155c715",
+                      "type": "string"
+                    },
+                    "items": {
+                      "default": [
+                        {
+                          "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_R1_mRNA_IGO_18593_2_S45_L007_R1_001.fastq.gz",
+                          "recursive": false,
+                          "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_R1_mRNA_IGO_18593_2_S45_L007_R1_001.fastq.gz"
+                        },
+                        {
+                          "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_R1_mRNA_IGO_18593_2_S45_L007_R2_001.fastq.gz",
+                          "recursive": false,
+                          "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_R1_mRNA_IGO_18593_2_S45_L007_R2_001.fastq.gz"
+                        },
+                        {
+                          "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_gRNA_IGO_17967_B_4_S38_L005_R1_001.fastq.gz",
+                          "recursive": false,
+                          "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_gRNA_IGO_17967_B_4_S38_L005_R1_001.fastq.gz"
+                        },
+                        {
+                          "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_gRNA_IGO_17967_B_4_S38_L005_R2_001.fastq.gz",
+                          "recursive": false,
+                          "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_gRNA_IGO_17967_B_4_S38_L005_R2_001.fastq.gz"
+                        },
+                        {
+                          "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/slurm_cardiac_subsample.sh",
+                          "recursive": false,
+                          "source_path": "/mnt/pikachu/morphic-provenance-msk-temporal-workbench/runs/msk_perturbseq06_cardiac/20260918T213950Z_temporal_workbench_pilot/commands/slurm_cardiac_subsample.sh"
+                        }
+                      ],
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "destination_path": {
+                            "type": "string"
+                          },
+                          "recursive": {
+                            "default": false,
+                            "type": "boolean"
+                          },
+                          "source_path": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "source_path",
+                          "destination_path"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "poll_interval_seconds": {
+                      "default": 15,
+                      "type": "integer"
+                    },
+                    "source_endpoint_id": {
+                      "default": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+                      "type": "string"
+                    },
+                    "timeout_seconds": {
+                      "default": 21600,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "source_endpoint_id",
+                    "destination_endpoint_id",
+                    "items",
+                    "timeout_seconds",
+                    "poll_interval_seconds"
+                  ],
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "renderer": "jsonforms",
+    "schema_id": "biodepot.workbench-form/v1",
+    "sections": [
+      {
+        "fields": [
+          {
+            "id": "recipe_inputs.launch_script",
+            "kind": "string",
+            "label": "Launch Script",
+            "required": true,
+            "source_ref": {
+              "name": "launch_script",
+              "type": "recipe_input"
+            }
+          }
+        ],
+        "id": "recipe_inputs",
+        "title": "Recipe Inputs"
+      },
+      {
+        "fields": [
+          {
+            "default": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/raw_feature_bc_matrix",
+            "id": "stage_outputs.star.raw_mex",
+            "kind": "string",
+            "label": "star raw_mex",
+            "required": true,
+            "source_ref": {
+              "name": "stage_outputs.star.raw_mex",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/gpu/cellbender_counts_filtered.h5",
+            "id": "stage_outputs.cellbender.filtered_h5",
+            "kind": "string",
+            "label": "cellbender filtered_h5",
+            "required": true,
+            "source_ref": {
+              "name": "stage_outputs.cellbender.filtered_h5",
+              "type": "executor_setting"
+            }
+          }
+        ],
+        "id": "stage_outputs",
+        "title": "Stage Output Paths"
+      },
+      {
+        "fields": [
+          {
+            "default": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+            "id": "staged.transfers.stage_in.source_endpoint_id",
+            "kind": "string",
+            "label": "Stage In Source Endpoint",
+            "required": true,
+            "source_ref": {
+              "name": "staged.transfers.stage_in.source_endpoint_id",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "d9e522d3-c51e-4037-b375-55ffd155c715",
+            "id": "staged.transfers.stage_in.destination_endpoint_id",
+            "kind": "string",
+            "label": "Stage In Destination Endpoint",
+            "required": true,
+            "source_ref": {
+              "name": "staged.transfers.stage_in.destination_endpoint_id",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": [
+              {
+                "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_R1_mRNA_IGO_18593_2_S45_L007_R1_001.fastq.gz",
+                "recursive": false,
+                "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_R1_mRNA_IGO_18593_2_S45_L007_R1_001.fastq.gz"
+              },
+              {
+                "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_R1_mRNA_IGO_18593_2_S45_L007_R2_001.fastq.gz",
+                "recursive": false,
+                "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_R1_mRNA_IGO_18593_2_S45_L007_R2_001.fastq.gz"
+              },
+              {
+                "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_gRNA_IGO_17967_B_4_S38_L005_R1_001.fastq.gz",
+                "recursive": false,
+                "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_gRNA_IGO_17967_B_4_S38_L005_R1_001.fastq.gz"
+              },
+              {
+                "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_gRNA_IGO_17967_B_4_S38_L005_R2_001.fastq.gz",
+                "recursive": false,
+                "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_gRNA_IGO_17967_B_4_S38_L005_R2_001.fastq.gz"
+              },
+              {
+                "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/slurm_cardiac_subsample.sh",
+                "recursive": false,
+                "source_path": "/mnt/pikachu/morphic-provenance-msk-temporal-workbench/runs/msk_perturbseq06_cardiac/20260918T213950Z_temporal_workbench_pilot/commands/slurm_cardiac_subsample.sh"
+              }
+            ],
+            "id": "staged.transfers.stage_in.items",
+            "items": {
+              "fields": {
+                "destination_path": {
+                  "kind": "string",
+                  "required": true
+                },
+                "recursive": {
+                  "default": false,
+                  "kind": "bool",
+                  "required": false
+                },
+                "source_path": {
+                  "kind": "string",
+                  "required": true
+                }
+              },
+              "kind": "record"
+            },
+            "kind": "array",
+            "label": "Stage In Items",
+            "required": true,
+            "source_ref": {
+              "name": "staged.transfers.stage_in.items",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": 21600,
+            "id": "staged.transfers.stage_in.timeout_seconds",
+            "kind": "int",
+            "label": "Stage In Timeout Seconds",
+            "required": true,
+            "source_ref": {
+              "name": "staged.transfers.stage_in.timeout_seconds",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": 15,
+            "id": "staged.transfers.stage_in.poll_interval_seconds",
+            "kind": "int",
+            "label": "Stage In Poll Interval Seconds",
+            "required": true,
+            "source_ref": {
+              "name": "staged.transfers.stage_in.poll_interval_seconds",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "d9e522d3-c51e-4037-b375-55ffd155c715",
+            "id": "staged.transfers.stage_back.source_endpoint_id",
+            "kind": "string",
+            "label": "Stage Back Source Endpoint",
+            "required": true,
+            "source_ref": {
+              "name": "staged.transfers.stage_back.source_endpoint_id",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+            "id": "staged.transfers.stage_back.destination_endpoint_id",
+            "kind": "string",
+            "label": "Stage Back Destination Endpoint",
+            "required": true,
+            "source_ref": {
+              "name": "staged.transfers.stage_back.destination_endpoint_id",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": [
+              {
+                "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/raw_feature_bc_matrix",
+                "recursive": true,
+                "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/run/outs/raw_feature_bc_matrix"
+              },
+              {
+                "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/SLURM_COMPLETE.json",
+                "recursive": false,
+                "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/SLURM_COMPLETE.json"
+              },
+              {
+                "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/Log.final.out",
+                "recursive": false,
+                "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/run/Log.final.out"
+              },
+              {
+                "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/RUN_COMMAND.sh",
+                "recursive": false,
+                "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/RUN_COMMAND.sh"
+              },
+              {
+                "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/time.txt",
+                "recursive": false,
+                "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/time.txt"
+              }
+            ],
+            "id": "staged.transfers.stage_back.items",
+            "items": {
+              "fields": {
+                "destination_path": {
+                  "kind": "string",
+                  "required": true
+                },
+                "recursive": {
+                  "default": false,
+                  "kind": "bool",
+                  "required": false
+                },
+                "source_path": {
+                  "kind": "string",
+                  "required": true
+                }
+              },
+              "kind": "record"
+            },
+            "kind": "array",
+            "label": "Stage Back Items",
+            "required": true,
+            "source_ref": {
+              "name": "staged.transfers.stage_back.items",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": 21600,
+            "id": "staged.transfers.stage_back.timeout_seconds",
+            "kind": "int",
+            "label": "Stage Back Timeout Seconds",
+            "required": true,
+            "source_ref": {
+              "name": "staged.transfers.stage_back.timeout_seconds",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": 15,
+            "id": "staged.transfers.stage_back.poll_interval_seconds",
+            "kind": "int",
+            "label": "Stage Back Poll Interval Seconds",
+            "required": true,
+            "source_ref": {
+              "name": "staged.transfers.stage_back.poll_interval_seconds",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+            "id": "staged.transfers.publish.source_endpoint_id",
+            "kind": "string",
+            "label": "Publish Source Endpoint",
+            "required": true,
+            "source_ref": {
+              "name": "staged.transfers.publish.source_endpoint_id",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "d9e522d3-c51e-4037-b375-55ffd155c715",
+            "id": "staged.transfers.publish.destination_endpoint_id",
+            "kind": "string",
+            "label": "Publish Destination Endpoint",
+            "required": true,
+            "source_ref": {
+              "name": "staged.transfers.publish.destination_endpoint_id",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": [
+              {
+                "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/published",
+                "recursive": true,
+                "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/gpu"
+              }
+            ],
+            "id": "staged.transfers.publish.items",
+            "items": {
+              "fields": {
+                "destination_path": {
+                  "kind": "string",
+                  "required": true
+                },
+                "recursive": {
+                  "default": false,
+                  "kind": "bool",
+                  "required": false
+                },
+                "source_path": {
+                  "kind": "string",
+                  "required": true
+                }
+              },
+              "kind": "record"
+            },
+            "kind": "array",
+            "label": "Publish Items",
+            "required": true,
+            "source_ref": {
+              "name": "staged.transfers.publish.items",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": 21600,
+            "id": "staged.transfers.publish.timeout_seconds",
+            "kind": "int",
+            "label": "Publish Timeout Seconds",
+            "required": true,
+            "source_ref": {
+              "name": "staged.transfers.publish.timeout_seconds",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": 15,
+            "id": "staged.transfers.publish.poll_interval_seconds",
+            "kind": "int",
+            "label": "Publish Poll Interval Seconds",
+            "required": true,
+            "source_ref": {
+              "name": "staged.transfers.publish.poll_interval_seconds",
+              "type": "executor_setting"
+            }
+          }
+        ],
+        "id": "transfers",
+        "title": "Globus Transfers"
+      },
+      {
+        "fields": [
+          {
+            "default": "cardiac-workbench-pilot-20260918T213950Z",
+            "id": "staged.orchestration.task_queue",
+            "kind": "string",
+            "label": "Orchestration Queue",
+            "required": true,
+            "source_ref": {
+              "name": "staged.orchestration.task_queue",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "cardiac-workbench-pilot-20260918T213950Z",
+            "id": "staged.globus.task_queue",
+            "kind": "string",
+            "label": "Globus Queue",
+            "required": true,
+            "source_ref": {
+              "name": "staged.globus.task_queue",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "lhung2@bridges2.psc.edu:22",
+            "id": "staged.slurm.task_queue",
+            "kind": "string",
+            "label": "Slurm Queue",
+            "required": true,
+            "source_ref": {
+              "name": "staged.slurm.task_queue",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "RM-shared",
+            "id": "staged.slurm.partition",
+            "kind": "string",
+            "label": "Partition",
+            "required": true,
+            "source_ref": {
+              "name": "staged.slurm.partition",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "id": "staged.slurm.account",
+            "kind": "string",
+            "label": "Account",
+            "required": false,
+            "source_ref": {
+              "name": "staged.slurm.account",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "04:00:00",
+            "id": "staged.slurm.time",
+            "kind": "string",
+            "label": "Time Limit",
+            "required": true,
+            "source_ref": {
+              "name": "staged.slurm.time",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": 32,
+            "id": "staged.slurm.cpus",
+            "kind": "int",
+            "label": "CPUs",
+            "required": true,
+            "source_ref": {
+              "name": "staged.slurm.cpus",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": 65536,
+            "id": "staged.slurm.mem_mb",
+            "kind": "int",
+            "label": "Memory MB",
+            "required": true,
+            "source_ref": {
+              "name": "staged.slurm.mem_mb",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": 21600,
+            "id": "staged.slurm.timeout_seconds",
+            "kind": "int",
+            "label": "Stage Timeout Seconds",
+            "required": true,
+            "source_ref": {
+              "name": "staged.slurm.timeout_seconds",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "additional_properties": true,
+            "default": {
+              "cpus_per_task": 32,
+              "mem": "64G",
+              "nodes": 1,
+              "ntasks": 1,
+              "partition": "RM-shared",
+              "time": "04:00:00"
+            },
+            "id": "staged.slurm.config",
+            "kind": "record",
+            "label": "Additional Slurm Configuration",
+            "required": false,
+            "source_ref": {
+              "name": "staged.slurm.config",
+              "type": "executor_setting"
+            }
+          }
+        ],
+        "id": "slurm",
+        "title": "Slurm Executor"
+      },
+      {
+        "fields": [
+          {
+            "default": "lhhung@localhost:22",
+            "id": "staged.gpu.task_queue",
+            "kind": "string",
+            "label": "GPU Queue",
+            "required": true,
+            "source_ref": {
+              "name": "staged.gpu.task_queue",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "biodepot/cellbender:0.3.2",
+            "id": "staged.gpu.image",
+            "kind": "string",
+            "label": "Container Image",
+            "required": true,
+            "source_ref": {
+              "name": "staged.gpu.image",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "0",
+            "id": "staged.gpu.device",
+            "kind": "string",
+            "label": "GPU Device",
+            "required": false,
+            "source_ref": {
+              "name": "staged.gpu.device",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": 6000,
+            "id": "staged.gpu.min_free_mb",
+            "kind": "int",
+            "label": "Minimum Free GPU Memory MB",
+            "required": true,
+            "source_ref": {
+              "name": "staged.gpu.min_free_mb",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": 7200,
+            "id": "staged.gpu.timeout_seconds",
+            "kind": "int",
+            "label": "GPU Job Timeout Seconds",
+            "required": true,
+            "source_ref": {
+              "name": "staged.gpu.timeout_seconds",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": 7200,
+            "id": "staged.gpu.wait_timeout_seconds",
+            "kind": "int",
+            "label": "GPU Wait Timeout Seconds",
+            "required": true,
+            "source_ref": {
+              "name": "staged.gpu.wait_timeout_seconds",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/gpu",
+            "id": "staged.gpu.local_output_dir",
+            "kind": "string",
+            "label": "Local GPU Output Directory",
+            "required": true,
+            "source_ref": {
+              "name": "staged.gpu.local_output_dir",
+              "type": "executor_setting"
+            }
+          }
+        ],
+        "id": "gpu",
+        "title": "GPU Executor"
+      },
+      {
+        "fields": [
+          {
+            "default": "temporal",
+            "id": "execution.target",
+            "kind": "enum",
+            "label": "Execution Target",
+            "options": [
+              "temporal"
+            ],
+            "required": true,
+            "source_ref": {
+              "name": "execution.target",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "pikachu-bridges2-cardiac-workbench-20260918T213950Z",
+            "id": "execution.profile",
+            "kind": "string",
+            "label": "Execution Profile",
+            "required": true,
+            "source_ref": {
+              "name": "execution.profile",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "/tmp/staged-recipe",
+            "id": "execution.workdir",
+            "kind": "string",
+            "label": "Working Directory",
+            "required": true,
+            "source_ref": {
+              "name": "execution.workdir",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "msk_cardiac_cp_r1_star_cellbender",
+            "id": "execution.project_label",
+            "kind": "string",
+            "label": "Project Label",
+            "required": true,
+            "source_ref": {
+              "name": "execution.project_label",
+              "type": "executor_setting"
+            }
+          },
+          {
+            "default": "msk_cardiac_cp_r1_star_cellbender-dbe66ec4",
+            "id": "execution.run_id",
+            "kind": "string",
+            "label": "Run ID",
+            "required": true,
+            "source_ref": {
+              "name": "execution.run_id",
+              "type": "executor_setting"
+            }
+          }
+        ],
+        "id": "execution",
+        "title": "Execution"
+      }
+    ],
+    "source_map": {
+      "execution.profile": {
+        "kind": "string",
+        "required": true,
+        "section_id": "execution",
+        "source_ref": {
+          "name": "execution.profile",
+          "type": "executor_setting"
+        }
+      },
+      "execution.project_label": {
+        "kind": "string",
+        "required": true,
+        "section_id": "execution",
+        "source_ref": {
+          "name": "execution.project_label",
+          "type": "executor_setting"
+        }
+      },
+      "execution.run_id": {
+        "kind": "string",
+        "required": true,
+        "section_id": "execution",
+        "source_ref": {
+          "name": "execution.run_id",
+          "type": "executor_setting"
+        }
+      },
+      "execution.target": {
+        "kind": "enum",
+        "required": true,
+        "section_id": "execution",
+        "source_ref": {
+          "name": "execution.target",
+          "type": "executor_setting"
+        }
+      },
+      "execution.workdir": {
+        "kind": "string",
+        "required": true,
+        "section_id": "execution",
+        "source_ref": {
+          "name": "execution.workdir",
+          "type": "executor_setting"
+        }
+      },
+      "recipe_inputs.launch_script": {
+        "kind": "string",
+        "required": true,
+        "section_id": "recipe_inputs",
+        "source_ref": {
+          "name": "launch_script",
+          "type": "recipe_input"
+        }
+      },
+      "stage_outputs.cellbender.filtered_h5": {
+        "kind": "string",
+        "required": true,
+        "section_id": "stage_outputs",
+        "source_ref": {
+          "name": "stage_outputs.cellbender.filtered_h5",
+          "type": "executor_setting"
+        }
+      },
+      "stage_outputs.star.raw_mex": {
+        "kind": "string",
+        "required": true,
+        "section_id": "stage_outputs",
+        "source_ref": {
+          "name": "stage_outputs.star.raw_mex",
+          "type": "executor_setting"
+        }
+      },
+      "staged.globus.task_queue": {
+        "kind": "string",
+        "required": true,
+        "section_id": "slurm",
+        "source_ref": {
+          "name": "staged.globus.task_queue",
+          "type": "executor_setting"
+        }
+      },
+      "staged.gpu.device": {
+        "kind": "string",
+        "required": false,
+        "section_id": "gpu",
+        "source_ref": {
+          "name": "staged.gpu.device",
+          "type": "executor_setting"
+        }
+      },
+      "staged.gpu.image": {
+        "kind": "string",
+        "required": true,
+        "section_id": "gpu",
+        "source_ref": {
+          "name": "staged.gpu.image",
+          "type": "executor_setting"
+        }
+      },
+      "staged.gpu.local_output_dir": {
+        "kind": "string",
+        "required": true,
+        "section_id": "gpu",
+        "source_ref": {
+          "name": "staged.gpu.local_output_dir",
+          "type": "executor_setting"
+        }
+      },
+      "staged.gpu.min_free_mb": {
+        "kind": "int",
+        "required": true,
+        "section_id": "gpu",
+        "source_ref": {
+          "name": "staged.gpu.min_free_mb",
+          "type": "executor_setting"
+        }
+      },
+      "staged.gpu.task_queue": {
+        "kind": "string",
+        "required": true,
+        "section_id": "gpu",
+        "source_ref": {
+          "name": "staged.gpu.task_queue",
+          "type": "executor_setting"
+        }
+      },
+      "staged.gpu.timeout_seconds": {
+        "kind": "int",
+        "required": true,
+        "section_id": "gpu",
+        "source_ref": {
+          "name": "staged.gpu.timeout_seconds",
+          "type": "executor_setting"
+        }
+      },
+      "staged.gpu.wait_timeout_seconds": {
+        "kind": "int",
+        "required": true,
+        "section_id": "gpu",
+        "source_ref": {
+          "name": "staged.gpu.wait_timeout_seconds",
+          "type": "executor_setting"
+        }
+      },
+      "staged.orchestration.task_queue": {
+        "kind": "string",
+        "required": true,
+        "section_id": "slurm",
+        "source_ref": {
+          "name": "staged.orchestration.task_queue",
+          "type": "executor_setting"
+        }
+      },
+      "staged.slurm.account": {
+        "kind": "string",
+        "required": false,
+        "section_id": "slurm",
+        "source_ref": {
+          "name": "staged.slurm.account",
+          "type": "executor_setting"
+        }
+      },
+      "staged.slurm.config": {
+        "kind": "record",
+        "required": false,
+        "section_id": "slurm",
+        "source_ref": {
+          "name": "staged.slurm.config",
+          "type": "executor_setting"
+        }
+      },
+      "staged.slurm.cpus": {
+        "kind": "int",
+        "required": true,
+        "section_id": "slurm",
+        "source_ref": {
+          "name": "staged.slurm.cpus",
+          "type": "executor_setting"
+        }
+      },
+      "staged.slurm.mem_mb": {
+        "kind": "int",
+        "required": true,
+        "section_id": "slurm",
+        "source_ref": {
+          "name": "staged.slurm.mem_mb",
+          "type": "executor_setting"
+        }
+      },
+      "staged.slurm.partition": {
+        "kind": "string",
+        "required": true,
+        "section_id": "slurm",
+        "source_ref": {
+          "name": "staged.slurm.partition",
+          "type": "executor_setting"
+        }
+      },
+      "staged.slurm.task_queue": {
+        "kind": "string",
+        "required": true,
+        "section_id": "slurm",
+        "source_ref": {
+          "name": "staged.slurm.task_queue",
+          "type": "executor_setting"
+        }
+      },
+      "staged.slurm.time": {
+        "kind": "string",
+        "required": true,
+        "section_id": "slurm",
+        "source_ref": {
+          "name": "staged.slurm.time",
+          "type": "executor_setting"
+        }
+      },
+      "staged.slurm.timeout_seconds": {
+        "kind": "int",
+        "required": true,
+        "section_id": "slurm",
+        "source_ref": {
+          "name": "staged.slurm.timeout_seconds",
+          "type": "executor_setting"
+        }
+      },
+      "staged.transfers.publish.destination_endpoint_id": {
+        "kind": "string",
+        "required": true,
+        "section_id": "transfers",
+        "source_ref": {
+          "name": "staged.transfers.publish.destination_endpoint_id",
+          "type": "executor_setting"
+        }
+      },
+      "staged.transfers.publish.items": {
+        "kind": "array",
+        "required": true,
+        "section_id": "transfers",
+        "source_ref": {
+          "name": "staged.transfers.publish.items",
+          "type": "executor_setting"
+        }
+      },
+      "staged.transfers.publish.poll_interval_seconds": {
+        "kind": "int",
+        "required": true,
+        "section_id": "transfers",
+        "source_ref": {
+          "name": "staged.transfers.publish.poll_interval_seconds",
+          "type": "executor_setting"
+        }
+      },
+      "staged.transfers.publish.source_endpoint_id": {
+        "kind": "string",
+        "required": true,
+        "section_id": "transfers",
+        "source_ref": {
+          "name": "staged.transfers.publish.source_endpoint_id",
+          "type": "executor_setting"
+        }
+      },
+      "staged.transfers.publish.timeout_seconds": {
+        "kind": "int",
+        "required": true,
+        "section_id": "transfers",
+        "source_ref": {
+          "name": "staged.transfers.publish.timeout_seconds",
+          "type": "executor_setting"
+        }
+      },
+      "staged.transfers.stage_back.destination_endpoint_id": {
+        "kind": "string",
+        "required": true,
+        "section_id": "transfers",
+        "source_ref": {
+          "name": "staged.transfers.stage_back.destination_endpoint_id",
+          "type": "executor_setting"
+        }
+      },
+      "staged.transfers.stage_back.items": {
+        "kind": "array",
+        "required": true,
+        "section_id": "transfers",
+        "source_ref": {
+          "name": "staged.transfers.stage_back.items",
+          "type": "executor_setting"
+        }
+      },
+      "staged.transfers.stage_back.poll_interval_seconds": {
+        "kind": "int",
+        "required": true,
+        "section_id": "transfers",
+        "source_ref": {
+          "name": "staged.transfers.stage_back.poll_interval_seconds",
+          "type": "executor_setting"
+        }
+      },
+      "staged.transfers.stage_back.source_endpoint_id": {
+        "kind": "string",
+        "required": true,
+        "section_id": "transfers",
+        "source_ref": {
+          "name": "staged.transfers.stage_back.source_endpoint_id",
+          "type": "executor_setting"
+        }
+      },
+      "staged.transfers.stage_back.timeout_seconds": {
+        "kind": "int",
+        "required": true,
+        "section_id": "transfers",
+        "source_ref": {
+          "name": "staged.transfers.stage_back.timeout_seconds",
+          "type": "executor_setting"
+        }
+      },
+      "staged.transfers.stage_in.destination_endpoint_id": {
+        "kind": "string",
+        "required": true,
+        "section_id": "transfers",
+        "source_ref": {
+          "name": "staged.transfers.stage_in.destination_endpoint_id",
+          "type": "executor_setting"
+        }
+      },
+      "staged.transfers.stage_in.items": {
+        "kind": "array",
+        "required": true,
+        "section_id": "transfers",
+        "source_ref": {
+          "name": "staged.transfers.stage_in.items",
+          "type": "executor_setting"
+        }
+      },
+      "staged.transfers.stage_in.poll_interval_seconds": {
+        "kind": "int",
+        "required": true,
+        "section_id": "transfers",
+        "source_ref": {
+          "name": "staged.transfers.stage_in.poll_interval_seconds",
+          "type": "executor_setting"
+        }
+      },
+      "staged.transfers.stage_in.source_endpoint_id": {
+        "kind": "string",
+        "required": true,
+        "section_id": "transfers",
+        "source_ref": {
+          "name": "staged.transfers.stage_in.source_endpoint_id",
+          "type": "executor_setting"
+        }
+      },
+      "staged.transfers.stage_in.timeout_seconds": {
+        "kind": "int",
+        "required": true,
+        "section_id": "transfers",
+        "source_ref": {
+          "name": "staged.transfers.stage_in.timeout_seconds",
+          "type": "executor_setting"
+        }
+      }
+    },
+    "ui_schema": {
+      "elements": [
+        {
+          "elements": [
+            {
+              "label": "Launch Script",
+              "scope": "#/properties/recipe_inputs/properties/launch_script",
+              "type": "Control"
+            }
+          ],
+          "label": "Recipe Inputs",
+          "type": "Group"
+        },
+        {
+          "elements": [
+            {
+              "label": "star raw_mex",
+              "scope": "#/properties/stage_outputs/properties/star/properties/raw_mex",
+              "type": "Control"
+            },
+            {
+              "label": "cellbender filtered_h5",
+              "scope": "#/properties/stage_outputs/properties/cellbender/properties/filtered_h5",
+              "type": "Control"
+            }
+          ],
+          "label": "Stage Output Paths",
+          "type": "Group"
+        },
+        {
+          "elements": [
+            {
+              "label": "Stage In Source Endpoint",
+              "scope": "#/properties/staged/properties/transfers/properties/stage_in/properties/source_endpoint_id",
+              "type": "Control"
+            },
+            {
+              "label": "Stage In Destination Endpoint",
+              "scope": "#/properties/staged/properties/transfers/properties/stage_in/properties/destination_endpoint_id",
+              "type": "Control"
+            },
+            {
+              "label": "Stage In Items",
+              "scope": "#/properties/staged/properties/transfers/properties/stage_in/properties/items",
+              "type": "Control"
+            },
+            {
+              "label": "Stage In Timeout Seconds",
+              "scope": "#/properties/staged/properties/transfers/properties/stage_in/properties/timeout_seconds",
+              "type": "Control"
+            },
+            {
+              "label": "Stage In Poll Interval Seconds",
+              "scope": "#/properties/staged/properties/transfers/properties/stage_in/properties/poll_interval_seconds",
+              "type": "Control"
+            },
+            {
+              "label": "Stage Back Source Endpoint",
+              "scope": "#/properties/staged/properties/transfers/properties/stage_back/properties/source_endpoint_id",
+              "type": "Control"
+            },
+            {
+              "label": "Stage Back Destination Endpoint",
+              "scope": "#/properties/staged/properties/transfers/properties/stage_back/properties/destination_endpoint_id",
+              "type": "Control"
+            },
+            {
+              "label": "Stage Back Items",
+              "scope": "#/properties/staged/properties/transfers/properties/stage_back/properties/items",
+              "type": "Control"
+            },
+            {
+              "label": "Stage Back Timeout Seconds",
+              "scope": "#/properties/staged/properties/transfers/properties/stage_back/properties/timeout_seconds",
+              "type": "Control"
+            },
+            {
+              "label": "Stage Back Poll Interval Seconds",
+              "scope": "#/properties/staged/properties/transfers/properties/stage_back/properties/poll_interval_seconds",
+              "type": "Control"
+            },
+            {
+              "label": "Publish Source Endpoint",
+              "scope": "#/properties/staged/properties/transfers/properties/publish/properties/source_endpoint_id",
+              "type": "Control"
+            },
+            {
+              "label": "Publish Destination Endpoint",
+              "scope": "#/properties/staged/properties/transfers/properties/publish/properties/destination_endpoint_id",
+              "type": "Control"
+            },
+            {
+              "label": "Publish Items",
+              "scope": "#/properties/staged/properties/transfers/properties/publish/properties/items",
+              "type": "Control"
+            },
+            {
+              "label": "Publish Timeout Seconds",
+              "scope": "#/properties/staged/properties/transfers/properties/publish/properties/timeout_seconds",
+              "type": "Control"
+            },
+            {
+              "label": "Publish Poll Interval Seconds",
+              "scope": "#/properties/staged/properties/transfers/properties/publish/properties/poll_interval_seconds",
+              "type": "Control"
+            }
+          ],
+          "label": "Globus Transfers",
+          "type": "Group"
+        },
+        {
+          "elements": [
+            {
+              "label": "Orchestration Queue",
+              "scope": "#/properties/staged/properties/orchestration/properties/task_queue",
+              "type": "Control"
+            },
+            {
+              "label": "Globus Queue",
+              "scope": "#/properties/staged/properties/globus/properties/task_queue",
+              "type": "Control"
+            },
+            {
+              "label": "Slurm Queue",
+              "scope": "#/properties/staged/properties/slurm/properties/task_queue",
+              "type": "Control"
+            },
+            {
+              "label": "Partition",
+              "scope": "#/properties/staged/properties/slurm/properties/partition",
+              "type": "Control"
+            },
+            {
+              "label": "Account",
+              "scope": "#/properties/staged/properties/slurm/properties/account",
+              "type": "Control"
+            },
+            {
+              "label": "Time Limit",
+              "scope": "#/properties/staged/properties/slurm/properties/time",
+              "type": "Control"
+            },
+            {
+              "label": "CPUs",
+              "scope": "#/properties/staged/properties/slurm/properties/cpus",
+              "type": "Control"
+            },
+            {
+              "label": "Memory MB",
+              "scope": "#/properties/staged/properties/slurm/properties/mem_mb",
+              "type": "Control"
+            },
+            {
+              "label": "Stage Timeout Seconds",
+              "scope": "#/properties/staged/properties/slurm/properties/timeout_seconds",
+              "type": "Control"
+            },
+            {
+              "label": "Additional Slurm Configuration",
+              "scope": "#/properties/staged/properties/slurm/properties/config",
+              "type": "Control"
+            }
+          ],
+          "label": "Slurm Executor",
+          "type": "Group"
+        },
+        {
+          "elements": [
+            {
+              "label": "GPU Queue",
+              "scope": "#/properties/staged/properties/gpu/properties/task_queue",
+              "type": "Control"
+            },
+            {
+              "label": "Container Image",
+              "scope": "#/properties/staged/properties/gpu/properties/image",
+              "type": "Control"
+            },
+            {
+              "label": "GPU Device",
+              "scope": "#/properties/staged/properties/gpu/properties/device",
+              "type": "Control"
+            },
+            {
+              "label": "Minimum Free GPU Memory MB",
+              "scope": "#/properties/staged/properties/gpu/properties/min_free_mb",
+              "type": "Control"
+            },
+            {
+              "label": "GPU Job Timeout Seconds",
+              "scope": "#/properties/staged/properties/gpu/properties/timeout_seconds",
+              "type": "Control"
+            },
+            {
+              "label": "GPU Wait Timeout Seconds",
+              "scope": "#/properties/staged/properties/gpu/properties/wait_timeout_seconds",
+              "type": "Control"
+            },
+            {
+              "label": "Local GPU Output Directory",
+              "scope": "#/properties/staged/properties/gpu/properties/local_output_dir",
+              "type": "Control"
+            }
+          ],
+          "label": "GPU Executor",
+          "type": "Group"
+        },
+        {
+          "elements": [
+            {
+              "label": "Execution Target",
+              "scope": "#/properties/execution/properties/target",
+              "type": "Control"
+            },
+            {
+              "label": "Execution Profile",
+              "scope": "#/properties/execution/properties/profile",
+              "type": "Control"
+            },
+            {
+              "label": "Working Directory",
+              "scope": "#/properties/execution/properties/workdir",
+              "type": "Control"
+            },
+            {
+              "label": "Project Label",
+              "scope": "#/properties/execution/properties/project_label",
+              "type": "Control"
+            },
+            {
+              "label": "Run ID",
+              "scope": "#/properties/execution/properties/run_id",
+              "type": "Control"
+            }
+          ],
+          "label": "Execution",
+          "type": "Group"
+        }
+      ],
+      "type": "VerticalLayout"
+    }
+  },
+  "ir": {
+    "annotations": {
+      "provenance": {
+        "gex_chemistry": "TRU",
+        "guide_input_chemistry": "NXT",
+        "guide_output_chemistry": "TRU",
+        "reference": "refdata-gex-GRCh38-2024-A",
+        "star_suite_version": "1.9.4",
+        "wrapper_sha256": "f0a5e258048ff1ef2a2a279b4cb12e00326fefad95c2dcf03badf8a9dbb1808e"
+      }
+    },
+    "execution_hints": {},
+    "metadata": {
+      "id": "msk_cardiac_cp_r1_star_wrapper",
+      "name": "MSK Cardiac CP_R1 STAR Suite wrapper",
+      "source_language": "star-suite"
+    },
+    "optional_specs": {},
+    "schema": "biodepot.workflow-ir/v0",
+    "workflow": {
+      "conditions": [],
+      "edges": [],
+      "inputs": {
+        "launch_script": {
+          "required": true,
+          "type": "file"
+        }
+      },
+      "nodes": [
+        {
+          "extensions": {
+            "command_profile": {
+              "args": [
+                {
+                  "input_ref": "launch_script"
+                }
+              ],
+              "program": "/bin/bash"
+            }
+          },
+          "id": "launch",
+          "inputs": {
+            "launch_script": {
+              "required": true,
+              "type": "file"
+            }
+          },
+          "kind": "x-command",
+          "name": "Launch STAR Suite CP_R1 wrapper",
+          "outputs": {
+            "raw_mex": {
+              "type": "directory"
+            }
+          }
+        }
+      ],
+      "outputs": {
+        "raw_mex": {
+          "type": "directory"
+        }
+      },
+      "subworkflows": []
+    }
+  },
+  "resolution_state": {
+    "items": []
+  },
+  "source_customization_surface": {
+    "entries": [],
+    "form_data_root": "source_inputs",
+    "pattern_query_namespace": "source_inputs.bwb_pattern_queries",
+    "schema": "biodepot.workbench-source-customization-surface/v0"
+  },
+  "staged_execution_plan": {
+    "handoffs": [
+      {
+        "from_stage": "star",
+        "input_port": "raw_mex",
+        "output_port": "raw_mex",
+        "to_stage": "cellbender"
+      }
+    ],
+    "recipe_id": "msk_cardiac_cp_r1_star_cellbender",
+    "recipe_schema": "biodepot.execution-recipe/v0",
+    "schema": "biodepot.staged-execution-plan/v1",
+    "stages": [
+      {
+        "command_profile": {
+          "args": [
+            {
+              "input_ref": "launch_script"
+            }
+          ],
+          "program": "/bin/bash"
+        },
+        "id": "star",
+        "inputs": {
+          "launch_script": {
+            "from": "recipe.inputs.launch_script",
+            "recipe_key": "launch_script",
+            "source": "recipe_input",
+            "type": "file"
+          }
+        },
+        "node_id": "launch",
+        "outputs": {
+          "raw_mex": {
+            "type": "directory"
+          }
+        },
+        "parameters": {},
+        "role": "slurm",
+        "source_language": "star-suite",
+        "workflow_id": "msk_cardiac_cp_r1_star_wrapper"
+      },
+      {
+        "command_profile": {
+          "args": [
+            "remove-background",
+            "--input",
+            {
+              "input_ref": "raw_mex"
+            },
+            "--output",
+            "output/cellbender_counts.h5",
+            "--checkpoint",
+            "output/ckpt.tar.gz",
+            "--cuda",
+            "--expected-cells",
+            "300",
+            "--total-droplets-included",
+            "3000",
+            "--epochs",
+            "10",
+            "--low-count-threshold",
+            "2",
+            "--exclude-feature-types",
+            "CRISPR Guide Capture"
+          ],
+          "program": "cellbender"
+        },
+        "id": "cellbender",
+        "inputs": {
+          "raw_mex": {
+            "from": "steps.star.outputs.raw_mex",
+            "output_port": "raw_mex",
+            "source": "step_output",
+            "type": "directory",
+            "upstream_step_id": "star"
+          }
+        },
+        "node_id": "cellbender",
+        "outputs": {
+          "filtered_h5": {
+            "type": "file"
+          }
+        },
+        "parameters": {},
+        "role": "gpu",
+        "source_language": "star-suite",
+        "workflow_id": "cellbender_0_3_2_cp_r1"
+      }
+    ],
+    "step_order": [
+      "star",
+      "cellbender"
+    ]
+  },
+  "staged_executor_profile": {
+    "globus": {
+      "task_queue": "cardiac-workbench-pilot-20260918T213950Z"
+    },
+    "gpu": {
+      "device": "0",
+      "image": "biodepot/cellbender:0.3.2",
+      "local_output_dir": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/gpu",
+      "min_free_mb": 6000,
+      "task_queue": "lhhung@localhost:22",
+      "timeout_seconds": 7200,
+      "wait_timeout_seconds": 7200
+    },
+    "name": "pikachu-bridges2-cardiac-workbench-20260918T213950Z",
+    "orchestration": {
+      "task_queue": "cardiac-workbench-pilot-20260918T213950Z"
+    },
+    "schema": "biodepot.staged-executor-profile/v1",
+    "slurm": {
+      "config": {
+        "cpus_per_task": 32,
+        "mem": "64G",
+        "nodes": 1,
+        "ntasks": 1,
+        "partition": "RM-shared",
+        "time": "04:00:00"
+      },
+      "cpus": 32,
+      "mem_mb": 65536,
+      "partition": "RM-shared",
+      "task_queue": "lhung2@bridges2.psc.edu:22",
+      "time": "04:00:00",
+      "timeout_seconds": 21600
+    },
+    "transfers": {
+      "publish": {
+        "destination_endpoint_id": "d9e522d3-c51e-4037-b375-55ffd155c715",
+        "items": [
+          {
+            "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/published",
+            "recursive": true,
+            "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/gpu"
+          }
+        ],
+        "poll_interval_seconds": 15,
+        "source_endpoint_id": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+        "timeout_seconds": 21600
+      },
+      "stage_back": {
+        "destination_endpoint_id": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+        "items": [
+          {
+            "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/raw_feature_bc_matrix",
+            "recursive": true,
+            "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/run/outs/raw_feature_bc_matrix"
+          },
+          {
+            "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/SLURM_COMPLETE.json",
+            "recursive": false,
+            "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/SLURM_COMPLETE.json"
+          },
+          {
+            "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/Log.final.out",
+            "recursive": false,
+            "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/run/Log.final.out"
+          },
+          {
+            "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/RUN_COMMAND.sh",
+            "recursive": false,
+            "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/RUN_COMMAND.sh"
+          },
+          {
+            "destination_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_temporal_workbench_20260918T213950Z/slurm/time.txt",
+            "recursive": false,
+            "source_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/results/slurm/time.txt"
+          }
+        ],
+        "poll_interval_seconds": 15,
+        "source_endpoint_id": "d9e522d3-c51e-4037-b375-55ffd155c715",
+        "timeout_seconds": 21600
+      },
+      "stage_in": {
+        "destination_endpoint_id": "d9e522d3-c51e-4037-b375-55ffd155c715",
+        "items": [
+          {
+            "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_R1_mRNA_IGO_18593_2_S45_L007_R1_001.fastq.gz",
+            "recursive": false,
+            "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_R1_mRNA_IGO_18593_2_S45_L007_R1_001.fastq.gz"
+          },
+          {
+            "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_R1_mRNA_IGO_18593_2_S45_L007_R2_001.fastq.gz",
+            "recursive": false,
+            "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_R1_mRNA_IGO_18593_2_S45_L007_R2_001.fastq.gz"
+          },
+          {
+            "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_gRNA_IGO_17967_B_4_S38_L005_R1_001.fastq.gz",
+            "recursive": false,
+            "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_gRNA_IGO_17967_B_4_S38_L005_R1_001.fastq.gz"
+          },
+          {
+            "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/CP_gRNA_IGO_17967_B_4_S38_L005_R2_001.fastq.gz",
+            "recursive": false,
+            "source_path": "/mnt/pikachu/MSK_Perturbseq06_Cardiac_pilot_inputs_20260917/CP_gRNA_IGO_17967_B_4_S38_L005_R2_001.fastq.gz"
+          },
+          {
+            "destination_path": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/input/slurm_cardiac_subsample.sh",
+            "recursive": false,
+            "source_path": "/mnt/pikachu/morphic-provenance-msk-temporal-workbench/runs/msk_perturbseq06_cardiac/20260918T213950Z_temporal_workbench_pilot/commands/slurm_cardiac_subsample.sh"
+          }
+        ],
+        "poll_interval_seconds": 15,
+        "source_endpoint_id": "07446cad-33b8-11f0-8c0c-0afffb017b7d",
+        "timeout_seconds": 21600
+      }
+    }
+  },
+  "submission_request": {
+    "approval": {
+      "confirmed_by_user": false,
+      "required": true
+    },
+    "execution_path": "staged_recipe",
+    "labels": {
+      "project": "msk_cardiac_cp_r1_star_cellbender",
+      "recipe_id": "msk_cardiac_cp_r1_star_cellbender"
+    },
+    "mode": "validate_then_submit",
+    "target": "temporal"
+  },
+  "version": "biodepot.workbench/v0"
+}

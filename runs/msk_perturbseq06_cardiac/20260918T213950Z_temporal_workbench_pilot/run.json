@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1",
+  "run_id": "20260918T213950Z_temporal_workbench_pilot",
+  "project": "msk_perturbseq06_cardiac",
+  "created_utc": "2026-09-18T21:39:50Z",
+  "operator": "lhhung",
+  "status": "planned",
+  "star_suite": {
+    "repo": "STAR-suite",
+    "commit": "1c9ddb9a5a2a3e62748e8e4ef28e553582affeed",
+    "dirty": false,
+    "binary": "/ocean/projects/bio230034p/shared/processing/tools/star-suite-v1.9.4/bin/STAR",
+    "binary_sha256": ""
+  },
+  "recipes": {
+    "repo": "bwb-nextflow-utils",
+    "commit": "3725358d8bc93d99c0990a9bae8f055b20a389a5",
+    "workflow_id": "msk_cardiac_cp_r1_star_cellbender",
+    "workflow_schema_version": "biodepot.staged-execution-plan/v1"
+  },
+  "environment": {
+    "scheduler_repo": "temporal-scheduler",
+    "scheduler_commit": "2e35bccfb65f6d3a5f9f81cde09c96dde53b1539",
+    "container_image": "biodepot/cellbender:0.3.2",
+    "cuda_required": true,
+    "cellbender_cuda": true
+  },
+  "inputs": [
+    {
+      "name": "source_execution_evidence",
+      "path": "../20260917T193023Z_temporal_staged_pilot"
+    },
+    {
+      "name": "recipe_interchange_template",
+      "path": "../20260918T002739Z_recipe_interchange_validation"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "workbench_bundle",
+      "path": "outputs/workbench-bundle.json"
+    },
+    {
+      "name": "scheduler_request_dry_run",
+      "path": "outputs/scheduler-request.dry-run.json"
+    },
+    {
+      "name": "validation",
+      "path": "outputs/validation.json"
+    },
+    {
+      "name": "live_workbench_validation",
+      "path": "outputs/workbench-live-validation.json"
+    }
+  ],
+  "corrections": [],
+  "submitted": false
+}

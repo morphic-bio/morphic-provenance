@@ -1,0 +1,22 @@
+{
+  "approval_required": true,
+  "browser_preflight_status": "ready",
+  "browser_summary": {
+    "stages": 2,
+    "workflow": "MSK Cardiac CP_R1 STAR Suite and CellBender"
+  },
+  "completed_utc": "2026-09-18T21:49:00Z",
+  "dry_run_status": "dry_run",
+  "live_workflow_submitted": false,
+  "scheduler_api": "http://127.0.0.1:8010",
+  "scheduler_staged_endpoints_present": true,
+  "services": {
+    "control_worker": "active",
+    "gpu_worker": "active",
+    "scheduler_api": "active",
+    "slurm_worker": "active",
+    "workbench": "active"
+  },
+  "status": "PASS",
+  "workbench_url_base": "http://128.208.252.233:8894/react"
+}

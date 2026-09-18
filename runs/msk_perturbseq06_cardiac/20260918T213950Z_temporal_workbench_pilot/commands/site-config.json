@@ -1,0 +1,19 @@
+{
+  "executors": {
+    "slurm": {
+      "ip_addr": "bridges2.psc.edu",
+      "port": 22,
+      "storage_dir": "/ocean/projects/bio230034p/lhung2/temporal-cardiac-workbench-20260918T213950Z/scheduler",
+      "transfer_addr": "bridges2.psc.edu",
+      "transfer_port": 22,
+      "user": "lhung2"
+    },
+    "ssh_docker": {
+      "gpu_device": "0",
+      "ip_addr": "localhost",
+      "port": 22,
+      "storage_dir": "/storage/temporal-scheduler-gpu-cardiac-20260918T213950Z",
+      "user": "lhhung"
+    }
+  }
+}

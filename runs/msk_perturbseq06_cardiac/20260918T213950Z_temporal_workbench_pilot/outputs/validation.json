@@ -1,0 +1,15 @@
+{
+  "approval_confirmed_in_canonical_bundle": false,
+  "cellbender_cuda": true,
+  "execution_path": "staged_recipe",
+  "gex_chemistry_tru": true,
+  "guide_input_chemistry_nxt": true,
+  "guide_output_chemistry_tru": true,
+  "native_gzip": true,
+  "pilot_read_limit": true,
+  "preflight_status": "ready",
+  "scheduler_parser": "PASS",
+  "slurm_cpus": 32,
+  "status": "PASS",
+  "workflow_id": "msk-cardiac-cp-r1-workbench-20260918T213950Z"
+}

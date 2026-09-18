@@ -1,0 +1,57 @@
+{
+  "id": "msk_cardiac_cp_r1_star_cellbender",
+  "inputs": {
+    "launch_script": {
+      "kind": "path",
+      "required": true
+    }
+  },
+  "metadata": {
+    "prepared_run": "/mnt/pikachu/morphic-provenance-msk-temporal-workbench/runs/msk_perturbseq06_cardiac/20260918T213950Z_temporal_workbench_pilot",
+    "source_execution_evidence": "/mnt/pikachu/morphic-provenance-msk-temporal-workbench/runs/msk_perturbseq06_cardiac/20260917T193023Z_temporal_staged_pilot",
+    "source_run": "/mnt/pikachu/morphic-provenance-card-prod/runs/msk_perturbseq06_cardiac/20260917T193023Z_temporal_staged_pilot",
+    "source_template_run": "/mnt/pikachu/morphic-provenance-msk-temporal-workbench/runs/msk_perturbseq06_cardiac/20260918T002739Z_recipe_interchange_validation"
+  },
+  "outputs": {
+    "filtered_h5": {
+      "from": "steps.cellbender.outputs.filtered_h5"
+    }
+  },
+  "schema": "biodepot.execution-recipe/v0",
+  "steps": [
+    {
+      "exports": {
+        "raw_mex": {
+          "checkpoint": true,
+          "kind": "path"
+        }
+      },
+      "id": "star",
+      "inputs": {
+        "launch_script": {
+          "from": "recipe.inputs.launch_script"
+        }
+      },
+      "workflow_id": "msk_cardiac_cp_r1_star_wrapper"
+    },
+    {
+      "depends_on": [
+        "star"
+      ],
+      "exports": {
+        "filtered_h5": {
+          "kind": "path"
+        }
+      },
+      "id": "cellbender",
+      "inputs": {
+        "raw_mex": {
+          "from": "steps.star.outputs.raw_mex"
+        }
+      },
+      "workflow_id": "cellbender_0_3_2_cp_r1"
+    }
+  ],
+  "strategy": "scheduler_chained",
+  "title": "MSK Cardiac CP_R1 STAR Suite and CellBender"
+}

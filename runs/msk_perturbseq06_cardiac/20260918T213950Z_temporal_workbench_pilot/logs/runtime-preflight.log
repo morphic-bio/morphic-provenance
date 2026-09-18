@@ -1,0 +1,7 @@
+/usr/bin/sbatch
+/usr/bin/sacct
+sha256:f31f1e993f3d87659c3dd541a22f505fec7ee4366f6d5da1324061c2c09dcb2a
+NVIDIA GeForce RTX 4060
+0, NVIDIA GeForce RTX 4060, 8188, 7823
+runtime_preflight=PASS
+completed_utc=2026-09-18T21:47:21Z
